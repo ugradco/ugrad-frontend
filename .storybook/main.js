@@ -1,7 +1,11 @@
-const path = require('path')
+// .storybook/main.js
 
 module.exports = {
-  stories: ['../stories/**/*.stories.js'],
-  addons: ['@storybook/addon-knobs/register'],
-  presets: [path.resolve(__dirname, './next-preset.js')]
+  stories: ['../src/**/*.stories.@(js|mdx)'],
+  addons: ['@storybook/addon-essentials',
+    '@storybook/addon-docs',
+    '@storybook/addon-viewport',
+    '@storybook/addon-controls',
+    '@storybook/addon-actions',
+    '@storybook/addon-knobs/register']
 }

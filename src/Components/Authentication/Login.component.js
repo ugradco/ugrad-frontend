@@ -1,7 +1,7 @@
-import routes from "Constants/route.constants";
 import React from "react";
+import routes from "../../Constants/route.constants";
 
-import { Button } from "UI";
+import { Button } from "../../UI";
 
 const LoginComponent = (props) => {
   const { history } = props;

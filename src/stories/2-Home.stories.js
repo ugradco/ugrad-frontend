@@ -1,9 +1,8 @@
 import React from "react";
-import LoginComponent from "../Components/Authentication/Login.component";
+import HomeComponent from "../Components/Home/Home.component";
 
 export default {
-  title: "Authentication",
+  title: "Home",
 };
 
-export const LoginPage = () => <LoginComponent>Login</LoginComponent>;
-
+export const HomePage = () => <HomeComponent />;
