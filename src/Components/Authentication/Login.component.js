@@ -1,22 +1,19 @@
-import React from "react";
-import routes from "../../Constants/route.constants";
+import React, { useState } from "react";
+import Button from "../Button/Button.component";
+import Input from "../InputBox/Input.component";
+import Layout from "../Layout/Layout.component";
+import style from "../Authentication/Login.module.css";
+import { Ugrad } from "../icons/index";
 
-import { Button } from "../../UI";
-
-const LoginComponent = (props) => {
-  const { history } = props;
-
+function Login({ href, children }) {
   return (
-    <div>
-      LOGIN PAGE
-      <Button
-        text="login"
-        onClick={() => {
-          history.push(routes.home);
-        }}
-      />
+    <div className={style.pane}>
+      <Ugrad />
+      <h1>uGrad</h1>
+      <Input />
+      <Button href={href}>Sign In!</Button>
     </div>
   );
-};
+}
 
-export default LoginComponent;
+export default Login;

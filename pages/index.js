@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import Button from "../src/Components/Button/Button.component";
-import Input from "../src/Components/InputBox/Input.component";
+import Login from "../src/Components/Authentication/Login.component";
+import Layout from "../src/Components/Layout/Layout.component.js";
 
 function Home() {
   return (
-    <div>
-      <h1>ugrad</h1>
-      <Input />
-      <Button>Sign In!</Button>
-    </div>
+    <Layout>
+      <Login href="/authentication" />
+    </Layout>
   );
 }
 
