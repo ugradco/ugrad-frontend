@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import fetch from "isomorphic-unfetch";
 import { useRouter } from "next/router";
 import { Form, Loader, Button } from "semantic-ui-react";
 // import axios from "axios";
-import Login from "Components/Authentication/Login.component";
+import Login from "Components/Login/Login.component";
 import Layout from "Components/Layout/Layout.component";
 import Loading from "Components/loading";
 import { styles } from "Assets/styles/Home.module.css";
@@ -28,19 +27,20 @@ export async function getServerSideProps() {
 function Home() {
   // const response = { user: "", token: "" };
   const router = useRouter();
-  const [form, setForm] = useState({ mail: "", token: "" });
+  const [form, setForm] = useState({ email: "", token: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLogging, setIsLogging] = useState(false);
   const [errors, setErrors] = useState({});
 
   const sendEmail = () => {
-    console.log(JSON.stringify(form.mail));
+    console.log(JSON.stringify(form.email));
     apiGenerator("post")(API_ENDPOINTS.REGISTER, {
-      email: form.mail,
+      email: form.email,
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          // TODO
+          // throw new Error("Network response was not ok");
         }
         setIsSubmitting(false);
         setIsLogging(true);
@@ -52,14 +52,15 @@ function Home() {
   };
 
   const sendId = async () => {
-    console.log("sendId", JSON.stringify(form.mail));
+    console.log("sendId", JSON.stringify(form.email));
     apiGenerator("post")(API_ENDPOINTS.LOGIN, {
-      email: form.mail,
+      email: form.email,
       token: form.token,
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          // TODO
+          // throw new Error("Network response was not ok");
         }
         setIsSubmitting(false);
         setIsLogging(true);
@@ -71,8 +72,8 @@ function Home() {
       });
   };
 
-  const handleSubmit = (e) => {
-    console.log("handleSubmit", form.token);
+  const handleRegister = (e) => {
+    console.log("handleRegister", form.email);
 
     sendEmail();
 
@@ -100,10 +101,10 @@ function Home() {
   const validate = () => {
     const err = {};
 
-    if (!form.mail) {
-      err.mail = "Email is required";
+    if (!form.email) {
+      err.email = "Email is required";
     }
-    if (form.mail && !form.token) {
+    if (form.email && !form.token) {
       err.token = "Token is required";
     }
     return err;
@@ -115,17 +116,13 @@ function Home() {
     return (
       <Layout>
         {/* <Login onSubmit={handleSubmit} onChange={handleChange} /> */}
-        <Form onSubmit={handleSubmit}>
-          <Form.Input
-            fluid
-            error={errors.title ? { content: "Please enter a Email", pointing: "below" } : null}
-            label="Email Address"
-            placeholder="abcde16@ku.edu.tr"
-            name="mail"
-            onChange={handleChange}
-          />
-          <Button type="submit">Log In</Button>
-        </Form>{" "}
+        <Login
+          inputValue={form.email}
+          inputType="email"
+          onInputChange={handleChange}
+          onButtonClick={handleRegister}
+          inputPlaceHolder="Enter email address."
+        />
       </Layout>
     );
   }
@@ -135,18 +132,14 @@ function Home() {
         <Loader active inline="centered" />
       ) : (
         <Layout>
+          <Login
+            inputValue={form.token}
+            inputType="token"
+            onInputChange={handleChange}
+            onButtonClick={handleLogin}
+            inputPlaceHolder="Enter verification code."
+          />
           {/* <Login onSubmit={handleSubmit} onChange={handleChange} /> */}
-          <Form onSubmit={handleLogin}>
-            <Form.Input
-              fluid
-              error={errors.title ? { content: "Please enter a TOKEN", pointing: "below" } : null}
-              label="Ugrad Verification Code"
-              placeholder="ABCDEF"
-              name="token"
-              onChange={handleChange}
-            />
-            <Button type="submit">Log In</Button>
-          </Form>{" "}
         </Layout>
       )}
     </div>
