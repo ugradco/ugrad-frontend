@@ -5,12 +5,20 @@ import ArrowRight from "../icons/ArrowRight";
 import styles from "./Login.module.css";
 import { Ugrad } from "../icons/index";
 
-function Login({ href }) {
+function Login(props) {
+  const { href, inputValue, inputType, inputPlaceHolder, onInputChange, onButtonClick } = props;
+
   return (
     <div className={styles.pane}>
       <Ugrad className={styles.logo} />
-      <Input name="email" type="email" placeholder="Enter email address." />
-      <Button href={href} className={styles.button}>
+      <Input
+        name={inputType}
+        type={inputType}
+        placeholder={inputPlaceHolder}
+        value={inputValue}
+        onChange={onInputChange}
+      />
+      <Button href={href} className={styles.button} onClick={onButtonClick}>
         <ArrowRight />
       </Button>
     </div>
