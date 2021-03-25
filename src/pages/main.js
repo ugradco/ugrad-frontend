@@ -1,6 +1,7 @@
+import React from "react";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import Logo from "../src/Components/icons/Logo";
+import styles from "Assets/styles/Home.module.css";
+import Logo from "Components/icons/Logo";
 import Image from "next/image";
 
 export default function Home() {

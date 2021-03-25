@@ -3,11 +3,12 @@ import fetch from "isomorphic-unfetch";
 import { useRouter } from "next/router";
 import { Form, Loader, Button } from "semantic-ui-react";
 // import axios from "axios";
-import Login from "../src/Components/Authentication/Login.component";
-import Layout from "../src/Components/Layout/Layout.component.js";
-import Loading from "../src/components/loading";
-import { styles } from "../styles/Home.module.css";
-import { API_ENDPOINTS } from "../src/Constants/api.constants";
+import Login from "Components/Authentication/Login.component";
+import Layout from "Components/Layout/Layout.component";
+import Loading from "Components/loading";
+import { styles } from "Assets/styles/Home.module.css";
+import { API_ENDPOINTS } from "Constants/api.constants";
+import { apiGenerator } from "Utils";
 
 /*
 export async function getServerSideProps() {
@@ -32,35 +33,10 @@ function Home() {
   const [isLogging, setIsLogging] = useState(false);
   const [errors, setErrors] = useState({});
 
-  /* useEffect(() => {
-    if (isSubmitting) {
-      if (Object.keys(errors).length === 0) {
-      } else {
-        setIsSubmitting(false);
-        setIsLogging(true);
-      }
-    }
-    if (isLogging) {
-      if (Object.keys(errors).length === 0) {
-      } else {
-        setIsLogging(false);
-      }
-    }
-  }, [errors]); */
-
-  const sendEmail = async () => {
+  const sendEmail = () => {
     console.log(JSON.stringify(form.mail));
-    const res = await fetch(API_ENDPOINTS.REGISTER, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        email: form.mail,
-      }),
+    apiGenerator("post")(API_ENDPOINTS.REGISTER, {
+      email: form.mail,
     })
       .then((response) => {
         if (!response.ok) {
@@ -68,27 +44,18 @@ function Home() {
         }
         setIsSubmitting(false);
         setIsLogging(true);
-        console.log("successfully logged in");
-        console.log(response.json());
-        return response.blob();
+        console.log("successfully registered");
       })
       .catch((error) => {
         console.error("There has been a problem with your fetch operation:", error);
       });
   };
+
   const sendId = async () => {
-    // console.log(JSON.stringify(form.mail));ß
-    const resp = fetch(API_ENDPOINTS.LOGIN, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        Accept: "application/json, application/xml, text/plain, text/html, *.*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: form.mail,
-        token: form.token,
-      }),
+    console.log("sendId", JSON.stringify(form.mail));
+    apiGenerator("post")(API_ENDPOINTS.LOGIN, {
+      email: form.mail,
+      token: form.token,
     })
       .then((response) => {
         if (!response.ok) {
@@ -97,36 +64,39 @@ function Home() {
         setIsSubmitting(false);
         setIsLogging(true);
         console.log("successfully logged in");
-        console.log(response.json());
         router.push("/main");
       })
       .catch((error) => {
         console.error("There has been a problem with your fetch operation:", error);
       });
   };
+
   const handleSubmit = (e) => {
-    if (!form.token) {
-      sendEmail();
-    } else {
-      sendId();
-    }
+    console.log("handleSubmit", form.token);
+
+    sendEmail();
+
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
     setIsSubmitting(true);
   };
+
   const handleLogin = (e) => {
+    sendId();
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
     setIsLogging(true);
   };
+
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
+
   const validate = () => {
     const err = {};
 
