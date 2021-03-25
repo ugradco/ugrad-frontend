@@ -66,6 +66,8 @@
     "react-bootstrap": "^1.5.2",
     "react-is": "^16.13.1",
     "sass-loader": "^9.0.3",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
     "style-loader": "^1.2.1",
     "stylelint": "^13.7.1",
     "stylelint-config-sass-guidelines": "^7.1.0"
