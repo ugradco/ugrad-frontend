@@ -1,7 +1,7 @@
 export const API_ENDPOINTS = {
-  REGISTER: "/users/",
+  REGISTER: "https://api.ugrad.co/auth/register",
   VERIFY_REGISTER: "/users/registration/verify",
-  LOGIN: "/auth/token",
+  LOGIN: "https://api.ugrad.co/auth/register",
   LOGOUT: "/auth/revoke",
   ACCOUNT: "/users/me",
   ACCOUNT_PROFILE: "/users/me/profile",
