@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Input.module.css";
 
-function Input({ href, children, ...props }) {
+function Input({ name, type, placeholder }) {
   return (
-    <form styles={styles.form}>
-      <input className={styles.input} name="email" type="email" placeholder="username@ku.edu.tr" />
+    <form className={styles.form}>
+      <input className={styles.input} name={name} type={type} placeholder={placeholder} />
     </form>
   );
 }
