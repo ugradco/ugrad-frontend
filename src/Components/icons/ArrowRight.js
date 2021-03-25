@@ -9,7 +9,7 @@ function SvgArrowRight(props) {
       </g>
       <defs>
         <clipPath id="arrow_right_svg__clip0">
-          <path fill="#fff" d="M0 0h30v30H0z" />
+          <path fill="currentColor" d="M0 0h30v30H0z" />
         </clipPath>
       </defs>
     </svg>

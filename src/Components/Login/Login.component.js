@@ -3,14 +3,14 @@ import Button from "../Button/Button.component";
 import Input from "../InputBox/Input.component";
 import ArrowRight from "../icons/ArrowRight";
 import styles from "./Login.module.css";
-import { Ugrad } from "../icons/index";
+import { UgradLogo } from "../icons/index";
 
 function Login(props) {
   const { href, inputValue, inputType, inputPlaceHolder, onInputChange, onButtonClick } = props;
 
   return (
     <div className={styles.pane}>
-      <Ugrad className={styles.logo} />
+      <UgradLogo className={styles.logo} />
       <Input
         name={inputType}
         type={inputType}
