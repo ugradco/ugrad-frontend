@@ -7,8 +7,6 @@ import { API_ENDPOINTS } from "Constants/api.constants";
 import { apiGenerator } from "Utils";
 import { LOCAL_STORAGE } from "../Constants/global.constants";
 
-
-
 function LoginPage() {
   const router = useRouter();
   const [form, setForm] = useState({ email: "", token: "" });
@@ -123,7 +121,7 @@ function LoginPage() {
             inputType="token"
             onInputChange={handleChange}
             onButtonClick={handleLogin}
-            inputPlaceHolder="Enter verification code."
+            inputPlaceHolder=""
           />
         </Layout>
       )}

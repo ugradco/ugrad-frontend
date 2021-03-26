@@ -1,18 +1,18 @@
 import React from "react";
-import styles from "./Input.module.css";
 
 function Input(props) {
-  const { name, type, placeholder, value, onChange } = props;
+  const { style, name, type, placeholder, value, onChange, maxLength } = props;
 
   return (
-    <div className={styles.inputContainer}>
+    <div>
       <input
-        className={styles.input}
+        className={style}
         name={name}
         type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        maxLength={maxLength}
       />
     </div>
   );
