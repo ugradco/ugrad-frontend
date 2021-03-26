@@ -9,7 +9,8 @@ import { LOCAL_STORAGE } from "../Constants/global.constants";
 
 function LoginPage() {
   const router = useRouter();
-  const [form, setForm] = useState({ email: "", token: "" });
+  const [form, setForm] = useState({ email: "" });
+  const [token, setToken] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLogging, setIsLogging] = useState(false);
   const [errors, setErrors] = useState({});
@@ -37,7 +38,7 @@ function LoginPage() {
     console.log("sendId", JSON.stringify(form.email));
     apiGenerator("post")(API_ENDPOINTS.LOGIN, {
       email: form.email,
-      token: form.token,
+      token,
     })
       .then((response) => {
         console.log(response);
@@ -75,7 +76,6 @@ function LoginPage() {
     setErrors(errs);
     setIsLogging(true);
   };
-
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -89,7 +89,7 @@ function LoginPage() {
     if (!form.email) {
       err.email = "Email is required";
     }
-    if (form.email && !form.token) {
+    if (form.email && !token) {
       err.token = "Token is required";
     }
     return err;
@@ -117,9 +117,11 @@ function LoginPage() {
       ) : (
         <Layout>
           <Login
-            inputValue={form.token}
+            inputValue={token}
             inputType="token"
-            onInputChange={handleChange}
+            onInputChange={(value) => {
+              setToken(value);
+            }}
             onButtonClick={handleLogin}
             inputPlaceHolder=""
           />

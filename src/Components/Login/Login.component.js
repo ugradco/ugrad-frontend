@@ -1,14 +1,13 @@
 import React from "react";
+import ReactCodeInput from "react-verification-code-input";
 import Button from "../Button/Button.component";
 import Input from "../InputBox/Input.component";
 import ArrowRight from "../icons/ArrowRight";
-import RICIBs from "react-individual-character-input-boxes";
 import styles from "./Login.module.css";
 import { UgradLogo } from "../icons/index";
 
 function Login(props) {
   const { href, inputValue, inputType, inputPlaceHolder, onInputChange, onButtonClick } = props;
-
   return (
     <div className={styles.pane}>
       <UgradLogo className={styles.logo} />
@@ -27,15 +26,15 @@ function Login(props) {
         }
         return (
           <div className={styles.divOuter}>
-            <Input
-              // TODO: need to remove cursor after maxLength is reached.
-              style={styles.partitioned}
+            <ReactCodeInput
+              className={styles.partitioned}
               name={inputType}
-              type={inputType}
-              placeholder={inputPlaceHolder}
+              type="text"
+              fields={6}
               value={inputValue}
-              onChange={onInputChange}
-              maxLength={6}
+              onComplete={onInputChange}
+              autoFocus={false}
+              loading={false}
             />
           </div>
         );
