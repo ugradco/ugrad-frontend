@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Login from "Components/Login/Login.component";
+import VerificationLogin from "Components/Login/VerificationLogin.component";
 import Layout from "Components/Layout/Layout.component";
 import Loading from "Components/loading";
 import { API_ENDPOINTS } from "Constants/api.constants";
@@ -116,7 +117,7 @@ function LoginPage() {
         <Loading active inline="centered" />
       ) : (
         <Layout>
-          <Login
+          <VerificationLogin
             inputValue={token}
             inputType="token"
             onInputChange={(value) => {
