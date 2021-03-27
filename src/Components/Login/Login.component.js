@@ -25,9 +25,9 @@ function Login(props) {
           );
         }
         return (
-          <div className={styles.divOuter}>
+          <div className={styles.smaller}>
             <ReactCodeInput
-              className={styles.partitioned}
+              className={styles.inputSmall}
               name={inputType}
               type="text"
               fields={6}
