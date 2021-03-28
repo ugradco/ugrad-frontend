@@ -11,23 +11,18 @@ function VerificationLogin(props) {
   return (
     <div className={styles.pane}>
       <UgradLogo className={styles.logo} />
-      {(() => {
-        return (
-          <div className={styles.divOuter}>
-            <ReactCodeInput
-              className={styles.partitioned}
-              name={inputType}
-              type="text"
-              fields={6}
-              value={inputValue}
-              onComplete={onInputChange}
-              autoFocus={false}
-              loading={false}
-            />
-          </div>
-        );
-      })()}
-
+      <div className={styles.divOuter}>
+        <ReactCodeInput
+          className={styles.partitioned}
+          name={inputType}
+          type="text"
+          fields={6}
+          value={inputValue}
+          onComplete={onInputChange}
+          autoFocus={false}
+          loading={false}
+        />
+      </div>
       <Button href={href} className={styles.button} onClick={onButtonClick}>
         <ArrowRight className={styles.arrowIcon} />
       </Button>

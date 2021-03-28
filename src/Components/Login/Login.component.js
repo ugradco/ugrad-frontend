@@ -23,21 +23,22 @@ function Login(props) {
               onChange={onInputChange}
             />
           );
+        } else if (inputType === "token") {
+          return (
+            <div className={styles.smaller}>
+              <ReactCodeInput
+                className={styles.inputSmall}
+                name={inputType}
+                type="text"
+                fields={6}
+                value={inputValue}
+                onComplete={onInputChange}
+                autoFocus={false}
+                loading={false}
+              />
+            </div>
+          );
         }
-        return (
-          <div className={styles.smaller}>
-            <ReactCodeInput
-              className={styles.inputSmall}
-              name={inputType}
-              type="text"
-              fields={6}
-              value={inputValue}
-              onComplete={onInputChange}
-              autoFocus={false}
-              loading={false}
-            />
-          </div>
-        );
       })()}
 
       <Button href={href} className={styles.button} onClick={onButtonClick}>

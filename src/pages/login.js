@@ -60,22 +60,28 @@ function LoginPage() {
   };
 
   const handleRegister = (e) => {
-    console.log("handleRegister", form.email);
-
-    sendEmail();
-
-    e.preventDefault();
-    const errs = validate();
-    setErrors(errs);
-    setIsSubmitting(true);
+    if (form.email === "") {
+      alert("Email is required!");
+    } else {
+      console.log("handleRegister", form.email);
+      sendEmail();
+      e.preventDefault();
+      // const errs = validate();
+      // setErrors(errs);
+      setIsSubmitting(true);
+    }
   };
 
   const handleLogin = (e) => {
-    sendId();
-    e.preventDefault();
-    const errs = validate();
-    setErrors(errs);
-    setIsLogging(true);
+    if (token === "") {
+      alert("Token is required!");
+    } else {
+      sendId();
+      e.preventDefault();
+      // const errs = validate();
+      // setErrors(errs);
+      setIsLogging(true);
+    }
   };
   const handleChange = (e) => {
     setForm({
@@ -88,10 +94,10 @@ function LoginPage() {
     const err = {};
 
     if (!form.email) {
-      err.email = "Email is required";
+      err.email = "Email is required!";
     }
     if (form.email && !token) {
-      err.token = "Token is required";
+      err.token = "Token is required!";
     }
     return err;
   };
