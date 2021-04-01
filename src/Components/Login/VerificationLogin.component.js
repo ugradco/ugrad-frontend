@@ -13,7 +13,6 @@ function VerificationLogin(props) {
       <UgradLogo className={styles.logo} />
       <div className={styles.smaller}>
         <ReactCodeInput
-          className={styles.partitioned}
           name={inputType}
           type="text"
           fields={6}
