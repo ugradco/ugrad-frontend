@@ -1,17 +1,30 @@
 import React, { useState } from "react";
-import Header from "../Header/Header.component";
 import Main from "../Main/Main.component";
-import Footer from "../Footer/Footer.component";
-import style from "../Layout/Layout.module.css";
+import style from "./Layout.module.css";
+import Sidebar from "../Cols/sidebar";
+import Extra from "../Cols/extra";
 
-function Layout({ children }) {
+function LoginLayout({ children }) {
   return (
     <div className={style.layout}>
-      <Header />
       <Main>{children}</Main>
-      <Footer />
     </div>
   );
+}
+
+function MainLayout({ children }) {
+  return (
+    <div className={style.layout}>
+      <Sidebar />
+      <Main>{children}</Main>
+      <Extra />
+    </div>
+  );
+}
+
+function Layout({ type, children }) {
+  const CompLayout = type === "login" ? LoginLayout : MainLayout;
+  return <CompLayout className={style.layout}>{children}</CompLayout>;
 }
 
 export default Layout;

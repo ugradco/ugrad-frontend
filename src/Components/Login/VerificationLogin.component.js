@@ -11,7 +11,7 @@ function VerificationLogin(props) {
   return (
     <div className={styles.pane}>
       <UgradLogo className={styles.logo} />
-      <div className={styles.divOuter}>
+      <div className={styles.smaller}>
         <ReactCodeInput
           className={styles.partitioned}
           name={inputType}

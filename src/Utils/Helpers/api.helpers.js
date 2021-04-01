@@ -42,6 +42,7 @@ export const apiGenerator = (type) => {
 };
 
 export function apiResponseHandler(response) {
+  // TODO: 401 gelirse login'e yonlendir - environment'a eklenecek
   if (getStatusCodeFamily(response.status) === STATUS_TYPE.SUCCESS) {
     response.ok = true;
   }

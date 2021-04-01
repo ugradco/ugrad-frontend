@@ -106,7 +106,7 @@ function LoginPage() {
     return <Loading active inline="centered" />;
   } else if (!isLogging) {
     return (
-      <Layout>
+      <Layout type="login">
         <Login
           inputValue={form.email}
           inputType="email"
@@ -122,7 +122,7 @@ function LoginPage() {
       {isSubmitting ? (
         <Loading active inline="centered" />
       ) : (
-        <Layout>
+        <Layout type="login">
           <VerificationLogin
             inputValue={token}
             inputType="token"
