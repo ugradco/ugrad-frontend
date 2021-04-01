@@ -1,5 +1,6 @@
 .layout {
-  display: grid;
+  display: flex;
+  align-items: center;
   grid-template-rows: auto 1fr;
   min-height: 100vh;
   max-width: 670px;
