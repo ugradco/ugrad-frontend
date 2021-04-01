@@ -1,5 +1,4 @@
 import React from "react";
-import cn from "classnames";
 import style from "./Main.module.css";
 
 function Main({ children }) {

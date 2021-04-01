@@ -1,9 +1,19 @@
 import React from "react";
 import cn from "classnames";
 import styles from "./sidebar.module.css";
+import TopicsBar from "../TopicsBar/TopicsBar.component";
+import Profile from "../Profile/Profile.component";
 
-function Sidebar({ children }) {
-  return <div className={cn(styles.sidebar)} />;
+function Sidebar({ flat }) {
+  return (
+    <div className={cn(styles.sidebar)}>
+      <TopicsBar />
+
+      <div className={styles.profile}>
+        <Profile flat={flat} />
+      </div>
+    </div>
+  );
 }
 
 export default Sidebar;
