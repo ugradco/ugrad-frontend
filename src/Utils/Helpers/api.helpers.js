@@ -1,6 +1,7 @@
 import axios from "axios";
 import { STATUS_TYPE } from "Constants/api.constants";
 import { LOCAL_STORAGE } from "Constants/global.constants";
+import { removeKeysFromLocalStorage } from "Utils/Helpers/storage.helpers";
 
 export const apiGenerator = (type) => {
   const headers = {
@@ -16,7 +17,7 @@ export const apiGenerator = (type) => {
   }
 
   const defaultOptions = {
-    baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+    baseURL: process.env.REACT_APP_API_BASE_URL,
     headers,
   };
 
@@ -42,10 +43,14 @@ export const apiGenerator = (type) => {
 };
 
 export function apiResponseHandler(response) {
-  // TODO: 401 gelirse login'e yonlendir - environment'a eklenecek
-  if (getStatusCodeFamily(response.status) === STATUS_TYPE.SUCCESS) {
+  const responseType = getStatusCodeFamily(response.status);
+  if (responseType === STATUS_TYPE.SUCCESS) {
     response.ok = true;
+  } else if (responseType === STATUS_TYPE.CLIENT_ERROR && response.status === 401) {
+    removeKeysFromLocalStorage();
+    document.location.href = "/login";
   }
+
   return response;
 }
 

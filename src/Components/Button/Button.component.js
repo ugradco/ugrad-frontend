@@ -1,6 +1,6 @@
 import React from "react";
 import cn from "classnames";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 import styles from "./Button.module.css";
 
@@ -21,7 +21,8 @@ function BaseButton({ children, ...props }) {
 }
 
 function Button({ full = false, children, className, ...props }) {
-  const Comp = props.href ? LinkButton : BaseButton;
+  const { href } = props;
+  const Comp = href ? LinkButton : BaseButton;
 
   return (
     <Comp className={cn(styles.button, full && styles.fullWidth, className)} {...props}>
