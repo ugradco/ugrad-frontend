@@ -5,12 +5,11 @@ export const loginClear = () => ({
 });
 
 export const loginAPI = (loginForm) => {
-  const { email, password } = loginForm;
+  const { email, token } = loginForm;
 
   const requestPayload = {
     email: email.toLowerCase(),
-    password,
-    grant_type: "password",
+    token,
   };
 
   return {

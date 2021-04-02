@@ -18,10 +18,11 @@ export default function account(state = initialState, action) {
 }
 
 function loginAPISuccess(state, action) {
-  const { accessToken } = action.payload;
+  const { accessToken, user } = action.payload;
   return {
     ...state,
     accessToken,
+    account: user,
   };
 }
 

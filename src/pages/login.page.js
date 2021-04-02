@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
+
 import Login from "Components/Login/Login.component";
 import VerificationLogin from "Components/Login/VerificationLogin.component";
 import Layout from "Components/Layout/Layout.component";
@@ -8,8 +8,9 @@ import { API_ENDPOINTS } from "Constants/api.constants";
 import { apiGenerator } from "Utils";
 import { LOCAL_STORAGE } from "../Constants/global.constants";
 
-function LoginPage() {
-  const router = useRouter();
+function LoginPage(props) {
+  const { history } = props;
+
   const [form, setForm] = useState({ email: "" });
   const [token, setToken] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,7 +53,7 @@ function LoginPage() {
         setIsSubmitting(false);
         setIsLogging(true);
         console.log("successfully logged in");
-        router.push("/main");
+        history.push("/main");
       })
       .catch((error) => {
         console.error("There has been a problem with your fetch operation:", error);

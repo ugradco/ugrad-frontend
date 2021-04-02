@@ -1,7 +1,7 @@
 import { all, put, takeLatest } from "redux-saga/effects";
 import { API_ENDPOINTS, STATUS_TYPE } from "Constants/api.constants";
 
-import apiGenerator from "Utils/Helpers/api.helpers";
+import { apiGenerator } from "Utils/Helpers/api.helpers";
 
 import * as AuthConstants from "Constants/auth.constants";
 
@@ -16,13 +16,13 @@ function* loginAPISaga(action) {
     const response = yield api;
 
     if (getStatusCodeFamily(response.status) === STATUS_TYPE.SUCCESS) {
-      const { access_token: accessToken } = response.data;
+      const { token: accessToken, user } = response.data;
 
       setAccessTokenInLocalStorage(accessToken);
 
       yield put({
         type: AuthConstants.LOGIN_API_SUCCESS,
-        payload: { accessToken },
+        payload: { accessToken, user },
       });
     } else {
       const error = apiErrorHandler({ response });
