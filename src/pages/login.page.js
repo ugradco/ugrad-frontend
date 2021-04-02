@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { loginAPI } from "Actions/Login.actions";
 
 import Login from "Components/Login/Login.component";
 import VerificationLogin from "Components/Login/VerificationLogin.component";
@@ -6,10 +8,10 @@ import Layout from "Components/Layout/Layout.component";
 import Loading from "Components/loading";
 import { API_ENDPOINTS } from "Constants/api.constants";
 import { apiGenerator } from "Utils";
-import { LOCAL_STORAGE } from "../Constants/global.constants";
+import { LOCAL_STORAGE, REQUEST_STATUS } from "../Constants/global.constants";
 
 function LoginPage(props) {
-  const { history } = props;
+  const { loginAPI, login, history } = props;
 
   const [form, setForm] = useState({ email: "" });
   const [token, setToken] = useState("");
@@ -17,7 +19,21 @@ function LoginPage(props) {
   const [isLogging, setIsLogging] = useState(false);
   const [errors, setErrors] = useState({});
 
+  console.log("login", login);
+
+  useEffect(() => {
+    if (login.loginCTX.status === REQUEST_STATUS.SUCCESS) {
+      setIsSubmitting(false);
+      setIsLogging(true);
+      history.push("/");
+    }
+  }, [login.loginCTX.status]);
+
   const sendEmail = () => {
+    // loginAPI({
+    //   email: form.email,
+    // });
+
     console.log(JSON.stringify(form.email));
     apiGenerator("post")(API_ENDPOINTS.REGISTER, {
       email: form.email,
@@ -37,27 +53,11 @@ function LoginPage(props) {
   };
 
   const sendId = async () => {
-    console.log("sendId", JSON.stringify(form.email));
-    apiGenerator("post")(API_ENDPOINTS.LOGIN, {
+    loginAPI({
       email: form.email,
       token,
-    })
-      .then((response) => {
-        console.log(response);
-        if (!response.ok) {
-          // TODO
-          // throw new Error("Network response was not ok");
-        } else {
-          localStorage.setItem(LOCAL_STORAGE.accessToken, response.data.token);
-        }
-        setIsSubmitting(false);
-        setIsLogging(true);
-        console.log("successfully logged in");
-        history.push("/main");
-      })
-      .catch((error) => {
-        console.error("There has been a problem with your fetch operation:", error);
-      });
+    });
+    console.log("sendId", JSON.stringify(form.email));
   };
 
   const handleRegister = (e) => {
@@ -139,4 +139,13 @@ function LoginPage(props) {
   );
 }
 
-export default LoginPage;
+const mapStateToProps = (state) => ({
+  account: state.account,
+  login: state.login,
+});
+
+const actionCreators = {
+  loginAPI,
+};
+
+export default connect(mapStateToProps, actionCreators)(LoginPage);
