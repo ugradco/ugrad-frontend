@@ -7,6 +7,7 @@ import Profile from "../Profile/Profile.component";
 function Sidebar({ flat }) {
   return (
     <div className={cn(styles.sidebar)}>
+      <div className={styles.sideTitle}>Followed Topics</div>
       <TopicsBar />
 
       <div className={styles.profile}>

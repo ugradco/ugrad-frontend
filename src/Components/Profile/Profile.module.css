@@ -1,5 +1,11 @@
 .box {
   padding: 10px;
+  background-color: white;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #343264;
+  height: 145px;
+  width: 235px;
 }
 
 .body {

@@ -20,7 +20,7 @@ function TopicsBarComponent({ children }) {
   return (
     <nav className={styles.nav}>
       {userTopicList.map((topic) => {
-        return <Topic className={styles.navButton}> {topic.name} </Topic>;
+        return <Topic className={styles.topic}> {topic.name} </Topic>;
       })}
     </nav>
   );
