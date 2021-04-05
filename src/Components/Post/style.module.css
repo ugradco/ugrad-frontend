@@ -1,0 +1,70 @@
+.tweet {
+  display: grid;
+  grid-template-areas: 'avatar body';
+  grid-template-columns: 50px 1fr;
+  grid-gap: 15px;
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.avatar {
+  grid-area: avatar;
+}
+
+.body {
+  grid-area: body;
+}
+
+.header {
+  color: gray;
+}
+
+.name {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.content {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  white-space: pre-wrap;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 150px;
+  width: 200px;
+  height: 10px;
+}
+
+.footerButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: var(--color-primary);
+}
+
+.footerButton > span {
+  font-size: 0.9em;
+}
+
+.footerButton:first-child {
+   margin-left: -8px;
+ }
+
+.reportButton {
+  position: absolute;
+  right: 150px;
+  width: 200px;
+  height: 120px;
+}
+
+.actionButton {
+  color: inherit;
+}
+
+.actionButton svg {
+  font-size: 19px;
+}

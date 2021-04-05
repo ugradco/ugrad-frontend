@@ -10,10 +10,48 @@
   text-decoration: none;
 }
 
+.button:hover {
+  transition: .3s;
+  fill: #0092fd;
+  color: var(--color-selected);
+}
+
+/*.button {*/
+/*  position: relative;*/
+/*  display: inline-block;*/
+/*  padding: .8em 4em;*/
+/*  border: 2px solid var(--color-primary);*/
+/*  color: var(--color-primary);*/
+/*  font-size: 18px;*/
+/*  font-weight: 400;*/
+/*  text-align: center;*/
+/*  text-decoration: none;*/
+/*  transition: .3s;*/
+/*  background-color: none;*/
+/*}*/
+/*.button::before {*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  z-index: -1;*/
+/*  content: '';*/
+/*  transition: transform .3s;*/
+/*}*/
+/*.button:hover {*/
+/*  color: var(--color-selected);*/
+/*}*/
+
 .fullWidth {
   width: 100% !important;
 }
 
 .iconButton {
+  border: none;
   padding: 8px;
+}
+
+.iconButton svg {
+  font-size: 24px;
 }
