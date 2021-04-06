@@ -29,6 +29,7 @@ function LoginPage(props) {
     }
   }, [login.loginCTX.status]);
 
+  // TODO: server error 404
   const sendEmail = () => {
     // loginAPI({
     //   email: form.email,

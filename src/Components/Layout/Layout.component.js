@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import Main from "../Main/Main.component";
 import style from "./Layout.module.css";
 import Sidebar from "../Cols/sidebar";
 import Extra from "../Cols/extra";
+import MainCol from "../Cols/main";
 
 function LoginLayout({ children }) {
   return (
-    <div className={style.layout}>
-      <Main>{children}</Main>
+    <div className={style.login}>
+      <MainCol>{children}</MainCol>
     </div>
   );
 }
 
 function MainLayout({ children }) {
   return (
-    <div className={style.layout}>
+    <div className={style.main}>
       <Sidebar />
-      <Main>{children}</Main>
+      <MainCol>{children}</MainCol>
       <Extra />
     </div>
   );

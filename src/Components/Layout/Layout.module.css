@@ -1,7 +1,11 @@
-.layout {
-  display: flex;
-  align-items: center;
-  grid-template-rows: auto 1fr;
+.login {
+  display: grid;
+  align-content: center;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 300px 1000px 300px;
   min-height: 100vh;
   max-width: 670px;
   margin-left: auto;

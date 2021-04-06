@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     --color-border: #C4C4C4;
     --color-text-bg: #F0F2F5;
     --color-selected: #1DA1F2;
+    --fade: .3s;
   }
 `;
 

@@ -1,4 +1,4 @@
-.tweet {
+.post {
   display: grid;
   grid-template-areas: 'avatar body';
   grid-template-columns: 50px 1fr;
@@ -13,10 +13,18 @@
 
 .body {
   grid-area: body;
+  position: relative;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.comments {
+  grid-area: comments;
+  margin-top: 10px;
+  position: relative;
 }
 
 .header {
-  color: gray;
+  color: var(--color-border);
 }
 
 .name {
@@ -25,46 +33,34 @@
 }
 
 .content {
+  max-width: 80%;
   margin-top: 5px;
   margin-bottom: 5px;
   white-space: pre-wrap;
 }
 
-.footer {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: 150px;
-  width: 200px;
-  height: 10px;
-}
+.reportButton {
+  margin: 5px 15px auto auto;
+  color: inherit;
 
-.footerButton {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  color: var(--color-primary);
 }
-
-.footerButton > span {
-  font-size: 0.9em;
-}
-
-.footerButton:first-child {
-   margin-left: -8px;
- }
 
 .reportButton {
   position: absolute;
-  right: 150px;
-  width: 200px;
-  height: 120px;
-}
-
-.actionButton {
+  left: 95%;
   color: inherit;
 }
 
-.actionButton svg {
-  font-size: 19px;
+.reportButton svg {
+  font-size: 20px;
+}
+
+.upButton {
+  position: relative;
+  left: 93%;
+  color: inherit;
+}
+
+.upButton svg {
+  font-size: 50px;
 }

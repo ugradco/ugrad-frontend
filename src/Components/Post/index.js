@@ -17,34 +17,37 @@ function Post({ favoriteCount, text, user }) {
   // user.screen_name
 
   return (
-    <article className={styles.tweet}>
+    <article className={styles.post}>
       {/* avatar */}
       <div className={styles.avatar}>
         <Photo src={user.profile_image_url_https} />
       </div>
-
-      <div className={styles.reportButton}>
-        <IconButton className={styles.actionButton}>Report</IconButton>
-      </div>
-
       {/* body */}
       <div className={styles.body}>
+        <div>
+          <IconButton className={styles.reportButton}>
+            <Icon.Report />
+          </IconButton>
+        </div>
+
         <header className={styles.header}>
           <span className={styles.name}>{user.name}</span> <span>@{user.department}</span> ·{" "}
         </header>
 
         <div className={styles.content}>{text}</div>
 
-        <footer className={styles.footer}>
-          {/* reply */}
-          {/* up vote */}
-          <div className={styles.footerButton}>
-            <IconButton className={styles.actionButton}>
-              <Icon.UpVote />
-            </IconButton>
-            {favoriteCount && <span>{favoriteCount}</span>}
-          </div>
-        </footer>
+        {/* reply */}
+        {/* up vote */}
+        <div>
+          <IconButton className={styles.upButton}>
+            <Icon.Upvote />
+          </IconButton>
+          {favoriteCount && <span>{favoriteCount}</span>}
+        </div>
+      </div>
+      // TODO: align comments section and up vote count.
+      <div className={styles.comments}>
+        <div className={styles.content}>{text}</div>
       </div>
     </article>
   );
