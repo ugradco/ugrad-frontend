@@ -4,52 +4,44 @@ import styles from "./style.module.css";
 import Photo from "../Photo";
 import IconButton from "../Button/icon";
 import * as Icon from "../icons";
+import CommentModal from "../CommentModal/CommentModal.component";
 
-function Post({ favoriteCount, text, user }) {
-  // created_at
-  // retweet_count
-  // favorite_count
-  // retweeted
-  // favorited
-  // text
-  // user.name
-  // user.profile_image_url_https
-  // user.screen_name
-
+function Post({ favoriteCount, text, user, commentVal }) {
   return (
-    <article className={styles.post}>
-      {/* avatar */}
-      <div className={styles.avatar}>
-        <Photo src={user.profile_image_url_https} />
-      </div>
-      {/* body */}
-      <div className={styles.body}>
-        <div>
-          <IconButton className={styles.reportButton}>
-            <Icon.Report />
-          </IconButton>
+    <div>
+      <article className={styles.input}>
+        {/* avatar */}
+        <div className={styles.avatar}>
+          <Photo src={user.profile_image_url_https} />
         </div>
+        {/* body */}
+        <div className={styles.body}>
+          <div>
+            <IconButton className={styles.reportButton}>
+              <Icon.Report />
+            </IconButton>
+          </div>
 
-        <header className={styles.header}>
-          <span className={styles.name}>{user.name}</span> <span>@{user.department}</span> ·{" "}
-        </header>
+          <header className={styles.header}>
+            <span className={styles.name}>{user.name}</span> <span>@{user.department}</span> ·{" "}
+          </header>
 
-        <div className={styles.content}>{text}</div>
+          <div className={styles.content}>{text}</div>
 
-        {/* reply */}
-        {/* up vote */}
-        <div>
-          <IconButton className={styles.upButton}>
-            <Icon.Upvote />
-          </IconButton>
-          {favoriteCount && <span>{favoriteCount}</span>}
+          {/* reply */}
+          {/* up vote */}
+          <div>
+            <IconButton className={styles.upButton}>
+              <Icon.Upvote />
+            </IconButton>
+            {favoriteCount && <span>{favoriteCount}</span>}
+          </div>
         </div>
-      </div>
-      // TODO: align comments section and up vote count.
+      </article>
       <div className={styles.comments}>
-        <div className={styles.content}>{text}</div>
+        <CommentModal input={commentVal} placeholder="Write a comment..." />
       </div>
-    </article>
+    </div>
   );
 }
 
