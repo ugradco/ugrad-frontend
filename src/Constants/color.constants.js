@@ -10,6 +10,9 @@ const GlobalStyles = createGlobalStyle`
     --color-border: #C4C4C4;
     --color-text-bg: #F0F2F5;
     --color-selected: #1DA1F2;
+    --color-feed-bg: #FBFBFB;
+    --color-post-bg: #F0F2F5;
+    --color-post-area-bg: #F7F7F6;
     --fade: .3s;
   }
 `;

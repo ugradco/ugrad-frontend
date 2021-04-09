@@ -8,13 +8,13 @@ import CommentModal from "../CommentModal/CommentModal.component";
 
 function Post({ favoriteCount, text, user, commentVal }) {
   return (
-    <div>
+    <div className={styles.feed}>
       <div className={styles.post}>
         {/* avatar */}
         <div className={styles.avatar}>
           <Photo src={user.profile_image_url_https} />
           <div className={styles.header}>
-            <span className={styles.name}>{user.name}</span> <span>@{user.department}</span> ·{" "}
+            <span className={styles.name}>{user.name}</span> <span>@{user.department}</span>
           </div>
           <IconButton className={styles.reportButton}>
             <Icon.Report />

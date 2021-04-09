@@ -5,9 +5,7 @@
 
 .main {
   display: grid;
-  grid-template-columns: 300px 1000px 300px;
-  min-height: 100vh;
-  max-width: 670px;
+  grid-template-columns: 300px 1fr 300px;
   margin-left: auto;
   margin-right: auto;
 }

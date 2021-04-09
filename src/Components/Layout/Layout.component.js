@@ -12,10 +12,10 @@ function LoginLayout({ children }) {
   );
 }
 
-function MainLayout({ children }) {
+function MainLayout({ user = { name: "Furkan Şahbaz", department: "EEE/CS" }, children }) {
   return (
     <div className={style.main}>
-      <Sidebar />
+      <Sidebar user={user} />
       <MainCol>{children}</MainCol>
       <Extra />
     </div>

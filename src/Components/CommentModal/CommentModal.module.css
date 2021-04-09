@@ -22,11 +22,11 @@
   align-items: center;
 }
 
-
-
 .textarea {
+  min-width: 95%;
   margin: 5px 5px 5px 25px;
   align-items: center;
+  height: 45px;
   border: none;
   resize: none;
   color: var(--c-text-color);
@@ -47,5 +47,5 @@
   max-width: 20px;
   color: inherit;
   padding-right: 25px;
-  color: var(--c-text-color);
+  color: var(--color-text);
 }

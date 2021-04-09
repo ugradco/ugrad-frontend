@@ -1,18 +1,37 @@
-.box {
-  padding: 10px;
-  background-color: white;
-  border-radius: 15px;
-  border-style: solid;
-  border-color: #343264;
-  height: 145px;
-  width: 235px;
+.profile {
+  display: grid;
+}
+.avatar {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+
 }
 
-.body {
-  margin-left: 10px;
-  margin-right: 20px;
+.header {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  color: var(--color-border);
 }
 
-.icon {
-  margin-left: auto;
+.name {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+}
+.publicityButton {
+  font-size: 1rem;
+  border: none;
+  max-width: 80px;
+  color: var(--color-primary);
+}
+
+.signOutButton {
+  font-size: 1rem;
+  border: none;
+  color: var(--color-primary);
 }
