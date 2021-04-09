@@ -6,20 +6,24 @@ import ThemeButton from "../ThemeButton/index";
 
 function CommentModal({ input, placeholder, onClick = () => {}, onChange = () => {}, onSubmit = () => {} }) {
   return (
-    <div className={styles.overlay}>
+    <div className={styles.comments}>
+      <ThemeButton className={styles.commentButton} onClick={onSubmit}>
+        Comments
+      </ThemeButton>
+
       <div className={styles.modal}>
         <div className={styles.avatar}>
           <Photo />
         </div>
-        <div className={styles.body}>
-          <div>
-            <textarea className={styles.textarea} name="" placeholder={placeholder} value={input} onChange={onChange} />
-          </div>
+        <div />
+
+        <div className={styles.commentBox}>
+          <textarea className={styles.textarea} name="" placeholder={placeholder} value={input} onChange={onChange} />
+          <ThemeButton className={styles.postButton} onClick={onSubmit}>
+            Post
+          </ThemeButton>
         </div>
       </div>
-      <ThemeButton className={styles.postButton} onClick={onSubmit}>
-        Post
-      </ThemeButton>
     </div>
   );
 }

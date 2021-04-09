@@ -1,6 +1,6 @@
 .button {
   background-color: var(--c-theme);
-  color: white;
+  color: var(--c-text-color);
   padding-left: 15px;
   padding-right: 15px;
   height: 40px;
@@ -13,7 +13,4 @@
   }
 }
 
-.bigButton {
-  height: 47px;
-  min-width: 47px;
-}
+
