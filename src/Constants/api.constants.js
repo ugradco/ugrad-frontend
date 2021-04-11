@@ -5,6 +5,8 @@ export const API_ENDPOINTS = {
   LOGOUT: "/auth/revoke",
   ACCOUNT: "/users/me",
   ACCOUNT_PROFILE: "/users/me/profile",
+  SEND_POST: "/posts",
+  FEED: "/posts/feed",
 };
 
 export const STATUS_TYPE = {
