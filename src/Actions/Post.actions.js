@@ -13,6 +13,6 @@ export const getFeedAPI = (postContent) => {
   };
 };
 
-export const createPostAPI = () => {
+export const createPostAPI = (postContent) => {
   return {};
 };

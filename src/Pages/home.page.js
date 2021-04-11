@@ -23,26 +23,24 @@ function HomePage(props) {
     }
   }, [post.feedCTX.status]);
 
-  // const sendPost = () => {
-  //   apiGenerator("post")(API_ENDPOINTS.SEND_POST, {
-  //     isPublic,
-  //     text: post,
-  //     tags,
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         // TODO
-  //         // throw new Error("Network response was not ok");
-  //       }
-
-  //       // TODO: return success,i.e. alertSuccess();
-
-  //       console.log("successfully send");
-  //     })
-  //     .catch((error) => {
-  //       console.error("There has been a problem with your fetch operation:", error);
-  //     });
-  // };
+  const sendPost = () => {
+    apiGenerator("post")(API_ENDPOINTS.SEND_POST, {
+      isPublic,
+      text: post,
+      tags,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          // TODO
+          console.error("Posting request failed.");
+        }
+        // TODO: return success,i.e. alertSuccess();
+        console.log("successfully send");
+      })
+      .catch((error) => {
+        console.error("There has been a problem with your posting operation:", error);
+      });
+  };
 
   // const handleRegister = (e) => {
   //   if (form.email === "") {
@@ -58,19 +56,18 @@ function HomePage(props) {
   // };
   //
 
-  // const handleNewPost = (e) => {
-  //   if (text === "") {
-  //     alert("Please add something to your post.");
-  //   } else {
-  //     sendPost();
-  //     fetchPost();
-  //     e.preventDefault();
-  //   }
-  // };
+  const handleNewPost = (e) => {
+    if (text === "") {
+      alert("Please add something to your post.");
+    } else {
+      sendPost();
+      e.preventDefault();
+    }
+  };
 
   return (
     <div>
-      <HomeComponent user={user} feedCTX={post.feedCTX} commentVal={comment} />
+      <HomeComponent user={user} feedCTX={post.feedCTX} onPostAction={handleNewPost} />
     </div>
   );
 }

@@ -32,15 +32,7 @@ function HomeComponent({ user, feedCTX, onInputChange = () => {} }) {
       <div className={style.feed}>
         {feed &&
           feed.map((post) => {
-            return (
-              <Post
-                favorite_count={12}
-                text={post.text}
-                user={post.user}
-                commentVal="dummy comment for now"
-                {...post}
-              />
-            );
+            return <Post favorite_count={12} text={post.text} user={post.user} comments={post.comments} {...post} />;
           })}
       </div>
     </Layout>

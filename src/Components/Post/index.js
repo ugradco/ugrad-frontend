@@ -6,7 +6,7 @@ import IconButton from "../Button/icon";
 import * as Icon from "../icons";
 import CommentModal from "../CommentModal/CommentModal.component";
 
-function Post({ favoriteCount, text, user, commentVal }) {
+function Post({ favoriteCount, text, user, comments }) {
   return (
     <div className={styles.feed}>
       <div className={styles.post}>
@@ -32,7 +32,17 @@ function Post({ favoriteCount, text, user, commentVal }) {
         </div>
       </div>
       <div className={styles.comments}>
-        <CommentModal input={commentVal} placeholder="Write a comment..." />
+        {comments &&
+          comments.map((content) => {
+            return (
+              <CommentModal
+                inputType="existing"
+                inputValue={content.message}
+                author={content.user && content.user.alias}
+              />
+            );
+          })}
+        <CommentModal inputType="new" placeholder="Write a comment..." />
       </div>
     </div>
   );
