@@ -6,7 +6,6 @@ import { apiGenerator } from "Utils/Helpers/api.helpers";
 import * as PostConstants from "Constants/post.constants";
 
 import { getStatusCodeFamily, apiErrorHandler } from "Utils/Helpers/saga.helpers";
-import { removeKeysFromLocalStorage, setAccessTokenInLocalStorage } from "Utils/Helpers/storage.helpers";
 
 function* feedAPISaga(action) {
   const { requestPayload } = action.payload;
@@ -16,7 +15,7 @@ function* feedAPISaga(action) {
     const response = yield api;
 
     if (getStatusCodeFamily(response.status) === STATUS_TYPE.SUCCESS) {
-      const { posts } = response;
+      const { posts } = response.data;
 
       yield put({
         type: PostConstants.FEED_API_SUCCESS,

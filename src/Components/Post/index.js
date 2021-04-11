@@ -14,7 +14,7 @@ function Post({ favoriteCount, text, user, commentVal }) {
         <div className={styles.avatar}>
           <Photo src={user.profile_image_url_https} />
           <div className={styles.header}>
-            <span className={styles.name}>{user.name}</span> <span>@{user.department}</span>
+            <span className={styles.name}>{user.alias}</span> <span>{user.shortBio}</span>
           </div>
           <IconButton className={styles.reportButton}>
             <Icon.Report />

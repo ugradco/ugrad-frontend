@@ -1,4 +1,5 @@
 import React from "react";
+import { REQUEST_STATUS } from "Constants/global.constants";
 import style from "./Home.module.css";
 import Layout from "../Layout/Layout.component";
 import Post from "../Post";
@@ -6,7 +7,13 @@ import SvgFeed from "../icons/Feed";
 import PostModal from "../PostModal/PostModal.component";
 import SearchBar from "../SearchBar";
 
-function HomeComponent({ user, feed, onInputChange = () => {} }) {
+function HomeComponent({ user, feedCTX, onInputChange = () => {} }) {
+  const feed = feedCTX.data;
+
+  if (feedCTX.status === REQUEST_STATUS.PENDING) {
+    // TODO show loading
+  }
+
   return (
     <Layout user={user} type="main" className={style.layout}>
       <div>
@@ -23,31 +30,18 @@ function HomeComponent({ user, feed, onInputChange = () => {} }) {
       </div>
 
       <div className={style.feed}>
-        <Post
-          className={style.post}
-          favorite_count={120}
-          text="Merhaba arkadaslar! Bir sorum var. Lutfen bakin."
-          user={user}
-          commentVal=""
-        />
-        <Post
-          className={style.post}
-          favorite_count={120}
-          text="Bir sorum var ama uygun platform bilmiyorum."
-          user={user}
-          commentVal=""
-        />
-        {feed.map((post) => {
-          return (
-            <Post
-              favorite_count={12}
-              text={post.text}
-              user={post.user.alias}
-              commentVal="dummy comment for now"
-              {...post}
-            />
-          );
-        })}
+        {feed &&
+          feed.map((post) => {
+            return (
+              <Post
+                favorite_count={12}
+                text={post.text}
+                user={post.user}
+                commentVal="dummy comment for now"
+                {...post}
+              />
+            );
+          })}
       </div>
     </Layout>
   );

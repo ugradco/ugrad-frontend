@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import routes from "Constants/route.constants";
-import Login from "pages/login.page";
-import Home from "pages/home.page";
+import Login from "Pages/login.page";
+import Home from "Pages/home.page";
 import AuthenticatedRoute from "./Authenticated.route";
 
 export default () => (

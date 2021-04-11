@@ -12,3 +12,7 @@ export const getFeedAPI = (postContent) => {
     payload: { requestPayload },
   };
 };
+
+export const createPostAPI = () => {
+  return {};
+};

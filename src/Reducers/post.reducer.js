@@ -3,7 +3,7 @@ import { REQUEST_STATUS } from "../Constants/global.constants";
 
 const initialState = {
   feedCTX: {
-    data: null,
+    data: [],
     status: REQUEST_STATUS.NOT_DEFINED,
     error: false,
   },
@@ -17,23 +17,44 @@ export default function feed(state = initialState, action) {
     case PostConstants.FEED_API_SUCCESS:
       return feedAPISuccess(state, action);
     case PostConstants.FEED_API_PENDING:
-      return feedAPIPending();
+      return feedAPIPending(state);
+    case PostConstants.FEED_API_FAILURE:
+      return feedAPIFailure(state);
     default:
       return state;
   }
 }
 
 function feedAPISuccess(state, action) {
-  const { accessToken } = action.payload;
+  const { posts } = action.payload;
   return {
     ...state,
-    accessToken,
+    feedCTX: {
+      data: posts,
+      status: REQUEST_STATUS.SUCCESS,
+      error: false,
+    },
   };
 }
 
-function feedAPIPending() {
+function feedAPIPending(state) {
   return {
-    ...initialState,
-    accessToken: "",
+    ...state,
+    feedCTX: {
+      ...state.feedCTX,
+      status: REQUEST_STATUS.PENDING,
+      error: false,
+    },
+  };
+}
+
+function feedAPIFailure(state) {
+  return {
+    ...state,
+    feedCTX: {
+      ...state.feedCTX,
+      status: REQUEST_STATUS.FAILURE,
+      error: true,
+    },
   };
 }

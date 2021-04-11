@@ -7,7 +7,7 @@ import { API_ENDPOINTS } from "../Constants/api.constants";
 import { getFeedAPI } from "../Actions/Post.actions";
 
 function HomePage(props) {
-  const { getFeedAPI, post, history } = props;
+  const { account, post, getFeedAPI, history } = props;
   const [comment, commentSet] = React.useState("");
   const [text, textSet] = React.useState("Merhaba arkadaslar! Hava uzucu.");
   const [user, userSet] = React.useState({ name: "Furkan Şahbaz", department: "EEE/CS" });
@@ -15,32 +15,34 @@ function HomePage(props) {
   const [isPublic, isPublicSet] = React.useState(false);
   const [tags, tagsSet] = React.useState([]);
 
+  const user2 = account.account;
+
   useEffect(() => {
     if (post.feedCTX.status === REQUEST_STATUS.NOT_DEFINED) {
-      getFeedAPI();
+      getFeedAPI({});
     }
   }, [post.feedCTX.status]);
 
-  const sendPost = () => {
-    apiGenerator("post")(API_ENDPOINTS.SEND_POST, {
-      isPublic,
-      text: post,
-      tags,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          // TODO
-          // throw new Error("Network response was not ok");
-        }
+  // const sendPost = () => {
+  //   apiGenerator("post")(API_ENDPOINTS.SEND_POST, {
+  //     isPublic,
+  //     text: post,
+  //     tags,
+  //   })
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         // TODO
+  //         // throw new Error("Network response was not ok");
+  //       }
 
-        // TODO: return success,i.e. alertSuccess();
+  //       // TODO: return success,i.e. alertSuccess();
 
-        console.log("successfully send");
-      })
-      .catch((error) => {
-        console.error("There has been a problem with your fetch operation:", error);
-      });
-  };
+  //       console.log("successfully send");
+  //     })
+  //     .catch((error) => {
+  //       console.error("There has been a problem with your fetch operation:", error);
+  //     });
+  // };
 
   // const handleRegister = (e) => {
   //   if (form.email === "") {
@@ -56,19 +58,19 @@ function HomePage(props) {
   // };
   //
 
-  const handleNewPost = (e) => {
-    if (text === "") {
-      alert("Please add something to your post.");
-    } else {
-      sendPost();
-      fetchPost();
-      e.preventDefault();
-    }
-  };
+  // const handleNewPost = (e) => {
+  //   if (text === "") {
+  //     alert("Please add something to your post.");
+  //   } else {
+  //     sendPost();
+  //     fetchPost();
+  //     e.preventDefault();
+  //   }
+  // };
 
   return (
     <div>
-      <HomeComponent user={user} feed={feed} commentVal={comment} />
+      <HomeComponent user={user} feedCTX={post.feedCTX} commentVal={comment} />
     </div>
   );
 }
