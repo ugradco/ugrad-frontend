@@ -12,7 +12,7 @@ function Post({ favoriteCount, text, user, comments }) {
       <div className={styles.post}>
         {/* avatar */}
         <div className={styles.avatar}>
-          <Photo src={user.profile_image_url_https} />
+          <Photo />
           <div className={styles.header}>
             <span className={styles.name}>{user.alias}</span> <span>{user.shortBio}</span>
           </div>
@@ -35,11 +35,14 @@ function Post({ favoriteCount, text, user, comments }) {
         {comments &&
           comments.map((content) => {
             return (
-              <CommentModal
-                inputType="existing"
-                inputValue={content.message}
-                author={content.user && content.user.alias}
-              />
+              content.message && (
+                <CommentModal
+                  key={content.message}
+                  inputType="existing"
+                  inputValue={content.message}
+                  author={content.user && content.user.alias}
+                />
+              )
             );
           })}
         <CommentModal inputType="new" placeholder="Write a comment..." />

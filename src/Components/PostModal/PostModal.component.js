@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./PostModal.module.css";
 import Input from "../InputBox/Input.component";
 
-function PostModal({ inputValue, inputType, inputPlaceHolder, onInputChange }) {
+function PostModal({ inputValue, inputType, inputPlaceHolder, onInputChange, onKeyPress }) {
   return (
     <Input
       style={styles.inputLarge}
@@ -12,6 +12,7 @@ function PostModal({ inputValue, inputType, inputPlaceHolder, onInputChange }) {
       placeholder={inputPlaceHolder}
       value={inputValue}
       onChange={onInputChange}
+      onKeyPress={onKeyPress}
     />
   );
 }

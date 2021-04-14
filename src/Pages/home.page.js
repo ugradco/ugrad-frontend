@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import HomeComponent from "../Components/Home/Home.component";
 import { REQUEST_STATUS } from "../Constants/global.constants";
+import { getFeedAPI, createPostAPI } from "../Actions/Post.actions";
 import { apiGenerator } from "../Utils";
 import { API_ENDPOINTS } from "../Constants/api.constants";
-import { getFeedAPI } from "../Actions/Post.actions";
 
 function HomePage(props) {
-  const { account, post, getFeedAPI, history } = props;
+  const { account, post, getFeedAPI, createPostAPI, history } = props;
+  const [form, setForm] = useState({ isPublic: false, text: "", tags: [] });
   const [comment, commentSet] = React.useState("");
-  const [text, textSet] = React.useState("Merhaba arkadaslar! Hava uzucu.");
+  const [text, textSet] = React.useState("");
   const [user, userSet] = React.useState({ name: "Furkan Şahbaz", department: "EEE/CS" });
   const [postContent, postContentSet] = React.useState("");
   const [isPublic, isPublicSet] = React.useState(false);
@@ -23,51 +24,50 @@ function HomePage(props) {
     }
   }, [post.feedCTX.status]);
 
+  // const sendPost = () => {
+  //   createPostAPI({
+  //     isPublic: form.isPublic,
+  //     text: form.text,
+  //     tags: form.tags,
+  //   });
+  //   console.log("sendPost", form.text);
+  // };
+
   const sendPost = () => {
     apiGenerator("post")(API_ENDPOINTS.SEND_POST, {
-      isPublic,
-      text: post,
-      tags,
+      isPublic: form.isPublic,
+      text: form.text,
+      tags: form.tags,
     })
       .then((response) => {
         if (!response.ok) {
-          // TODO
-          console.error("Posting request failed.");
+          console.error("There has been a problem with your fetch operation.");
         }
-        // TODO: return success,i.e. alertSuccess();
-        console.log("successfully send");
+        console.log("Successfully posted.");
+        console.log("text", form.text);
       })
       .catch((error) => {
-        console.error("There has been a problem with your posting operation:", error);
+        console.error("There has been a problem with your fetch operation:", error);
       });
   };
 
-  // const handleRegister = (e) => {
-  //   if (form.email === "") {
-  //     alert("Email is required!");
-  //   } else {
-  //     console.log("handleRegister", form.email);
-  //     sendEmail();
-  //     e.preventDefault();
-  //     // const errs = validate();
-  //     // setErrors(errs);
-  //     setIsSubmitting(true);
-  //   }
-  // };
-  //
-
-  const handleNewPost = (e) => {
-    if (text === "") {
-      alert("Please add something to your post.");
-    } else {
+  const onKeyPress = (e) => {
+    if (e.key === "Enter") {
       sendPost();
-      e.preventDefault();
     }
+  };
+
+  const handleChange = (e) => {
+    setForm({
+      isPublic: true,
+      text: e.target.value,
+      tags: [],
+    });
   };
 
   return (
     <div>
-      <HomeComponent user={user} feedCTX={post.feedCTX} onPostAction={handleNewPost} />
+      <HomeComponent user={user} feedCTX={post.feedCTX} onInputChange={handleChange} onKeyPress={onKeyPress} />
     </div>
   );
 }
@@ -79,6 +79,7 @@ const mapStateToProps = (state) => ({
 
 const actionCreators = {
   getFeedAPI,
+  createPostAPI,
 };
 
 export default connect(mapStateToProps, actionCreators)(HomePage);

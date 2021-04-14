@@ -14,5 +14,16 @@ export const getFeedAPI = (postContent) => {
 };
 
 export const createPostAPI = (postContent) => {
-  return {};
+  const { isPublic, text, tags } = postContent;
+
+  const requestPayload = {
+    isPublic,
+    text,
+    tags,
+  };
+
+  return {
+    type: PostConstants.FEED_API_PENDING,
+    payload: { requestPayload },
+  };
 };

@@ -1,7 +1,7 @@
 import React from "react";
 
 function Input(props) {
-  const { style, name, type, placeholder, value, onChange, maxLength } = props;
+  const { style, name, type, placeholder, value, onChange, onKeyPress, maxLength } = props;
 
   return (
     <div>
@@ -12,6 +12,7 @@ function Input(props) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onKeyPress={onKeyPress}
         maxLength={maxLength}
       />
     </div>

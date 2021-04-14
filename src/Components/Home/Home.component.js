@@ -7,7 +7,7 @@ import SvgFeed from "../icons/Feed";
 import PostModal from "../PostModal/PostModal.component";
 import SearchBar from "../SearchBar";
 
-function HomeComponent({ user, feedCTX, onInputChange = () => {} }) {
+function HomeComponent({ user, feedCTX, onInputChange = () => {}, onKeyPress = () => {} }) {
   const feed = feedCTX.data;
 
   if (feedCTX.status === REQUEST_STATUS.PENDING) {
@@ -22,7 +22,7 @@ function HomeComponent({ user, feedCTX, onInputChange = () => {} }) {
 
       <div className={style.post}>
         <div className={style.text}>New Post</div>
-        <PostModal onInputChange={onInputChange} inputPlaceHolder="What's on your mind?" />
+        <PostModal onInputChange={onInputChange} onKeyPress={onKeyPress} inputPlaceHolder="What's on your mind?" />
       </div>
       <div className={style.section}>
         <SvgFeed />
@@ -32,7 +32,16 @@ function HomeComponent({ user, feedCTX, onInputChange = () => {} }) {
       <div className={style.feed}>
         {feed &&
           feed.map((post) => {
-            return <Post favorite_count={12} text={post.text} user={post.user} comments={post.comments} {...post} />;
+            return (
+              <Post
+                key={post.text}
+                favorite_count={12}
+                text={post.text}
+                user={post.user}
+                comments={post.comments}
+                {...post}
+              />
+            );
           })}
       </div>
     </Layout>
