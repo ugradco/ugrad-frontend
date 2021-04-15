@@ -4,43 +4,20 @@ import styles from "./CommentModal.module.css";
 import Photo from "../Photo/index";
 import ThemeButton from "../ThemeButton/index";
 import Input from "../InputBox/Input.component";
+import IconButton from "../Button/icon";
+import * as Icon from "../icons";
 
-function CommentModal({ inputType, inputValue, author, placeholder, onInputChange = () => {}, onSubmit = () => {} }) {
-  if (inputType === "new") {
-    return (
-      <div className={styles.comments}>
-        <ThemeButton className={styles.commentButton} onClick={onSubmit}>
-          Comments
-        </ThemeButton>
-
-        <div className={styles.modal}>
-          <div className={styles.avatar}>
-            <Photo />
-          </div>
-          <div />
-
-          <div className={styles.commentBox}>
-            <Input
-              style={styles.textarea}
-              name={inputType}
-              type={inputType}
-              placeholder={placeholder}
-              value={inputValue}
-              onChange={onInputChange}
-            />
-            <ThemeButton className={styles.postButton} onClick={onSubmit}>
-              Post
-            </ThemeButton>
-          </div>
+function CommentModal({ inputValue, author }) {
+  return (
+    <div className={styles.modal}>
+      <div className={styles.avatar}>
+        <Photo />
+        <div className={styles.header}>
+          <span className={styles.name}>{author.alias}</span>
         </div>
       </div>
-    );
-  }
-  return (
-    <div className={styles.comments}>
-      <div className={styles.modal}>
-        <span />
-        <span>{`${author}:${inputValue}`}</span>
+      <div className={styles.body}>
+        <div className={styles.content}>{inputValue}</div>
       </div>
     </div>
   );

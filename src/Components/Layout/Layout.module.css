@@ -7,13 +7,14 @@
 
 .main {
   display: grid;
-  grid-template-columns: 300px 1fr 300px;
+  grid-template-columns: 600px 1fr 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .mainBorders {
-  border-width: 0 1px;
-  border-style: solid;
-  border-color: var(--color-border);
+  /*border-width: 0 1px;*/
+  /*border-style: solid;*/
+  /*border-color: var(--color-border);*/
+
 }

@@ -19,6 +19,7 @@ function TopicsBarComponent({ children }) {
 
   return (
     <nav className={styles.nav}>
+      <h1 className={styles.title}>Followed Topics</h1>
       {userTopicList.map((topic) => {
         return (
           <Topic key={topic.name} className={styles.topic}>

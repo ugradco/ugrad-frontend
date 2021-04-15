@@ -2,20 +2,27 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-radius: 15px;
-    border-style: solid;
-    border-color: #343264;
+    background: var(--color-post-area-bg);
     width: 216px;
+    border-radius: 15px;
 }
 
 .topic {
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     background-color: #343264;
     border-radius: 25px;
     border-style: none;
     height: 30px;
     width: 107px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin-top: 6px;
+    margin-left: 20px;
+    margin-bottom: 6px;
+}
+
+.title {
+    font-family: var(--font);
+    font-weight: bold;
+    font-size: 22;
+    margin-left: 20px;
 }

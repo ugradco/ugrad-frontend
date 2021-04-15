@@ -14,6 +14,8 @@ const GlobalStyles = createGlobalStyle`
     --color-post-bg: #F0F2F5;
     --color-post-area-bg: #F7F7F6;
     --fade: .3s;
+    --font: Roboto;
+    --font-logo: system-ui;
   }
 `;
 

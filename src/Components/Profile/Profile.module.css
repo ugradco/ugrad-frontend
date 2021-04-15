@@ -1,9 +1,13 @@
 .profile {
   display: grid;
+  background: var(--color-post-area-bg);
+  border-radius: 15px;
 }
 .avatar {
   display: grid;
   grid-template-columns: 60px 1fr 60px;
+  margin-top: 6px;
+  margin-left: 20px;
 
 }
 
@@ -12,16 +16,19 @@
   align-items: flex-start;
   flex-direction: column;
   color: var(--color-border);
+  margin-top: 6px;
 }
 
 .name {
   color: var(--color-primary);
+  font-family: var(--font);
   font-weight: bold;
 }
 
 .footer {
   display: grid;
   grid-template-columns: 1fr 120px;
+  font-family: var(--font);
 }
 .publicityButton {
   font-size: 1rem;

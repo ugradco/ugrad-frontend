@@ -24,10 +24,7 @@ function HomeComponent({ user, feedCTX, onInputChange = () => {}, onKeyPress = (
         <div className={style.text}>New Post</div>
         <PostModal onInputChange={onInputChange} onKeyPress={onKeyPress} inputPlaceHolder="What's on your mind?" />
       </div>
-      <div className={style.section}>
-        <SvgFeed />
-        Feed
-      </div>
+      <div className={style.section}>Feed</div>
 
       <div className={style.feed}>
         {feed &&

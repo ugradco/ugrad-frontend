@@ -4,7 +4,8 @@
 }
 
 .section {
-  border-bottom: 1px solid var(--color-border);
+  margin-top: 10px;
+  font-family: var(--font);
   color: var(--color-text);
   display: flex;
   font-size: 1.5rem;
@@ -13,19 +14,23 @@
 }
 
 .feed {
+  margin-top: 15px;
   display: grid;
   grid-gap: 50px;
-
+  width: 500px;
 }
 
 .post {
   background: var(--color-post-area-bg);
   border-radius: 25px;
+  width: 500px;
 }
 
 .text {
+  display: grid;
+  font-family: var(--font);
   font-size: 1.5rem;
   font-weight: bold;
   margin: 15px 15px 0px 40px;
-
+  padding-top: 12px;
 }

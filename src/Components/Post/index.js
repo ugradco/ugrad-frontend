@@ -4,6 +4,7 @@ import styles from "./style.module.css";
 import Photo from "../Photo";
 import IconButton from "../Button/icon";
 import * as Icon from "../icons";
+import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component";
 import CommentModal from "../CommentModal/CommentModal.component";
 
 function Post({ favoriteCount, text, user, comments }) {
@@ -14,11 +15,9 @@ function Post({ favoriteCount, text, user, comments }) {
         <div className={styles.avatar}>
           <Photo />
           <div className={styles.header}>
-            <span className={styles.name}>{user.alias}</span> <span>{user.shortBio}</span>
+            <span className={styles.name}>{user.alias}</span> <span className={styles.name}>{user.shortBio}</span>
           </div>
-          <IconButton className={styles.reportButton}>
-            <Icon.Report />
-          </IconButton>
+          <IconButton className={styles.reportButton}>Report</IconButton>
         </div>
 
         {/* body */}
@@ -26,26 +25,26 @@ function Post({ favoriteCount, text, user, comments }) {
           {/* up vote */}
           <IconButton className={styles.upButton}>
             <Icon.Upvote />
+            Up!
           </IconButton>
           {favoriteCount && <span>{favoriteCount}</span>}
           <div className={styles.content}>{text}</div>
         </div>
       </div>
-      <div className={styles.comments}>
+      <div>
+        <WriteCommentModal inputType="new" placeholder="Write a comment..." />
         {comments &&
           comments.map((content) => {
             return (
               content.message && (
                 <CommentModal
                   key={content.message}
-                  inputType="existing"
                   inputValue={content.message}
                   author={content.user && content.user.alias}
                 />
               )
             );
           })}
-        <CommentModal inputType="new" placeholder="Write a comment..." />
       </div>
     </div>
   );

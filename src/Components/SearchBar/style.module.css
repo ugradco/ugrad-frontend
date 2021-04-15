@@ -7,7 +7,7 @@
   border-color: var(--c-border-color);
   background: var(--color-feed-bg);
   max-width: 400px;
-  margin: 10px auto auto 425px;
+  margin: 10px auto auto auto;
 }
 
 .search {

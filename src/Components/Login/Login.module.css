@@ -70,5 +70,5 @@
 }
 
 .smaller input {
-  font-family: Roboto !important;
+  font-family: var(--font) !important;
 }
