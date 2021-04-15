@@ -45,6 +45,7 @@ function HomePage(props) {
         }
         console.log("Successfully posted.");
         console.log("text", form.text);
+        window.location.reload();
       })
       .catch((error) => {
         console.error("There has been a problem with your fetch operation:", error);
