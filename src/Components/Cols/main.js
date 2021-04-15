@@ -1,8 +1,7 @@
 import React from "react";
-import styles from "./main.module.css";
 
-function MainCol({ children }) {
-  return <div className={styles.main}>{children}</div>;
+function MainCol({ children, style }) {
+  return <div className={style}>{children}</div>;
 }
 
 export default MainCol;

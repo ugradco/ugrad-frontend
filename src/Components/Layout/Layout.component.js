@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "./Layout.module.css";
 import Sidebar from "../Cols/sidebar";
 import Extra from "../Cols/extra";
 import MainCol from "../Cols/main";
 
 function LoginLayout({ children }) {
-  return (
-    <div className={style.login}>
-      <MainCol>{children}</MainCol>
-    </div>
-  );
+  return <MainCol style={style.login}>{children}</MainCol>;
 }
 
 function MainLayout({ user = { name: "Furkan Şahbaz", department: "EEE/CS" }, children }) {
   return (
     <div className={style.main}>
       <Sidebar user={user} />
-      <MainCol>{children}</MainCol>
+      <MainCol style={style.mainBorders}>{children}</MainCol>
       <Extra />
     </div>
   );

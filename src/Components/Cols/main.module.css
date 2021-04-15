@@ -1,8 +1,0 @@
-.main {
-  display: grid;
-  border-width: 0 1px;
-  border-style: solid;
-  border-color: var(--color-border);
-  align-items: center;
-  grid-gap: 50px;
-}

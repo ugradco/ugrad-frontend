@@ -1,6 +1,8 @@
 .login {
   display: flex;
-  align-content: center;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .main {
@@ -8,4 +10,10 @@
   grid-template-columns: 300px 1fr 300px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.mainBorders {
+  border-width: 0 1px;
+  border-style: solid;
+  border-color: var(--color-border);
 }
