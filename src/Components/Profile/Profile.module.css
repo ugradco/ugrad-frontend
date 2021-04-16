@@ -42,3 +42,9 @@
   border: none;
   color: var(--color-primary);
 }
+
+.publicity{
+  color: var(--color-primary);
+  font-family: var(--font);
+  font-weight: bold;
+}

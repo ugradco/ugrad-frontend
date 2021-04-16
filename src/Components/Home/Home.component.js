@@ -29,10 +29,17 @@ function HomeComponent({ user, feedCTX, onInputChange = () => {}, onKeyPress = (
       <div className={style.feed}>
         {feed &&
           feed.map((post) => {
+            const [upSelected, upSelectedSet] = React.useState(false);
+            const upClicked = () => {
+              upSelectedSet(!upSelected);
+            };
+
             return (
               <Post
                 key={post.text}
-                favorite_count={12}
+                upCount={1}
+                checked={upSelected}
+                upClicked={upClicked}
                 text={post.text}
                 user={post.user}
                 comments={post.comments}

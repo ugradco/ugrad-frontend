@@ -5,6 +5,7 @@ import { REQUEST_STATUS } from "../Constants/global.constants";
 import { getFeedAPI, createPostAPI } from "../Actions/Post.actions";
 import { apiGenerator } from "../Utils";
 import { API_ENDPOINTS } from "../Constants/api.constants";
+import Post from "../Components/Post";
 
 function HomePage(props) {
   const { account, post, getFeedAPI, createPostAPI, history } = props;
@@ -23,15 +24,6 @@ function HomePage(props) {
       getFeedAPI({});
     }
   }, [post.feedCTX.status]);
-
-  // const sendPost = () => {
-  //   createPostAPI({
-  //     isPublic: form.isPublic,
-  //     text: form.text,
-  //     tags: form.tags,
-  //   });
-  //   console.log("sendPost", form.text);
-  // };
 
   const sendPost = () => {
     apiGenerator("post")(API_ENDPOINTS.SEND_POST, {
@@ -52,6 +44,24 @@ function HomePage(props) {
       });
   };
 
+  const getUser = () => {
+    apiGenerator("get")(API_ENDPOINTS.ACCOUNT, {
+      isPublic: form.isPublic,
+      text: form.text,
+      tags: form.tags,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.error("There has been a problem with your fetch operation.");
+        }
+        console.log("Successfully posted.");
+        console.log("text", form.text);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("There has been a problem with your fetch operation:", error);
+      });
+  };
   const onKeyPress = (e) => {
     if (e.key === "Enter") {
       sendPost();

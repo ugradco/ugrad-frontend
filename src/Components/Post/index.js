@@ -7,7 +7,7 @@ import * as Icon from "../icons";
 import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component";
 import CommentModal from "../CommentModal/CommentModal.component";
 
-function Post({ favoriteCount, text, user, comments }) {
+function Post({ upCount, text, user, comments, checked, upClicked }) {
   return (
     <div className={styles.feed}>
       <div className={styles.post}>
@@ -23,11 +23,11 @@ function Post({ favoriteCount, text, user, comments }) {
         {/* body */}
         <div className={styles.body}>
           {/* up vote */}
-          <IconButton className={styles.upButton}>
-            <Icon.Upvote />
-            Up!
+          <IconButton className={styles.upButton} text="Up" count={upCount} selected={checked} onClick={upClicked}>
+            {checked && <Icon.Upvote fill="#343264" />}
+            {!checked && <Icon.Upvote />}
           </IconButton>
-          {favoriteCount && <span>{favoriteCount}</span>}
+
           <div className={styles.content}>{text}</div>
         </div>
       </div>

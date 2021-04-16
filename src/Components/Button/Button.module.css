@@ -54,3 +54,20 @@
 .iconButton svg {
   font-size: 24px;
 }
+.ButtonSelected {
+  color: var(--c-theme);
+}
+
+.notify {
+  position: absolute;
+  color: var(--color-primary);
+  border-radius: 17px;
+  margin: 55px auto auto auto;
+}
+
+.text {
+  color: var(--color-primary);
+  position: absolute;
+  margin: 10px auto auto 2px;
+  border-radius: 17px;
+}

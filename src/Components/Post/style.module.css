@@ -67,6 +67,9 @@
   margin-right: 13px;
 }
 
+.upButton:visited {
+  background-color:yellow;
+}
 .upButton svg {
-  font-size: 30px;
+  font-size: 40px;
 }
