@@ -15,6 +15,10 @@
   color: var(--color-selected);
 }
 
+.button:focus {
+  outline: none;
+}
+
 /*.button {*/
 /*  position: relative;*/
 /*  display: inline-block;*/

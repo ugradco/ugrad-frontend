@@ -4,7 +4,7 @@ import { loginAPI } from "Actions/Login.actions";
 
 import Login from "Components/Login/Login.component";
 import VerificationLogin from "Components/Login/VerificationLogin.component";
-import Layout from "Components/Layout/Layout.component";
+import LoginLayout from "Components/Layout/LoginLayout.component";
 import Loading from "Components/loading";
 import { API_ENDPOINTS } from "Constants/api.constants";
 import { apiGenerator } from "Utils";
@@ -108,7 +108,7 @@ function LoginPage(props) {
     return <Loading active inline="centered" />;
   } else if (!isLogging) {
     return (
-      <Layout type="login">
+      <LoginLayout>
         <Login
           inputValue={form.email}
           inputType="email"
@@ -116,7 +116,7 @@ function LoginPage(props) {
           onButtonClick={handleRegister}
           inputPlaceHolder="Enter email address."
         />
-      </Layout>
+      </LoginLayout>
     );
   }
   return (
@@ -124,7 +124,7 @@ function LoginPage(props) {
       {isSubmitting ? (
         <Loading active inline="centered" />
       ) : (
-        <Layout type="login">
+        <LoginLayout>
           <VerificationLogin
             inputValue={token}
             inputType="token"
@@ -134,7 +134,7 @@ function LoginPage(props) {
             onButtonClick={handleLogin}
             inputPlaceHolder=""
           />
-        </Layout>
+        </LoginLayout>
       )}
     </div>
   );

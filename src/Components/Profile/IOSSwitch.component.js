@@ -38,11 +38,12 @@ const IOSSwitch = withStyles((theme) => ({
   },
   checked: {},
   focusVisible: {},
-}))(({ classes, ...props }) => {
+}))(({ classes, onPrivacyChange, ...props }) => {
   return (
     <Switch
       focusVisibleClassName={classes.focusVisible}
       disableRipple
+      onChange={onPrivacyChange}
       classes={{
         root: classes.root,
         switchBase: classes.switchBase,

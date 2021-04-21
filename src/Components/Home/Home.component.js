@@ -1,21 +1,20 @@
 import React from "react";
 import { REQUEST_STATUS } from "Constants/global.constants";
 import style from "./Home.module.css";
-import Layout from "../Layout/Layout.component";
+import MainLayout from "../Layout/MainLayout.component";
 import Post from "../Post";
-import SvgFeed from "../icons/Feed";
 import PostModal from "../PostModal/PostModal.component";
 import SearchBar from "../SearchBar";
+import Loading from "../loading";
 
-function HomeComponent({ user, feedCTX, onInputChange = () => {}, onKeyPress = () => {} }) {
+function HomeComponent({ user, feedCTX, onInputChange = () => {}, onKeyPress = () => {}, onPrivacyChange }) {
   const feed = feedCTX.data;
 
   if (feedCTX.status === REQUEST_STATUS.PENDING) {
-    // TODO show loading
+    <Loading />;
   }
-
   return (
-    <Layout user={user} type="main" className={style.layout}>
+    <MainLayout user={user} className={style.layout} onPrivacyChange={onPrivacyChange}>
       <div>
         <SearchBar />
       </div>
@@ -48,7 +47,7 @@ function HomeComponent({ user, feedCTX, onInputChange = () => {}, onKeyPress = (
             );
           })}
       </div>
-    </Layout>
+    </MainLayout>
   );
 }
 

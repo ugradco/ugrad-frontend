@@ -1,6 +1,6 @@
 import React from "react";
 
-function Loading({ size = 30, stroke = 2 }) {
+function Loading({ size = 50, stroke = 2 }) {
   return (
     <svg
       width={size}

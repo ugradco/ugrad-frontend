@@ -7,9 +7,6 @@ const initialState = {
     status: REQUEST_STATUS.NOT_DEFINED,
     error: false,
   },
-  // upvoteCTX: {
-
-  // }
 };
 
 export default function feed(state = initialState, action) {
