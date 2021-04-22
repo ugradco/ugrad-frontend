@@ -23,7 +23,6 @@ export default function user(state = initialState, action) {
 }
 
 function userAPISuccess(state, action) {
-  console.log("success in", action.payload);
   return {
     ...state,
     userCTX: {

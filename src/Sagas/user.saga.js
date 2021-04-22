@@ -16,7 +16,6 @@ function* userAPISaga(action) {
 
     if (getStatusCodeFamily(response.status) === STATUS_TYPE.SUCCESS) {
       // const { user } = response.data;
-      console.log("saga success in", response.data);
       yield put({
         type: UserConstants.USER_API_SUCCESS,
         payload: response.data,
