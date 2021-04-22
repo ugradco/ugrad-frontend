@@ -60,10 +60,8 @@ function HomePage(props) {
         console.error("There has been a problem with your fetch operation:", error);
       });
   };
-  const onKeyPress = (e) => {
-    if (e.key === "Enter") {
-      sendPost();
-    }
+  const onKeyPress = () => {
+    sendPost();
   };
 
   const handleChange = (e) => {

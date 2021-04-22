@@ -51,6 +51,7 @@
 }
 
 .iconButton {
+  position: inherit;
   border: none;
   padding: 8px;
 }

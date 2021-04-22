@@ -1,4 +1,5 @@
 .inputLarge {
+  resize: none;
   border: 1px solid #dddfe2;
   margin: 15px 40px 15px 40px;
   min-width: 85%;

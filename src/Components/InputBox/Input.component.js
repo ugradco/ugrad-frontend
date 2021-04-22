@@ -5,7 +5,7 @@ function Input(props) {
 
   return (
     <div>
-      <input
+      <textarea
         className={style}
         name={name}
         type={type}

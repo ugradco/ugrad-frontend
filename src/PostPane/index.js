@@ -29,11 +29,10 @@ function PostPane({ onModalClose, inputType, inputPlaceHolder, inputValue, onInp
             placeholder={inputPlaceHolder}
             value={inputValue}
             onChange={onInputChange}
-            onKeyPress={onKeyPress}
           />
           <div />
         </div>
-        <IconButton className={styles.closeButton} onClick={onModalClose}>
+        <IconButton className={styles.closeButton} onClick={onKeyPress}>
           <span color="#FFFFFFF">Post</span>
         </IconButton>
       </div>

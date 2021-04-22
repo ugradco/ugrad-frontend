@@ -1,5 +1,6 @@
 .overlay {
   position: fixed;
+  z-index: 1000;
   left: 0;
   right: 0;
   top: 0;
@@ -62,6 +63,7 @@
 }
 
 .closeButton {
+  cursor: pointer;
   margin: 5px 15px auto auto;
   color: var(--color-text-bg);
 
@@ -83,9 +85,13 @@
 }
 
 .inputLarge {
+  resize: none;
+  white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-size: 18px;
   border: 1px solid #dddfe2;
   border-radius: 5px;
-  font-size: 18px;
   height: 100px;
   width: 100%;
   /*text-align: center;*/
