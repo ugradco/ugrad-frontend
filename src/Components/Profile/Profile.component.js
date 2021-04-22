@@ -11,7 +11,8 @@ function Profile({ user, onSubmit, onPrivacyChange }) {
         <Photo />
         <div className={styles.header}>
           {/* // TODO: shortBio + publicity after fixing the backend */}
-          {user && <span className={styles.name}> {user.alias} </span>}
+          {user && <span className={styles.name}> {user.name} </span>}
+          {user && <span className={styles.name}> {user.shortBio} </span>}
           <span className={styles.name} />
         </div>
       </div>

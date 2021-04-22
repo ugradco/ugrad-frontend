@@ -25,7 +25,6 @@ function PostModal({ inputValue, inputType, inputPlaceHolder, onInputChange, onK
       {isShowModal && (
         <PostPane
           onModalClose={onModalClose}
-          onClick={onModalClose}
           inputType={inputType}
           inputValue={inputValue}
           onKeyPress={onKeyPress}

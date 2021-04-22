@@ -6,3 +6,4 @@ export { default as Report } from "./Report";
 export { default as Ugrad } from "./Ugrad";
 export { default as UgradLogo } from "./UgradLogo";
 export { default as Search } from "./Search";
+export { default as Close } from "./Close";

@@ -24,9 +24,6 @@
 
 }
 
-
-
-
 .header {
   display: flex;
   align-items: flex-start;
@@ -67,9 +64,6 @@
   margin-right: 13px;
 }
 
-.upButton:visited {
-  background-color:yellow;
-}
 .upButton svg {
   font-size: 40px;
 }
