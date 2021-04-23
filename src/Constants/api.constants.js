@@ -7,6 +7,9 @@ export const API_ENDPOINTS = {
   ACCOUNT_PROFILE: "/users/me/profile",
   SEND_POST: "/posts",
   FEED: "/posts/feed",
+  UPVOTE: (userId) => `/posts/upvote/${userId}`,
+  UPDATE: (userId) => `/users/${userId}`,
+  TAGS: "/tags",
 };
 
 export const STATUS_TYPE = {

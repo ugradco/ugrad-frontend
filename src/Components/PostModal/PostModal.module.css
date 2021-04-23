@@ -10,4 +10,5 @@
   text-align: left;
   background: var(--color-post-bg);
   color: var(--color-text);
+  font-family: var(--font)
 }
