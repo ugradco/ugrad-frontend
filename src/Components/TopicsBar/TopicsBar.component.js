@@ -6,7 +6,7 @@ import Topic from "../Topic/Topic.component";
 // eslint-disable-next-line no-unused-vars
 function TopicsBarComponent({ children, tags }) {
   return (
-    <nav className={styles.nav}>
+    <div className={styles.nav}>
       <h1 className={styles.title}>Followed Topics</h1>
       {tags &&
         tags.tags.map((tag) => {
@@ -16,7 +16,7 @@ function TopicsBarComponent({ children, tags }) {
             </Topic>
           );
         })}
-    </nav>
+    </div>
   );
 }
 

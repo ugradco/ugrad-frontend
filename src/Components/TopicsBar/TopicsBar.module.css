@@ -6,24 +6,29 @@
     width: 216px;
     border-radius: 15px;
 }
-
+.topicBar {
+    display: grid;
+    row-gap: 20px;
+}
 .topic {
+    background-color: var(--color-primary);
     color: white;
-    font-size: 18px;
-    background-color: #343264;
     border-radius: 25px;
-    border-style: none;
-    height: 30px;
-    /*width: 107px;*/
-    margin-top: 6px;
-    padding: 5px;
-    margin-left: 20px;
-    margin-bottom: 6px;
+    transition-duration: var(--fade);
+    width: 12rem;
+    margin: 0px 10px 10px 10px;
+}
+
+.topic:hover {
+    background-color: var(--color-hover); /* Green */
+    color: var(--color-text-bg);
 }
 
 .title {
     font-family: var(--font);
     font-weight: bold;
-    font-size: 22;
+    font-size: 1.5rem;
     margin-left: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
 }

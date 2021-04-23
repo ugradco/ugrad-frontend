@@ -17,6 +17,7 @@ function HomeComponent({
   onKeyPress = () => {},
   onPrivacyChange,
   feedAPI,
+  handleTagChange,
 }) {
   const feed = feedCTX.data;
 
@@ -54,6 +55,7 @@ function HomeComponent({
           onInputChange={onInputChange}
           onKeyPress={onKeyPress}
           inputPlaceHolder={user ? `What's on your mind, ${user.name}?` : "What's on your mind?"}
+          handleTagChange={handleTagChange}
         />
       </div>
       <div className={style.section}>Feed</div>

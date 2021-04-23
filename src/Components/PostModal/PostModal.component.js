@@ -3,8 +3,18 @@ import React from "react";
 import styles from "./PostModal.module.css";
 import Input from "../InputBox/Input.component";
 import PostPane from "../../PostPane";
+import Post from "../Post";
 
-function PostModal({ user, tags, inputValue, inputType, inputPlaceHolder, onInputChange, onKeyPress }) {
+function PostModal({
+  user,
+  tags,
+  inputValue,
+  inputType,
+  inputPlaceHolder,
+  onInputChange,
+  onKeyPress,
+  handleTagChange,
+}) {
   const [isShowModal, isShowModalSet] = React.useState(false);
 
   const onModalClose = () => {
@@ -31,6 +41,7 @@ function PostModal({ user, tags, inputValue, inputType, inputPlaceHolder, onInpu
           inputValue={inputValue}
           onKeyPress={onKeyPress}
           onInputChange={onInputChange}
+          handleTagChange={handleTagChange}
         />
       )}
     </div>

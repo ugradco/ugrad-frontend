@@ -58,10 +58,18 @@ function HomePage(props) {
     setForm({
       isPublic,
       text: e.target.value,
-      tags: ["courses"],
+      tags: [],
     });
   };
 
+  const handleTagChange = (e) => {
+    setForm({
+      isPublic: form.isPublic,
+      text: form.text,
+      tags: [...form.tags, e.target.value],
+    });
+    console.log(form);
+  };
   const onPrivacyChange = () => {
     isPublicSet(!isPublic);
     console.log("set publicity", isPublic);
@@ -77,6 +85,7 @@ function HomePage(props) {
         onKeyPress={onKeyPress}
         onPrivacyChange={onPrivacyChange}
         feedAPI={getFeedAPI}
+        handleTagChange={handleTagChange}
       />
     </div>
   );

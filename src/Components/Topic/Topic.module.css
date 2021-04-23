@@ -1,7 +1,14 @@
 .topic {
 
-  background-color: #343264;
-  border-radius: 10px;
-  height: 30px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  transition-duration: var(--fade);
 
+}
+
+.topic:hover {
+  background-color: var(--color-hover); /* Green */
+  color: var(--color-text-bg);
 }
