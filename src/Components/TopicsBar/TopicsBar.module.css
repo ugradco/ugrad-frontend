@@ -14,8 +14,9 @@
     border-radius: 25px;
     border-style: none;
     height: 30px;
-    width: 107px;
+    /*width: 107px;*/
     margin-top: 6px;
+    padding: 5px;
     margin-left: 20px;
     margin-bottom: 6px;
 }

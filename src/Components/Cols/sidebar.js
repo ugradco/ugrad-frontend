@@ -5,14 +5,14 @@ import TopicsBar from "../TopicsBar/TopicsBar.component";
 import Profile from "../Profile/Profile.component";
 import { UgradLogo } from "../icons";
 
-function Sidebar({ user, onPrivacyChange }) {
+function Sidebar({ user, tags, onPrivacyChange }) {
   return (
     <div className={styles.sidebar}>
       <div className={styles.title}>
         <UgradLogo />
         ugrad
       </div>
-      <TopicsBar />
+      <TopicsBar tags={tags} />
 
       <div className={styles.profile}>
         <Profile user={user} onPrivacyChange={onPrivacyChange} />

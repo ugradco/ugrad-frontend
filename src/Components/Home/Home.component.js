@@ -41,7 +41,7 @@ function HomeComponent({
     <Loading />;
   }
   return (
-    <MainLayout user={user} className={style.layout} onPrivacyChange={onPrivacyChange}>
+    <MainLayout user={user} tags={tags} className={style.layout} onPrivacyChange={onPrivacyChange}>
       <div>
         <SearchBar />
       </div>

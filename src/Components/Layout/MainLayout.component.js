@@ -4,10 +4,10 @@ import Sidebar from "../Cols/sidebar";
 import Extra from "../Cols/extra";
 import MainCol from "../Cols/main";
 
-function MainLayout({ user, children, onPrivacyChange }) {
+function MainLayout({ user, tags, children, onPrivacyChange }) {
   return (
     <div className={style.main}>
-      <Sidebar user={user} onPrivacyChange={onPrivacyChange} />
+      <Sidebar user={user} tags={tags} onPrivacyChange={onPrivacyChange} />
       <MainCol style={style.mainBorders}>{children}</MainCol>
       <Extra />
     </div>
