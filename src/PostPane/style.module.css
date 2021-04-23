@@ -94,5 +94,12 @@
   border-radius: 5px;
   height: 100px;
   width: 100%;
+  font-family: var(--font);
   /*text-align: center;*/
+}
+
+.tags {
+  display: grid;
+  grid-gap: 10px;
+
 }

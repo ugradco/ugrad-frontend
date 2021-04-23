@@ -4,6 +4,7 @@ import login from "./login.reducer";
 import account from "./account.reducer";
 import post from "./post.reducer";
 import user from "./user.reducer";
+import tags from "./tags.reducer";
 
 export default (history) =>
   combineReducers({
@@ -11,5 +12,6 @@ export default (history) =>
     account,
     post,
     user,
+    tags,
     history,
   });

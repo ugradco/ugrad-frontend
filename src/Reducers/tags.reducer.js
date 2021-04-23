@@ -1,8 +1,8 @@
-import * as UserConstants from "Constants/user.constants";
+import * as TagsConstants from "Constants/tags.constants";
 import { REQUEST_STATUS } from "../Constants/global.constants";
 
 const initialState = {
-  userCTX: {
+  tagsCTX: {
     user: null,
     status: REQUEST_STATUS.NOT_DEFINED,
     error: false,
@@ -11,44 +11,44 @@ const initialState = {
 
 export default function user(state = initialState, action) {
   switch (action.type) {
-    case UserConstants.USER_API_SUCCESS:
-      return userAPISuccess(state, action);
-    case UserConstants.USER_API_PENDING:
-      return userAPIPending(state);
-    case UserConstants.USER_API_FAILURE:
-      return userAPIFailure(state);
+    case TagsConstants.TAGS_API_SUCCESS:
+      return tagsAPISuccess(state, action);
+    case TagsConstants.TAGS_API_PENDING:
+      return tagsAPIPending(state);
+    case TagsConstants.TAGS_API_FAILURE:
+      return tagsAPIFailure(state);
     default:
       return state;
   }
 }
 
-function userAPISuccess(state, action) {
+function tagsAPISuccess(state, action) {
   return {
     ...state,
-    userCTX: {
-      user: action.payload,
+    tagsCTX: {
+      tags: action.payload,
       status: REQUEST_STATUS.SUCCESS,
       error: false,
     },
   };
 }
 
-function userAPIPending(state) {
+function tagsAPIPending(state) {
   return {
     ...state,
-    userCTX: {
-      ...state.userCTX,
+    tagsCTX: {
+      ...state.tagsCTX,
       status: REQUEST_STATUS.PENDING,
       error: false,
     },
   };
 }
 
-function userAPIFailure(state) {
+function tagsAPIFailure(state) {
   return {
     ...state,
-    userCTX: {
-      ...state.userCTX,
+    tagsCTX: {
+      ...state.tagsCTX,
       status: REQUEST_STATUS.FAILURE,
       error: true,
     },

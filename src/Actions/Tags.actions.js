@@ -1,12 +1,12 @@
-import * as UserConstants from "Constants/user.constants";
+import * as TagsConstants from "Constants/tags.constants";
 
-export const getUserAPI = () => {
+export const getTagsAPI = () => {
   const requestPayload = {};
 
   return {
-    type: UserConstants.USER_API_PENDING,
+    type: TagsConstants.TAGS_API_PENDING,
     payload: { requestPayload },
   };
 };
 
-export const setUserAPI = () => {};
+export const setTagsAPI = () => {};
