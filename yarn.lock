@@ -14198,6 +14198,11 @@ react-draggable@^4.0.3:
     classnames "^2.2.5"
     prop-types "^15.6.0"
 
+react-editext@^3.18.0:
+  version "3.18.0"
+  resolved "https://registry.yarnpkg.com/react-editext/-/react-editext-3.18.0.tgz#fe88ef0be38f1f8a294b96c05d7b259051842fd4"
+  integrity sha512-8lxQ6Uq5cVufzQqVA+yG55XmcZs+y7T6/qEoCsAQmViaD8cWtzfBVwWLOe05bjNWLxF6ZFXHT87KP4n8ntSlLg==
+
 react-element-to-jsx-string@^14.3.1:
   version "14.3.2"
   resolved "https://registry.npmjs.org/react-element-to-jsx-string/-/react-element-to-jsx-string-14.3.2.tgz"

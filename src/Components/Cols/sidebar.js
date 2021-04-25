@@ -5,7 +5,7 @@ import TopicsBar from "../TopicsBar/TopicsBar.component";
 import Profile from "../Profile/Profile.component";
 import { UgradLogo } from "../icons";
 
-function Sidebar({ user, tags, onPrivacyChange }) {
+function Sidebar({ user, tags, onPrivacyChange, handleEditProfileName, handleEditProfileBio }) {
   return (
     <div className={styles.sidebar}>
       <div className={styles.title}>
@@ -15,7 +15,12 @@ function Sidebar({ user, tags, onPrivacyChange }) {
       <TopicsBar tags={tags} />
 
       <div className={styles.profile}>
-        <Profile user={user} onPrivacyChange={onPrivacyChange} />
+        <Profile
+          user={user}
+          onPrivacyChange={onPrivacyChange}
+          handleEditProfileName={handleEditProfileName}
+          handleEditProfileBio={handleEditProfileBio}
+        />
       </div>
     </div>
   );

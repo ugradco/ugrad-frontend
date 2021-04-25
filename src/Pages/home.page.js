@@ -16,6 +16,8 @@ function HomePage(props) {
   // const [user, userSet] = React.useState({ name: "Furkan Şahbaz", department: "EEE/CS" });
   const [postContent, postContentSet] = React.useState("");
   const [isPublic, isPublicSet] = React.useState(false);
+  const [editing, setEditing] = useState(false);
+  const [uservalue, setUservalue] = useState({ name: "", shortBio: "" });
   // const [tags, tagsSet] = React.useState([]);
 
   useEffect(() => {
@@ -62,6 +64,20 @@ function HomePage(props) {
     });
   };
 
+  const handleEditProfileName = (value) => {
+    setUservalue({
+      name: value,
+      shortBio: uservalue.shortBio,
+    });
+  };
+
+  const handleEditProfileBio = (value) => {
+    setUservalue({
+      name: uservalue.name,
+      shortBio: value,
+    });
+  };
+
   const handleTagChange = (e) => {
     setForm({
       isPublic: form.isPublic,
@@ -86,6 +102,8 @@ function HomePage(props) {
         onPrivacyChange={onPrivacyChange}
         feedAPI={getFeedAPI}
         handleTagChange={handleTagChange}
+        handleEditProfileName={handleEditProfileName}
+        handleEditProfileBio={handleEditProfileBio}
       />
     </div>
   );

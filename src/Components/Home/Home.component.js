@@ -18,6 +18,8 @@ function HomeComponent({
   onPrivacyChange,
   feedAPI,
   handleTagChange,
+  handleEditProfileName,
+  handleEditProfileBio,
 }) {
   const feed = feedCTX.data;
 
@@ -42,7 +44,14 @@ function HomeComponent({
     <Loading />;
   }
   return (
-    <MainLayout user={user} tags={tags} className={style.layout} onPrivacyChange={onPrivacyChange}>
+    <MainLayout
+      user={user}
+      tags={tags}
+      className={style.layout}
+      onPrivacyChange={onPrivacyChange}
+      handleEditProfileName={handleEditProfileName}
+      handleEditProfileBio={handleEditProfileBio}
+    >
       <div>
         <SearchBar />
       </div>

@@ -1,18 +1,19 @@
 import React from "react";
+import EdiText from "react-editext";
 import ThemeButton from "../ThemeButton";
 import Photo from "../Photo";
 import styles from "./Profile.module.css";
 import IOSSwitch from "./IOSSwitch.component";
 
-function Profile({ user, onSubmit, onPrivacyChange }) {
+function Profile({ user, onSubmit, onPrivacyChange, handleEditProfileName, handleEditProfileBio }) {
   return (
     <div className={styles.profile}>
       <div className={styles.avatar}>
         <Photo />
         <div className={styles.header}>
           {/* // TODO: shortBio + publicity after fixing the backend */}
-          {user && <span className={styles.name}> {user.name} </span>}
-          {user && <span className={styles.name}> {user.shortBio} </span>}
+          {user && <EdiText className={styles.name} value={user.name} onSave={handleEditProfileName} type="text" />}
+          {user && <EdiText className={styles.name} value={user.shortBio} onSave={handleEditProfileBio} type="text" />}
           <span className={styles.name} />
         </div>
       </div>
