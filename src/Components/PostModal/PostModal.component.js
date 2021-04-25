@@ -22,8 +22,8 @@ function PostModal({
   };
   return (
     <div>
-      <Input
-        style={styles.inputLarge}
+      <textarea
+        className={styles.inputLarge}
         name={inputType}
         type={inputType}
         placeholder={inputPlaceHolder}
@@ -31,6 +31,7 @@ function PostModal({
         onChange={onInputChange}
         onKeyPress={onKeyPress}
         onClick={() => isShowModalSet(true)}
+        readOnly
       />
       {isShowModal && (
         <PostPane
