@@ -11,14 +11,7 @@ import { API_ENDPOINTS } from "../Constants/api.constants";
 function HomePage(props) {
   const { post, user, tags, getFeedAPI, getUserAPI, getTagsAPI, history } = props;
   const [form, setForm] = useState({ isPublic: false, text: "", tags: [] });
-  const [comment, commentSet] = React.useState("");
-  const [text, textSet] = React.useState("");
-  // const [user, userSet] = React.useState({ name: "Furkan Şahbaz", department: "EEE/CS" });
-  const [postContent, postContentSet] = React.useState("");
   const [isPublic, isPublicSet] = React.useState(false);
-  const [editing, setEditing] = useState(false);
-  const [uservalue, setUservalue] = useState({ name: "", shortBio: "" });
-  // const [tags, tagsSet] = React.useState([]);
 
   useEffect(() => {
     if (post.feedCTX.status === REQUEST_STATUS.NOT_DEFINED) {
@@ -52,6 +45,36 @@ function HomePage(props) {
       });
   };
 
+  const editUserName = (value) => {
+    apiGenerator("patch")(API_ENDPOINTS.UPDATE(user.userCTX.user._id), {
+      name: value,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.error("There has been a problem with your fetch operation.");
+        }
+        getUserAPI();
+      })
+      .catch((error) => {
+        console.error("There has been a problem with your fetch operation:", error);
+      });
+  };
+
+  const editshortBio = (value) => {
+    apiGenerator("patch")(API_ENDPOINTS.UPDATE(user.userCTX.user._id), {
+      shortBio: value,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.error("There has been a problem with your fetch operation.");
+        }
+        getUserAPI();
+      })
+      .catch((error) => {
+        console.error("There has been a problem with your fetch operation:", error);
+      });
+  };
+
   const onKeyPress = () => {
     sendPost();
   };
@@ -69,17 +92,11 @@ function HomePage(props) {
   };
 
   const handleEditProfileName = (value) => {
-    setUservalue({
-      name: value,
-      shortBio: uservalue.shortBio,
-    });
+    editUserName(value);
   };
 
   const handleEditProfileBio = (value) => {
-    setUservalue({
-      name: uservalue.name,
-      shortBio: value,
-    });
+    editshortBio(value);
   };
 
   const handleTagChange = (e) => {
