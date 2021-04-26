@@ -71,11 +71,10 @@ function PostPane({
             <div className={styles.tags}>
               {tags &&
                 tags.tags.map((tag) => {
-                  // const [tagSelected, tagSelectedSet] = React.useState(false);
                   return (
-                    <ToggleButton className={styles.topic} onClick={handleTagChange} value={tag.name}>
+                    <Topic className={styles.topic} onClick={handleTagChange} value={tag.name}>
                       {tag.name}
-                    </ToggleButton>
+                    </Topic>
                   );
                 })}
             </div>
