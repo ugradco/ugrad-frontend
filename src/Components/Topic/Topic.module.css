@@ -1,8 +1,8 @@
 .topic {
 
   background-color: var(--color-primary);
-  color: white;
   border-radius: 25px;
+  color: white;
   margin-bottom: 10px;
   transition-duration: var(--fade);
 
@@ -12,3 +12,25 @@
   background-color: var(--color-hover); /* Green */
   color: var(--color-text-bg);
 }
+
+
+.topic:active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: none;
+  color: var(--color-text-bg);
+}
+
+.topic:focus,
+.topic:active:focus {
+  background-color: var(--color-text-bg);
+  border-color: var(--color-text-bg);
+  color: var(--color-primary);
+  outline: 5px auto var(--color-primary);
+}
+
+.topic:visited {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+

@@ -36,7 +36,7 @@ function HomePage(props) {
     apiGenerator("post")(API_ENDPOINTS.SEND_POST, {
       isPublic: form.isPublic,
       text: form.text,
-      tags: form.tags,
+      tags: filteredArray,
     })
       .then((response) => {
         if (!response.ok) {
@@ -55,6 +55,10 @@ function HomePage(props) {
   const onKeyPress = () => {
     sendPost();
   };
+
+  const filteredArray = form.tags.filter(function (item, pos) {
+    return form.tags.indexOf(item) === pos;
+  });
 
   const handleChange = (e) => {
     setForm({
@@ -79,10 +83,15 @@ function HomePage(props) {
   };
 
   const handleTagChange = (e) => {
+    const selectedTags = [...form.tags, e.target.value];
+    const filteredSelectedTags = selectedTags.filter(function (item, pos) {
+      return selectedTags.indexOf(item) === pos;
+    });
+
     setForm({
       isPublic: form.isPublic,
       text: form.text,
-      tags: [...form.tags, e.target.value],
+      tags: filteredSelectedTags,
     });
     console.log(form);
   };
