@@ -1,12 +1,10 @@
 .comments {
   display: grid;
-
 }
 .modal {
   margin: 5px 5px 5px 15px;
   display: flex;
   align-items: center;
-
 }
 .avatar {
   margin-right: 15px;
@@ -32,6 +30,7 @@
   color: var(--c-text-color);
   background-color: transparent;
   font-size: 1rem;
+  font-family: var(--font);
 }
 .commentButton {
   margin: auto 5px auto auto;
@@ -39,7 +38,6 @@
   display: grid;
   grid-template-columns: 80px 1fr;
 }
-
 
 .postButton {
   border: none;

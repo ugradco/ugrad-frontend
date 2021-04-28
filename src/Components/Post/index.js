@@ -7,7 +7,7 @@ import * as Icon from "../icons";
 import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component";
 import CommentModal from "../CommentModal/CommentModal.component";
 
-function Post({ upCount, text, user, comments, checked, upClicked }) {
+function Post({ upCount, text, user, comments, checked, upClicked, sendComment, onCommentChange, inputValue }) {
   return (
     <div className={styles.feed}>
       <div className={styles.post}>
@@ -32,15 +32,15 @@ function Post({ upCount, text, user, comments, checked, upClicked }) {
         </div>
       </div>
       <div>
-        <WriteCommentModal inputType="new" placeholder="Write a comment..." />
+        <WriteCommentModal inputType="new" inputValue={inputValue} placeholder="Write a comment..." onSubmit={sendComment} onInputChange={onCommentChange } />
         {comments &&
           comments.map((content) => {
             return (
               content.message && (
                 <CommentModal
-                  key={content.message}
+                  user={content.user}
+                  key={content._id}
                   inputValue={content.message}
-                  author={content.user && content.user.alias}
                 />
               )
             );

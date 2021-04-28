@@ -7,13 +7,13 @@ import Input from "../InputBox/Input.component";
 import IconButton from "../Button/icon";
 import * as Icon from "../icons";
 
-function CommentModal({ inputValue, author }) {
+function CommentModal({ inputValue, user }) {
   return (
     <div className={styles.modal}>
       <div className={styles.avatar}>
         <Photo />
         <div className={styles.header}>
-          <span className={styles.name}>{author.alias}</span>
+          <span className={styles.name}>{user.alias}</span>
         </div>
       </div>
       <div className={styles.body}>

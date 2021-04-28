@@ -11,12 +11,14 @@ function WriteCommentModal({
   author,
   placeholder,
   onInputChange = () => {},
-  onSubmit = () => {},
+  onSubmit = () => { },
+  onShow = () => { },
 }) {
   if (inputType === "new") {
+    // console.log(inputValue)
     return (
       <div className={styles.comments}>
-        <ThemeButton className={styles.commentButton} onClick={onSubmit}>
+        <ThemeButton className={styles.commentButton} onClick={onShow}>
           Comments
         </ThemeButton>
 
@@ -25,7 +27,7 @@ function WriteCommentModal({
             <Photo />
           </div>
           <div />
-
+     
           <div className={styles.commentBox}>
             <Input
               style={styles.textarea}

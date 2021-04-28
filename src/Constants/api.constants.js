@@ -6,6 +6,7 @@ export const API_ENDPOINTS = {
   ACCOUNT: "/users/me",
   ACCOUNT_PROFILE: "/users/me/profile",
   SEND_POST: "/posts",
+  SEND_COMMENT: "/posts/comment",
   FEED: "/posts/feed",
   UPVOTE: (userId) => `/users/${userId}`,
   UPDATE: (userId) => `/users/${userId}`,

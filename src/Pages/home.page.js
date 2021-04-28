@@ -51,12 +51,12 @@ function HomePage(props) {
     })
       .then((response) => {
         if (!response.ok) {
-          console.error("There has been a problem with your fetch operation.");
+          console.error("There has been a problem with your patch operation.");
         }
         getUserAPI();
       })
       .catch((error) => {
-        console.error("There has been a problem with your fetch operation:", error);
+        console.error("There has been a problem with your patch operation:", error);
       });
   };
 
@@ -66,12 +66,12 @@ function HomePage(props) {
     })
       .then((response) => {
         if (!response.ok) {
-          console.error("There has been a problem with your fetch operation.");
+          console.error("There has been a problem with your patch operation.");
         }
         getUserAPI();
       })
       .catch((error) => {
-        console.error("There has been a problem with your fetch operation:", error);
+        console.error("There has been a problem with your patch operation:", error);
       });
   };
 
@@ -122,6 +122,7 @@ function HomePage(props) {
       <HomeComponent
         user={user.userCTX.user}
         tags={tags.tagsCTX.tags}
+        isPublic={isPublic}
         feedCTX={post.feedCTX}
         onInputChange={handleChange}
         onKeyPress={onKeyPress}
