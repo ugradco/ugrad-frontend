@@ -12,10 +12,11 @@ function HomePage(props) {
   const { post, user, tags, getFeedAPI, getUserAPI, getTagsAPI, history } = props;
   const [form, setForm] = useState({ isPublic: false, text: "", tags: [] });
   const [isPublic, isPublicSet] = React.useState(false);
+  const [tagSelected, tagSelectedSet] = React.useState("");
 
   useEffect(() => {
     if (post.feedCTX.status === REQUEST_STATUS.NOT_DEFINED) {
-      getFeedAPI({});
+      getFeedAPI({tagSelected});
     }
     if (user.userCTX.status === REQUEST_STATUS.NOT_DEFINED) {
       getUserAPI();
