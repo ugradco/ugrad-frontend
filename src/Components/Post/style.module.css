@@ -1,7 +1,6 @@
 .feed {
   border-radius: 25px;
   background: var(--color-post-area-bg);
-
 }
 
 .post {
@@ -13,7 +12,6 @@
 .avatar {
   display: grid;
   grid-template-columns: 60px 1fr 60px;
-
 }
 
 .body {
@@ -21,7 +19,6 @@
   display: grid;
   grid-template-columns: 60px 1fr 60px;
   font-size: 1rem;
-
 }
 
 .header {
@@ -46,7 +43,6 @@
 .reportButton {
   margin: 5px 15px auto auto;
   color: inherit;
-
 }
 
 .reportButton {
@@ -66,4 +62,11 @@
 
 .upButton svg {
   font-size: 40px;
+}
+
+.commentButton {
+  margin: auto 5px auto auto;
+  border: none;
+  display: grid;
+  grid-template-columns: 80px 1fr;
 }

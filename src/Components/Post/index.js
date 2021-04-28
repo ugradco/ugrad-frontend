@@ -6,8 +6,16 @@ import IconButton from "../Button/icon";
 import * as Icon from "../icons";
 import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component";
 import CommentModal from "../CommentModal/CommentModal.component";
+import ThemeButton from "../ThemeButton/index"
 
 function Post({ upCount, text, user, comments, checked, upClicked, sendComment, onCommentChange, inputValue }) {
+
+  const [showComments, setShowComments] = React.useState(false);
+
+  const onShow = () => {
+    setShowComments(!showComments);
+  };
+
   return (
     <div className={styles.feed}>
       <div className={styles.post}>
@@ -31,9 +39,12 @@ function Post({ upCount, text, user, comments, checked, upClicked, sendComment, 
           <div className={styles.content}>{text}</div>
         </div>
       </div>
+      <ThemeButton className={styles.commentButton} onClick={onShow}>
+        {comments.length != 0 ? `${comments.length} Comments` : ``}
+      </ThemeButton>
       <div>
         <WriteCommentModal inputType="new" inputValue={inputValue} placeholder="Write a comment..." onSubmit={sendComment} onInputChange={onCommentChange } />
-        {comments &&
+        {(comments && showComments) &&
           comments.map((content) => {
             return (
               content.message && (

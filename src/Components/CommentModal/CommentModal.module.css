@@ -1,16 +1,12 @@
-
 .modal {
   margin: 5px 5px 5px 15px;
   display: grid;
-
 }
 .avatar {
   display: grid;
   grid-template-columns: 60px 1fr 60px;
   margin-right: 15px;
 }
-
-
 
 .body {
   font-family: var(--font);
@@ -20,9 +16,7 @@
   font-size: 1rem;
   background-color: var(--color-post-bg);
   border-radius: 8px;
-
 }
-
 
 .header {
   display: flex;
@@ -41,5 +35,5 @@
   margin-top: 5px;
   margin-bottom: 5px;
   white-space: pre-wrap;
+  padding-left: 10px;
 }
-

@@ -15,12 +15,8 @@ function WriteCommentModal({
   onShow = () => { },
 }) {
   if (inputType === "new") {
-    // console.log(inputValue)
     return (
       <div className={styles.comments}>
-        <ThemeButton className={styles.commentButton} onClick={onShow}>
-          Comments
-        </ThemeButton>
 
         <div className={styles.modal}>
           <div className={styles.avatar}>
@@ -45,14 +41,6 @@ function WriteCommentModal({
       </div>
     );
   }
-  return (
-    <div className={styles.comments}>
-      <div className={styles.modal}>
-        <span />
-        <span>{`${author}:${inputValue}`}</span>
-      </div>
-    </div>
-  );
 }
 
 export default WriteCommentModal;
