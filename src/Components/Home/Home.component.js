@@ -21,12 +21,12 @@ function HomeComponent({
   handleTagChange,
   handleEditProfileName,
   handleEditProfileBio,
+  history,
 }) {
   const feed = feedCTX.data;
 
   const upvoteAPI = (postId, upSelected) => {
     apiGenerator("post")(API_ENDPOINTS.UPVOTE(postId), {
-      postId,
       upvote: upSelected,
     })
       .then((response) => {
@@ -35,7 +35,6 @@ function HomeComponent({
         }
         console.log("Successfully upvoted.");
         feedAPI({});
-
       })
       .catch((error) => {
         console.error("There has been a problem with your vote operation:", error);
@@ -71,6 +70,7 @@ function HomeComponent({
       onPrivacyChange={onPrivacyChange}
       handleEditProfileName={handleEditProfileName}
       handleEditProfileBio={handleEditProfileBio}
+      history={history}
     >
       <div>
         <SearchBar />
@@ -92,35 +92,15 @@ function HomeComponent({
       <div className={style.feed}>
         {feed &&
           feed.map((post) => {
-            const [upSelected, upSelectedSet] = React.useState(post.upvoted);
-            const [message, setMessage] = React.useState("");
-            const upClicked = () => {
-              upSelectedSet(!upSelected);
-              upvoteAPI(post._id, upSelected);
-            };
-
-            const onCommentChange = (e) => {
-              setMessage(e.target.value);
-            };
-
-            const sendCommentClicked = (e) => {
-              sendComment(post._id, message);
-              setMessage("");
-              
-            };
-
             return (
               <Post
+                post={post}
                 key={post._id}
-                upCount={post.upvoteCount}
-                checked={upSelected}
-                upClicked={upClicked}
+                upvoteAPI={upvoteAPI}
                 text={post.text}
                 user={post.user}
                 comments={post.comments}
-                sendComment={sendCommentClicked}
-                inputValue={message}
-                onCommentChange={onCommentChange}
+                sendComment={sendComment}
                 {...post}
               />
             );

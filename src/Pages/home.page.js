@@ -9,14 +9,14 @@ import { apiGenerator } from "../Utils";
 import { API_ENDPOINTS } from "../Constants/api.constants";
 
 function HomePage(props) {
-  const { post, user, tags, getFeedAPI, getUserAPI, getTagsAPI, history } = props;
+  const { post, user, tags, getFeedAPI, getUserAPI, getTagsAPI, history, location } = props;
   const [form, setForm] = useState({ isPublic: false, text: "", tags: [] });
   const [isPublic, isPublicSet] = React.useState(false);
   const [tagSelected, tagSelectedSet] = React.useState("");
 
   useEffect(() => {
     if (post.feedCTX.status === REQUEST_STATUS.NOT_DEFINED) {
-      getFeedAPI({tagSelected});
+      getFeedAPI({});
     }
     if (user.userCTX.status === REQUEST_STATUS.NOT_DEFINED) {
       getUserAPI();
@@ -25,6 +25,13 @@ function HomePage(props) {
       getTagsAPI();
     }
   }, [post.feedCTX.status, user.userCTX.status, tags.tagsCTX.status]);
+
+  useEffect(() => {
+    if (location.search !== "") {
+      console.log(location.search.substring(8));
+      getFeedAPI({ params: { tags: location.search.substring(8) } });
+    }
+  }, [location.search]);
 
   const sendPost = () => {
     apiGenerator("post")(API_ENDPOINTS.SEND_POST, {
@@ -132,6 +139,7 @@ function HomePage(props) {
         handleTagChange={handleTagChange}
         handleEditProfileName={handleEditProfileName}
         handleEditProfileBio={handleEditProfileBio}
+        history={history}
       />
     </div>
   );

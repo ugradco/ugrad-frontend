@@ -7,7 +7,6 @@ function Input(props) {
     <div>
       <textarea
         className={style}
-        autoFocus
         name={name}
         type={type}
         placeholder={placeholder}

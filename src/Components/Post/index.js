@@ -6,11 +6,25 @@ import IconButton from "../Button/icon";
 import * as Icon from "../icons";
 import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component";
 import CommentModal from "../CommentModal/CommentModal.component";
-import ThemeButton from "../ThemeButton/index"
+import ThemeButton from "../ThemeButton/index";
 
-function Post({ upCount, text, user, comments, checked, upClicked, sendComment, onCommentChange, inputValue }) {
-
+function Post({ post, upvoteAPI, text, user, comments, sendComment }) {
   const [showComments, setShowComments] = React.useState(false);
+  const [upSelected, upSelectedSet] = React.useState(post.upvoted);
+  const [message, setMessage] = React.useState("");
+  const upClicked = () => {
+    upSelectedSet(!upSelected);
+    upvoteAPI(post._id, upSelected);
+  };
+
+  const onCommentChange = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const sendCommentClicked = () => {
+    sendComment(post._id, message);
+    setMessage("");
+  };
 
   const onShow = () => {
     setShowComments(!showComments);
@@ -31,29 +45,36 @@ function Post({ upCount, text, user, comments, checked, upClicked, sendComment, 
         {/* body */}
         <div className={styles.body}>
           {/* up vote */}
-          <IconButton className={styles.upButton} text="Up" count={upCount} selected={checked} onClick={upClicked}>
-            {checked && <Icon.Upvote fill="#343264" />}
-            {!checked && <Icon.Upvote />}
+          <IconButton
+            className={styles.upButton}
+            text="Up"
+            count={post.upvoteCount}
+            selected={upSelected}
+            onClick={upClicked}
+          >
+            {upSelected && <Icon.Upvote fill="#343264" />}
+            {!upSelected && <Icon.Upvote />}
           </IconButton>
 
           <div className={styles.content}>{text}</div>
         </div>
       </div>
       <ThemeButton className={styles.commentButton} onClick={onShow}>
-        {comments.length != 0 ? `${comments.length} Comments` : ``}
+        {comments.length !== 0 ? `${comments.length} Comments` : ""}
       </ThemeButton>
       <div>
-        <WriteCommentModal inputType="new" inputValue={inputValue} placeholder="Write a comment..." onSubmit={sendComment} onInputChange={onCommentChange } />
-        {(comments && showComments) &&
+        <WriteCommentModal
+          inputType="new"
+          inputValue={message}
+          placeholder="Write a comment..."
+          onSubmit={sendCommentClicked}
+          onInputChange={onCommentChange}
+        />
+        {comments &&
+          showComments &&
           comments.map((content) => {
             return (
-              content.message && (
-                <CommentModal
-                  user={content.user}
-                  key={content._id}
-                  inputValue={content.message}
-                />
-              )
+              content.message && <CommentModal user={content.user} key={content._id} inputValue={content.message} />
             );
           })}
       </div>
