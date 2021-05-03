@@ -1,6 +1,4 @@
 import React from "react";
-
-import ToggleButton from "@material-ui/lab/ToggleButton";
 import styles from "./style.module.css";
 import Photo from "../Components/Photo";
 import Input from "../Components/InputBox/Input.component";
@@ -32,7 +30,7 @@ function PostPane({
             <Photo />
             <div className={styles.header}>
               <span className={styles.name}>{user && user.name}</span>{" "}
-              <span className={styles.name}>{user && user.shortBio}</span>
+              <span className={styles.shortBio}>{user && user.shortBio}</span>
             </div>
             <IconButton className={styles.closeButton} onClick={onModalClose}>
               <Close color="#FFFFFF" />
@@ -60,7 +58,7 @@ function PostPane({
             <Photo />
             <div className={styles.header}>
               <span className={styles.name}>{user && user.name}</span>{" "}
-              <span className={styles.name}>{user && user.shortBio}</span>
+              <span className={styles.shortBio}>{user && user.shortBio}</span>
             </div>
             <IconButton className={styles.closeButton} onClick={onModalClose}>
               <Close color="#FFFFFF" />

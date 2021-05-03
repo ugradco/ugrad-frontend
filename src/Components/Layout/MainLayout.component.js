@@ -7,6 +7,7 @@ import MainCol from "../Cols/main";
 function MainLayout({ user, tags, children, onPrivacyChange, handleEditProfileName, handleEditProfileBio, history }) {
   return (
     <div className={style.main}>
+      <div />
       <Sidebar
         user={user}
         tags={tags}
@@ -16,7 +17,7 @@ function MainLayout({ user, tags, children, onPrivacyChange, handleEditProfileNa
         history={history}
       />
       <MainCol style={style.mainBorders}>{children}</MainCol>
-      <Extra />
+      <div />
     </div>
   );
 }

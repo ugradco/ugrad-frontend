@@ -8,18 +8,14 @@
 @media only screen and (min-width: 600px) {
   .main {
     display: grid;
-    grid-template-columns: 300px 1fr 100px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: 1px 200px 400px 1px;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .main {
     display: grid;
-    grid-template-columns: 300px 1fr 200px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: 1fr 200px 450px 1fr;
   }
 }
 
@@ -27,27 +23,21 @@
 @media only screen and (min-width: 992px) {
   .main {
     display: grid;
-    grid-template-columns: 400px 1fr 400px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns:1fr 300px 450px 1fr;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .main {
     display: grid;
-    grid-template-columns: 600px 1fr 500px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: 1fr 400px 650px 1fr;
   }
 }
 
 @media only screen and (min-width: 2000px) {
   .main {
     display: grid;
-    grid-template-columns: 750px 1fr 600px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns:1fr 600px 850px 1fr;
   }
 }
 
@@ -58,4 +48,5 @@
   /*border-style: solid;*/
   /*border-color: var(--color-border);*/
   margin: 0 auto;
+  margin-left: 10px;
 }

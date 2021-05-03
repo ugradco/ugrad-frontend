@@ -12,7 +12,7 @@ function Sidebar({ user, tags, onPrivacyChange, handleEditProfileName, handleEdi
         <UgradLogo />
         ugrad
       </div>
-      <TopicsBar tags={tags} history={history} />
+      <TopicsBar style={styles.topicsBar} tags={tags} history={history} />
 
       <div className={styles.profile}>
         <Profile

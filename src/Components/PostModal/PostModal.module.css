@@ -1,8 +1,8 @@
 .inputLarge {
   resize: none;
   border: 1px solid #dddfe2;
-  margin: 15px 40px 15px 40px;
-  min-width: 85%;
+  margin: 15px 40px 15px 15px;
+  min-width: 93%;
   border-radius: 5px;
   font-style: var(--font);
   font-size: 18px;

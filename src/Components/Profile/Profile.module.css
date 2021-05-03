@@ -20,9 +20,16 @@
 }
 
 .name {
-  color: var(--color-primary);
   font-family: var(--font);
+  color: var(--color-primary);
   font-weight: bold;
+  font-size: 1rem;
+}
+
+.shortBio {
+  font-family: var(--font);
+  color: var(--color-primary);
+  font-size: 0.8rem;
 }
 
 .footer {

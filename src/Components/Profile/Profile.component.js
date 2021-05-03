@@ -1,7 +1,7 @@
 import React from "react";
 import EdiText from "react-editext";
+import styled from "styled-components";
 import ThemeButton from "../ThemeButton";
-import Button from "../Button/Button.component";
 import Photo from "../Photo";
 import styles from "./Profile.module.css";
 import IOSSwitch from "./IOSSwitch.component";
@@ -21,16 +21,20 @@ function Profile({ user, onSubmit, onPrivacyChange, handleEditProfileName, handl
               type="text"
               editButtonClassName="custom-edit-button"
               editButtonContent="..."
+              editOnViewClick
+              showButtonsOnHover
             />
           )}
           {user && (
             <EdiText
-              className={styles.name}
+              className={styles.shortBio}
               value={user.shortBio}
               onSave={handleEditProfileBio}
               type="text"
               editButtonClassName="custom-edit-button"
               editButtonContent="..."
+              editOnViewClick
+              showButtonsOnHover
             />
           )}
           <span className={styles.name} />
