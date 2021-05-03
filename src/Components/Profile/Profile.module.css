@@ -43,6 +43,10 @@
   color: var(--color-primary);
 }
 
+.editButton {
+  border-style: none;
+}
+
 .publicity{
   color: var(--color-primary);
   font-family: var(--font);

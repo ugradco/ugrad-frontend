@@ -60,7 +60,11 @@ function Post({ post, upvoteAPI, text, user, comments, sendComment }) {
         </div>
       </div>
       <ThemeButton className={styles.commentButton} onClick={onShow}>
-        {comments.length !== 0 ? `${comments.length} Comments` : ""}
+        {comments.length !== 0
+          ? comments.length !== 1
+            ? `${comments.length} Comments`
+            : `${comments.length} Comment`
+          : ""}
       </ThemeButton>
       <div>
         <WriteCommentModal

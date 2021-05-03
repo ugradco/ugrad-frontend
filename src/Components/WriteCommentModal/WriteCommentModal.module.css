@@ -8,6 +8,7 @@
 }
 .avatar {
   margin-right: 15px;
+  margin-bottom: 15px;
 }
 .commentBox {
   min-width: 85%;
@@ -18,11 +19,13 @@
   border-width: 1px;
   border-color: var(--c-border-color);
   align-items: center;
+  margin-bottom: 15px;
+  height: 40px;
 }
 
 .textarea {
   min-width: 80%;
-  margin: 5px 5px 5px 25px;
+  margin: 5px 5px 15px 25px;
   align-items: center;
   height: 25px;
   border: none;
@@ -40,4 +43,5 @@
   color: inherit;
   padding-right: 25px;
   color: var(--color-text);
+  padding-bottom: 15px;
 }
