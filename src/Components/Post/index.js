@@ -8,13 +8,18 @@ import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component"
 import CommentModal from "../CommentModal/CommentModal.component";
 import ThemeButton from "../ThemeButton/index";
 
-function Post({ post, upvoteAPI, text, user, comments, sendComment }) {
+function Post({ post, upvoteAPI, reportAPI, text, user, comments, sendComment }) {
   const [showComments, setShowComments] = React.useState(false);
   const [upSelected, upSelectedSet] = React.useState(post.upvoted);
   const [message, setMessage] = React.useState("");
+
   const upClicked = () => {
     upSelectedSet(!upSelected);
     upvoteAPI(post._id, upSelected);
+  };
+
+  const reportClicked = () => {
+    reportAPI(post._id);
   };
 
   const onCommentChange = (e) => {
@@ -39,7 +44,9 @@ function Post({ post, upvoteAPI, text, user, comments, sendComment }) {
           <div className={styles.header}>
             <span className={styles.name}>{user.alias}</span> <span className={styles.name}>{user.shortBio}</span>
           </div>
-          <IconButton className={styles.reportButton}>Report</IconButton>
+          <IconButton className={styles.reportButton} onClick={reportClicked}>
+            Report
+          </IconButton>
         </div>
 
         {/* body */}

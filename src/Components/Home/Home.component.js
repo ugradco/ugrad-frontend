@@ -41,6 +41,23 @@ function HomeComponent({
       });
   };
 
+  const reportAPI = (postId) => {
+    apiGenerator("post")(API_ENDPOINTS.REPORT, {
+      postId,
+      reason: "BAD_WORDS",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.error("There has been a problem with your vote operation.");
+        }
+        console.log("Successfully reported.");
+        feedAPI({});
+      })
+      .catch((error) => {
+        console.error("There has been a problem with your report operation:", error);
+      });
+  };
+
   const sendComment = (postId, message) => {
     apiGenerator("post")(API_ENDPOINTS.SEND_COMMENT, {
       postId,
@@ -96,6 +113,7 @@ function HomeComponent({
               <Post
                 post={post}
                 key={post._id}
+                reportAPI={reportAPI}
                 upvoteAPI={upvoteAPI}
                 text={post.text}
                 user={post.user}

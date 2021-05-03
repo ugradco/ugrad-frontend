@@ -8,6 +8,7 @@ export const API_ENDPOINTS = {
   SEND_POST: "/posts",
   SEND_COMMENT: "/posts/comment",
   FEED: "/posts/feed",
+  REPORT: "/posts/report",
   UPVOTE: (postId) => `/posts/upvote/${postId}`,
   UPDATE: (userId) => `/users/${userId}`,
   TAGS: "/tags",
