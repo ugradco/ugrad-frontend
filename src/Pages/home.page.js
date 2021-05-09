@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { saveItemToLocalStorage, removeItemFromLocalStorage } from "Utils/Helpers/storage.helpers";
 import HomeComponent from "../Components/Home/Home.component";
 import { REQUEST_STATUS } from "../Constants/global.constants";
 import { getFeedAPI } from "../Actions/Post.actions";
@@ -34,10 +35,11 @@ function HomePage(props) {
   }, [location.search]);
 
   const sendPost = () => {
+    console.log(form);
     apiGenerator("post")(API_ENDPOINTS.SEND_POST, {
       isPublic: form.isPublic,
       text: form.text,
-      tags: filteredArray,
+      tags: form.tags,
     })
       .then((response) => {
         if (!response.ok) {
@@ -87,10 +89,6 @@ function HomePage(props) {
     sendPost();
   };
 
-  const filteredArray = form.tags.filter(function (item, pos) {
-    return form.tags.indexOf(item) === pos;
-  });
-
   const handleChange = (e) => {
     setForm({
       isPublic,
@@ -107,22 +105,25 @@ function HomePage(props) {
     editshortBio(value);
   };
 
-  const handleTagChange = (e) => {
-    const selectedTags = [...form.tags, e.target.value];
-    const filteredSelectedTags = selectedTags.filter(function (item, pos) {
-      return selectedTags.indexOf(item) === pos;
-    });
-
+  const handleTagChange = (newValue, actionMeta) => {
+    // console.group("Value Changed");
+    // console.log(newValue);
+    // console.log(`action: ${actionMeta.action}`);
+    // console.groupEnd();
+    let tagOptions = [];
+    for (let i = 0; i < newValue.length; i += 1) {
+      tagOptions = [...tagOptions, newValue[i].value];
+    }
     setForm({
       isPublic: form.isPublic,
       text: form.text,
-      tags: filteredSelectedTags,
+      tags: tagOptions,
     });
-    console.log(form);
   };
   const onPrivacyChange = () => {
     isPublicSet(!isPublic);
-    console.log("set publicity", isPublic);
+    removeItemFromLocalStorage("isPublic");
+    saveItemToLocalStorage("isPublic", !isPublic);
   };
 
   return (

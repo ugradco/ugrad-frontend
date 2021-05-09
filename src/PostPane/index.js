@@ -1,4 +1,5 @@
 import React from "react";
+import CreatableSelect from "react-select/creatable";
 import styles from "./style.module.css";
 import Photo from "../Components/Photo";
 import Input from "../Components/InputBox/Input.component";
@@ -18,10 +19,17 @@ function PostPane({
   handleTagChange,
 }) {
   const [isText, setIsText] = React.useState(true);
+  let tagOptions = [];
 
   const onNext = () => {
     setIsText(false);
   };
+
+  if (tags) {
+    for (let i = 0; i < tags.tags.length; i += 1) {
+      tagOptions = [...tagOptions, { value: tags.tags[i].name, label: tags.tags[i].name }];
+    }
+  }
   return (
     <div className={styles.overlay}>
       {isText ? (
@@ -67,14 +75,7 @@ function PostPane({
           <div className={styles.input}>
             <div />
             <div className={styles.tags}>
-              {tags &&
-                tags.tags.map((tag) => {
-                  return (
-                    <Topic className={styles.topic} onClick={handleTagChange} value={tag.name}>
-                      {tag.name}
-                    </Topic>
-                  );
-                })}
+              <CreatableSelect isMulti onChange={handleTagChange} options={tagOptions} />
             </div>
             <div />
           </div>

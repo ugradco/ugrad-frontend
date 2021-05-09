@@ -11,19 +11,17 @@ function WriteCommentModal({
   author,
   placeholder,
   onInputChange = () => {},
-  onSubmit = () => { },
-  onShow = () => { },
+  onSubmit = () => {},
+  onShow = () => {},
 }) {
   if (inputType === "new") {
     return (
       <div className={styles.comments}>
-
         <div className={styles.modal}>
           <div className={styles.avatar}>
             <Photo />
           </div>
           <div />
-     
           <div className={styles.commentBox}>
             <Input
               style={styles.textarea}

@@ -53,6 +53,11 @@
   font-size: 20px;
 }
 
+.tags {
+  color: var(--color-primary);
+  font-size: 12px;
+}
+
 .upButton {
   display: flex;
   flex-direction: column;
@@ -70,3 +75,9 @@
   display: grid;
   grid-template-columns: 80px 1fr;
 }
+
+.secondaryComment {
+  margin-left:20px;
+}
+
+

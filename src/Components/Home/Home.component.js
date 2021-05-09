@@ -119,6 +119,8 @@ function HomeComponent({
                 user={post.user}
                 comments={post.comments}
                 sendComment={sendComment}
+                tags={post.tags}
+                feedAPI={feedAPI}
                 {...post}
               />
             );

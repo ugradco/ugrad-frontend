@@ -14,6 +14,7 @@ function PostModal({
   onInputChange,
   onKeyPress,
   handleTagChange,
+  feedAPI,
 }) {
   const [isShowModal, isShowModalSet] = React.useState(false);
 

@@ -8,7 +8,7 @@ import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component"
 import CommentModal from "../CommentModal/CommentModal.component";
 import ThemeButton from "../ThemeButton/index";
 
-function Post({ post, upvoteAPI, reportAPI, text, user, comments, sendComment }) {
+function Post({ post, upvoteAPI, reportAPI, text, user, comments, sendComment, tags, feedAPI }) {
   const [showComments, setShowComments] = React.useState(false);
   const [upSelected, upSelectedSet] = React.useState(post.upvoted);
   const [message, setMessage] = React.useState("");
@@ -63,7 +63,11 @@ function Post({ post, upvoteAPI, reportAPI, text, user, comments, sendComment })
             {!upSelected && <Icon.Upvote />}
           </IconButton>
 
-          <div className={styles.content}>{text}</div>
+          <div className={styles.content}>
+            {text}
+            {"\n\n"}
+            <div className={styles.tags}>{tags && tags.map((tag) => `#${tag}    `)}</div>
+          </div>
         </div>
       </div>
       <ThemeButton className={styles.commentButton} onClick={onShow}>
@@ -85,7 +89,37 @@ function Post({ post, upvoteAPI, reportAPI, text, user, comments, sendComment })
           showComments &&
           comments.map((content) => {
             return (
-              content.message && <CommentModal user={content.user} key={content._id} inputValue={content.message} />
+              content.message && (
+                <div>
+                  <CommentModal
+                    user={content.user}
+                    key={content._id}
+                    inputValue={content.message}
+                    comments={content.comments}
+                    postId={post._id}
+                    commentId={content._id}
+                    feedAPI={feedAPI}
+                  />
+
+                  {content.comments &&
+                    content.comments.map((comContent) => {
+                      return (
+                        content.message && (
+                          <div className={styles.secondaryComment}>
+                            <CommentModal
+                              user={comContent.user}
+                              key={comContent._id}
+                              inputValue={comContent.message}
+                              comments={comContent.comments}
+                              feedAPI={feedAPI}
+                              isReplied
+                            />
+                          </div>
+                        )
+                      );
+                    })}
+                </div>
+              )
             );
           })}
       </div>

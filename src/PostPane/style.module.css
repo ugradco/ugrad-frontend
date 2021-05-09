@@ -120,8 +120,8 @@
 }
 
 .tags {
-  display: flex;
-  flex-wrap: wrap;
-  grid-gap: 10px;
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+  /*grid-gap: 10px;*/
 
 }
