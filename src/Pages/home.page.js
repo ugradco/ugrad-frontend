@@ -123,6 +123,7 @@ function HomePage(props) {
       tags: tagOptions,
     });
   };
+
   const onPrivacyChange = () => {
     isPublicSet(!isPublic);
     removeItemFromLocalStorage("isPublic");
