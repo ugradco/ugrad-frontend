@@ -14,10 +14,13 @@ function HomePage(props) {
   const [form, setForm] = useState({ isPublic: false, text: "", tags: [] });
   const [isPublic, isPublicSet] = React.useState(false);
   const [tagSelected, tagSelectedSet] = React.useState("");
+  let feed = [...post.feedCTX.data];
+  let currentPage = 0;
 
   useEffect(() => {
     if (post.feedCTX.status === REQUEST_STATUS.NOT_DEFINED) {
       getFeedAPI({});
+      feed = [...post.feedCTX.data];
     }
     if (user.userCTX.status === REQUEST_STATUS.NOT_DEFINED) {
       getUserAPI();
@@ -126,6 +129,19 @@ function HomePage(props) {
     saveItemToLocalStorage("isPublic", !isPublic);
   };
 
+  const nextPage = () => {
+    currentPage += 1;
+    console.log("page", currentPage);
+    getFeedAPI({ params: { page: currentPage } });
+    feed = [...feed, ...post.feedCTX.data];
+    console.log(feed);
+    return feed;
+  };
+
+  const availablePage = () => {
+    return post.feedCTX.data.length === 20;
+  };
+
   return (
     <div>
       <HomeComponent
@@ -133,6 +149,7 @@ function HomePage(props) {
         tags={tags.tagsCTX.tags}
         isPublic={isPublic}
         feedCTX={post.feedCTX}
+        feed={feed}
         onInputChange={handleChange}
         onKeyPress={onKeyPress}
         onPrivacyChange={onPrivacyChange}
@@ -140,6 +157,8 @@ function HomePage(props) {
         handleTagChange={handleTagChange}
         handleEditProfileName={handleEditProfileName}
         handleEditProfileBio={handleEditProfileBio}
+        nextPage={nextPage}
+        availablePage={availablePage}
         history={history}
       />
     </div>

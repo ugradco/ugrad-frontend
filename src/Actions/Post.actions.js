@@ -1,7 +1,7 @@
 import * as PostConstants from "Constants/post.constants";
 
 export const getFeedAPI = (postContent) => {
-  const { page = 0, params } = postContent;
+  const { page, params } = postContent;
 
   const requestPayload = {
     page,

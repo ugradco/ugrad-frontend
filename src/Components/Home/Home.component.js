@@ -1,5 +1,6 @@
 import React from "react";
 import { REQUEST_STATUS } from "Constants/global.constants";
+import InfiniteScroll from "react-infinite-scroll-component";
 import style from "./Home.module.css";
 import MainLayout from "../Layout/MainLayout.component";
 import Post from "../Post";
@@ -18,13 +19,14 @@ function HomeComponent({
   onKeyPress = () => {},
   onPrivacyChange,
   feedAPI,
+  feed,
   handleTagChange,
   handleEditProfileName,
   handleEditProfileBio,
+  nextPage,
+  availablePage,
   history,
 }) {
-  const feed = feedCTX.data;
-
   const upvoteAPI = (postId, upSelected) => {
     apiGenerator("post")(API_ENDPOINTS.UPVOTE(postId), {
       upvote: upSelected,
@@ -106,26 +108,38 @@ function HomeComponent({
       </div>
       <div className={style.section}>Feed</div>
 
-      <div className={style.feed}>
-        {feed &&
-          feed.map((post) => {
-            return (
-              <Post
-                post={post}
-                key={post._id}
-                reportAPI={reportAPI}
-                upvoteAPI={upvoteAPI}
-                text={post.text}
-                user={post.user}
-                comments={post.comments}
-                sendComment={sendComment}
-                tags={post.tags}
-                feedAPI={feedAPI}
-                {...post}
-              />
-            );
-          })}
-      </div>
+      <InfiniteScroll
+        dataLength={feed.length}
+        next={nextPage}
+        hasMore={availablePage}
+        loader="Loading..."
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>No more posts available to see.</b>
+          </p>
+        }
+      >
+        <div className={style.feed}>
+          {feed &&
+            feed.map((post) => {
+              return (
+                <Post
+                  post={post}
+                  key={post._id}
+                  reportAPI={reportAPI}
+                  upvoteAPI={upvoteAPI}
+                  text={post.text}
+                  user={post.user}
+                  comments={post.comments}
+                  sendComment={sendComment}
+                  tags={post.tags}
+                  feedAPI={feedAPI}
+                  {...post}
+                />
+              );
+            })}
+        </div>
+      </InfiniteScroll>
     </MainLayout>
   );
 }
