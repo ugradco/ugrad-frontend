@@ -6,7 +6,7 @@ import Photo from "../Photo";
 import styles from "./Profile.module.css";
 import IOSSwitch from "./IOSSwitch.component";
 
-function Profile({ user, onSubmit, onPrivacyChange, handleEditProfileName, handleEditProfileBio }) {
+function Profile({ user, onSignOut, onPrivacyChange, handleEditProfileName, handleEditProfileBio }) {
   return (
     <div className={styles.profile}>
       <div className={styles.avatar}>
@@ -45,7 +45,7 @@ function Profile({ user, onSubmit, onPrivacyChange, handleEditProfileName, handl
           <IOSSwitch onPrivacyChange={onPrivacyChange} />
           <a className={styles.publicity}>Public </a>
         </div>
-        <ThemeButton className={styles.signOutButton} onClick={onSubmit}>
+        <ThemeButton className={styles.signOutButton} onClick={onSignOut}>
           Sign Out
         </ThemeButton>
       </div>

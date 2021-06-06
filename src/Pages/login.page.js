@@ -5,7 +5,7 @@ import { loginAPI } from "Actions/Login.actions";
 import Login from "Components/Login/Login.component";
 import VerificationLogin from "Components/Login/VerificationLogin.component";
 import LoginLayout from "Components/Layout/LoginLayout.component";
-import Loading from "Components/loading";
+
 import { API_ENDPOINTS } from "Constants/api.constants";
 import { apiGenerator } from "Utils";
 import { LOCAL_STORAGE, REQUEST_STATUS } from "../Constants/global.constants";
@@ -13,13 +13,11 @@ import { LOCAL_STORAGE, REQUEST_STATUS } from "../Constants/global.constants";
 function LoginPage(props) {
   const { loginAPI, login, history } = props;
 
-  const [form, setForm] = useState({ email: "" });
-  const [token, setToken] = useState("");
+  const [form, setForm] = useState({ email: "", token: "" });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLogging, setIsLogging] = useState(false);
-  const [errors, setErrors] = useState({});
-
-  console.log("login", login);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (login.loginCTX.status === REQUEST_STATUS.SUCCESS) {
@@ -30,12 +28,7 @@ function LoginPage(props) {
   }, [login.loginCTX.status]);
 
   // TODO: server error 404
-  const sendEmail = () => {
-    // loginAPI({
-    //   email: form.email,
-    // });
-
-    console.log(JSON.stringify(form.email));
+  const sendEmail = async () => {
     apiGenerator("post")(API_ENDPOINTS.REGISTER, {
       email: form.email,
     })
@@ -46,50 +39,36 @@ function LoginPage(props) {
         }
         setIsSubmitting(false);
         setIsLogging(true);
-        console.log("successfully registered");
       })
       .catch((error) => {
-        console.error("There has been a problem with your fetch operation:", error);
+        console.error("There has been a problem during login", error);
+        setError("There was an error, please try again later");
       });
   };
 
-  const sendId = async () => {
-    loginAPI({
-      email: form.email,
-      token,
-    });
-    console.log("sendId", JSON.stringify(form.email));
-  };
-
   const handleRegister = (e) => {
+    e.preventDefault();
     if (form.email === "") {
       alert("Email is required!");
     } else {
-      console.log("handleRegister", form.email);
+      setIsSubmitting(true);
       sendEmail();
-      e.preventDefault();
       // const errs = validate();
       // setErrors(errs);
-      setIsSubmitting(true);
     }
   };
 
   const handleLogin = (e) => {
-    if (token === "") {
+    if (form.token === "") {
       alert("Token is required!");
     } else {
-      sendId();
+      isSubmitting(true);
+      loginAPI(form);
       e.preventDefault();
       // const errs = validate();
       // setErrors(errs);
       setIsLogging(true);
     }
-  };
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
   };
 
   const validate = () => {
@@ -98,45 +77,21 @@ function LoginPage(props) {
     if (!form.email) {
       err.email = "Email is required!";
     }
-    if (form.email && !token) {
-      err.token = "Token is required!";
-    }
     return err;
   };
 
-  if (isSubmitting) {
-    return <Loading active inline="centered" />;
-  } else if (!isLogging) {
-    return (
-      <LoginLayout>
-        <Login
-          inputValue={form.email}
-          inputType="email"
-          onInputChange={handleChange}
-          onButtonClick={handleRegister}
-          inputPlaceHolder="Enter email address."
-        />
-      </LoginLayout>
-    );
-  }
   return (
-    <div>
-      {isSubmitting ? (
-        <Loading active inline="centered" />
-      ) : (
-        <LoginLayout>
-          <VerificationLogin
-            inputValue={token}
-            inputType="token"
-            onInputChange={(value) => {
-              setToken(value);
-            }}
-            onButtonClick={handleLogin}
-            inputPlaceHolder=""
-          />
-        </LoginLayout>
-      )}
-    </div>
+    <LoginLayout>
+      <Login
+        isLoading={isSubmitting}
+        isRegister={!isLogging}
+        form={form}
+        setForm={setForm}
+        handleRegister={handleRegister}
+        handleLogin={handleLogin}
+        inputPlaceHolder="Enter email address."
+      />
+    </LoginLayout>
   );
 }
 

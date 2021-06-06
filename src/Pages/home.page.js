@@ -58,36 +58,6 @@ function HomePage(props) {
       });
   };
 
-  const editUserName = (value) => {
-    apiGenerator("patch")(API_ENDPOINTS.UPDATE(user.userCTX.user._id), {
-      name: value,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          console.error("There has been a problem with your patch operation.");
-        }
-        getUserAPI();
-      })
-      .catch((error) => {
-        console.error("There has been a problem with your patch operation:", error);
-      });
-  };
-
-  const editshortBio = (value) => {
-    apiGenerator("patch")(API_ENDPOINTS.UPDATE(user.userCTX.user._id), {
-      shortBio: value,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          console.error("There has been a problem with your patch operation.");
-        }
-        getUserAPI();
-      })
-      .catch((error) => {
-        console.error("There has been a problem with your patch operation:", error);
-      });
-  };
-
   const onKeyPress = () => {
     sendPost();
   };
@@ -98,14 +68,6 @@ function HomePage(props) {
       text: e.target.value,
       tags: [],
     });
-  };
-
-  const handleEditProfileName = (value) => {
-    editUserName(value);
-  };
-
-  const handleEditProfileBio = (value) => {
-    editshortBio(value);
   };
 
   const handleTagChange = (newValue, actionMeta) => {

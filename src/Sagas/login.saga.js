@@ -42,9 +42,8 @@ function* loginAPISaga(action) {
   }
 }
 
-function* logoutAPISaga(action) {
-  const { requestPayload } = action.payload;
-  const api = apiGenerator("post")(API_ENDPOINTS.LOGOUT, requestPayload);
+function* logoutAPISaga() {
+  const api = apiGenerator("post")(API_ENDPOINTS.LOGOUT);
   try {
     removeKeysFromLocalStorage();
     yield api;
