@@ -4,10 +4,11 @@ import { apiGenerator } from "Utils";
 import { getUserAPI } from "Actions/User.actions";
 import { logoutAPI } from "Actions/Login.actions";
 import { connect } from "react-redux";
-import { UgradLogo } from "../icons";
+import { Ugrad } from "../icons";
+import Logo from "Assets/images/logo.png";
 import styles from "./sidebar.module.css";
 import TopicsBar from "../TopicsBar/TopicsBar.component";
-import Profile from "../Profile/Profile.component";
+import Profile from "../Profile/ProfileHud.component";
 
 function Sidebar({ user, getUserAPI, logoutAPI, tags, onPrivacyChange, history }) {
   const editUserName = (value) => {
@@ -51,8 +52,7 @@ function Sidebar({ user, getUserAPI, logoutAPI, tags, onPrivacyChange, history }
   return (
     <div className={styles.sidebar}>
       <div className={styles.title}>
-        <UgradLogo />
-        ugrad
+        <img className={styles.logo} src={Logo} />
       </div>
       <TopicsBar style={styles.topicsBar} tags={tags} history={history} />
 

@@ -25,23 +25,23 @@
 
 .textarea {
   min-width: 80%;
-  margin: 5px 5px 15px 25px;
+  margin: 8px 5px 5px 15px;
   align-items: center;
-  height: 25px;
+  height: 15px;
   border: none;
   resize: none;
   color: var(--c-text-color);
   background-color: transparent;
   font-size: 1rem;
   font-family: var(--font);
+  outline: none;
 }
 
 .postButton {
   border: none;
-  margin: 5px 35px 5px 5px;
+
   max-width: 20px;
   color: inherit;
-  padding-right: 25px;
+  padding: 0;
   color: var(--color-text);
-  padding-bottom: 15px;
 }

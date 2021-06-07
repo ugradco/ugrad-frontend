@@ -1,20 +1,19 @@
-.searchBox{
+.searchBox {
   display: grid;
   grid-template-columns: 60px 1fr;
   border-radius: 30px;
   border-style: solid;
   border-width: 1px;
-  border-color: var(--c-border-color);
-  background: var(--color-feed-bg);
-  max-width: 400px;
-  margin: 10px auto auto auto;
+  border: none;
+  background: var(--color-search-bg);
 }
 
 .search {
-  height: 50px;
+  height: 35px;
   border: none;
   max-width: 90%;
-  background: var(--color-feed-bg);
+  background: transparent;
+  outline: none;
 }
 
 .searchButton {

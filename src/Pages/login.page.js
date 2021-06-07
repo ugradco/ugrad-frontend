@@ -62,7 +62,7 @@ function LoginPage(props) {
     if (form.token === "") {
       alert("Token is required!");
     } else {
-      isSubmitting(true);
+      setIsSubmitting(true);
       loginAPI(form);
       e.preventDefault();
       // const errs = validate();

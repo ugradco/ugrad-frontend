@@ -1,16 +1,15 @@
 import React from "react";
 import EdiText from "react-editext";
-import styled from "styled-components";
 import ThemeButton from "../ThemeButton";
-import Photo from "../Photo";
-import styles from "./Profile.module.css";
+import Photo from "../Avatar";
+import styles from "./ProfileHud.module.css";
 import IOSSwitch from "./IOSSwitch.component";
 
-function Profile({ user, onSignOut, onPrivacyChange, handleEditProfileName, handleEditProfileBio }) {
+function ProfileHud({ user, onSignOut, onPrivacyChange, handleEditProfileName, handleEditProfileBio }) {
   return (
     <div className={styles.profile}>
       <div className={styles.avatar}>
-        <Photo />
+        <Photo name={user && user.name} />
         <div className={styles.header}>
           {/* // TODO: shortBio + publicity after fixing the backend */}
           {user && (
@@ -43,7 +42,7 @@ function Profile({ user, onSignOut, onPrivacyChange, handleEditProfileName, hand
       <div className={styles.footer}>
         <div>
           <IOSSwitch onPrivacyChange={onPrivacyChange} />
-          <a className={styles.publicity}>Public </a>
+          <p className={styles.publicity}>Public </p>
         </div>
         <ThemeButton className={styles.signOutButton} onClick={onSignOut}>
           Sign Out
@@ -52,4 +51,4 @@ function Profile({ user, onSignOut, onPrivacyChange, handleEditProfileName, hand
     </div>
   );
 }
-export default Profile;
+export default ProfileHud;

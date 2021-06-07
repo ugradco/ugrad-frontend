@@ -20,6 +20,7 @@
   margin: 0px 10px 10px 10px;
   font-family: var(--font);
   font-size: 18px;
+  padding: 5px 10px;
 }
 
 .topic:hover {

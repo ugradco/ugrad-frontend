@@ -15,13 +15,12 @@
   grid-area: avatar;
 }
 
-
 .close {
   color: var(--color-post-bg);
 }
 
 .post {
-  padding: 12px 15px;
+  padding: 30px 15px;
   width: 100%;
   max-width: 600px;
   background-color: var(--color-pane);
@@ -34,13 +33,11 @@
   display: grid;
   margin-bottom: 5px;
   grid-template-columns: 60px 1fr 60px;
-
 }
 
 .input {
   display: grid;
   grid-template-columns: 60px 1fr 60px;
-
 }
 
 .body {
@@ -48,7 +45,6 @@
   display: grid;
   grid-template-columns: 60px 1fr 60px;
   font-size: 1rem;
-
 }
 
 .header {
@@ -73,20 +69,18 @@
 
 .topic {
   background-color: var(--color-primary);
-  color: var(--color-text-bg);;
+  color: var(--color-text-bg);
   border-radius: 10px;
-  border-color:  white;
+  border-color: white;
   margin: 0px 10px 10px 10px;
   font-family: var(--font);
   font-size: 18px;
   transition-duration: var(--fade) !important;
-
 }
 
 .closeButton {
   cursor: pointer;
   margin: 5px 15px auto auto;
-
 }
 
 .closeButton svg {
@@ -117,4 +111,6 @@
   width: 100%;
   font-family: var(--font);
   /*text-align: center;*/
+  border: none;
+  padding: 10px;
 }

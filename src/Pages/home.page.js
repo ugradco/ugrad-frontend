@@ -118,8 +118,6 @@ function HomePage(props) {
         onPrivacyChange={onPrivacyChange}
         feedAPI={getFeedAPI}
         handleTagChange={handleTagChange}
-        handleEditProfileName={handleEditProfileName}
-        handleEditProfileBio={handleEditProfileBio}
         nextPage={nextPage}
         availablePage={availablePage}
         history={history}

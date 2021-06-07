@@ -2,7 +2,7 @@ import React from "react";
 
 import { getItemFromLocalStorage } from "Utils/Helpers/storage.helpers";
 import styles from "./CommentModal.module.css";
-import Photo from "../Photo/index";
+import Photo from "../Avatar/index";
 import ThemeButton from "../ThemeButton/index";
 import Input from "../InputBox/Input.component";
 import { apiGenerator } from "../../Utils";

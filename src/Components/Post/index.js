@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./style.module.css";
-import Photo from "../Photo";
+import Photo from "../Avatar";
 import IconButton from "../Button/icon";
 import * as Icon from "../icons";
 import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component";
@@ -40,7 +40,7 @@ function Post({ post, upvoteAPI, reportAPI, text, user, comments, sendComment, t
       <div className={styles.post}>
         {/* avatar */}
         <div className={styles.avatar}>
-          <Photo />
+          <Photo name={user.alias} />
           <div className={styles.header}>
             <span className={styles.name}>{user.alias}</span> <span className={styles.name}>{user.shortBio}</span>
           </div>

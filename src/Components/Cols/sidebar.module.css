@@ -20,7 +20,7 @@
   margin-right: auto;
   margin-bottom: 20px;
   margin-top: auto;
-  width:90%;
+  width: 90%;
 }
 
 .title {
@@ -33,4 +33,8 @@
 .title svg {
   font-size: 50px;
   margin-left: 20px;
+}
+
+.logo {
+  height: 60px;
 }

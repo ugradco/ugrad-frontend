@@ -8,6 +8,7 @@ const IOSSwitch = withStyles((theme) => ({
     height: 25,
     padding: 0,
     margin: theme.spacing(1),
+    overflow: "visible",
   },
   switchBase: {
     padding: 1,

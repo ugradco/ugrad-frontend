@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 // I usually already have this, to include a CSS
 // reset, set border-box, and other global concerns.
 const GlobalStyles = createGlobalStyle`
-  html {
+  html, p, input {
     --color-text: #000000;
     --color-background: #FFFFFF;
     --color-primary: #343264;
@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
     --color-text-bg: #F0F2F5;
     --color-selected: #1DA1F2;
     --color-feed-bg: #FBFBFB;
+    --color-search-bg: #F7F7F6;
     --color-post-bg: #F0F2F5;
     --color-post-area-bg: #F7F7F6;
     --color-hover: #F7F7F6;
@@ -18,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
     --fade: .3s;
     --font: Roboto;
     --font-logo: system-ui;
+    font-family: var(--font);
   }
 `;
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./WriteCommentModal.module.css";
-import Photo from "../Photo/index";
+import Photo from "../Avatar/index";
 import ThemeButton from "../ThemeButton/index";
 import Input from "../InputBox/Input.component";
 

@@ -7,8 +7,7 @@
   display: grid;
   grid-template-columns: 60px 1fr 60px;
   margin-top: 6px;
-  margin-left: 20px;
-
+  padding: 10px;
 }
 
 .header {
@@ -54,8 +53,10 @@
   border-style: none;
 }
 
-.publicity{
+.publicity {
   color: var(--color-primary);
   font-family: var(--font);
   font-weight: bold;
+  margin: 0;
+  display: inline;
 }
