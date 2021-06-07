@@ -126,6 +126,7 @@ function HomeComponent({
                   upvoteAPI={upvoteAPI}
                   text={post.text}
                   user={post.user}
+                  registeredUser={user}
                   comments={post.comments}
                   sendComment={sendComment}
                   tags={post.tags}

@@ -8,7 +8,7 @@ import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component"
 import CommentModal from "../CommentModal/CommentModal.component";
 import ThemeButton from "../ThemeButton/index";
 
-function Post({ post, upvoteAPI, reportAPI, text, user, comments, sendComment, tags, feedAPI }) {
+function Post({ post, upvoteAPI, reportAPI, text, user, registeredUser, comments, sendComment, tags, feedAPI }) {
   const [showComments, setShowComments] = React.useState(false);
   const [upSelected, upSelectedSet] = React.useState(post.upvoted);
   const [message, setMessage] = React.useState("");
@@ -79,6 +79,7 @@ function Post({ post, upvoteAPI, reportAPI, text, user, comments, sendComment, t
       </ThemeButton>
       <div>
         <WriteCommentModal
+          user={registeredUser}
           inputType="new"
           inputValue={message}
           placeholder="Write a comment..."

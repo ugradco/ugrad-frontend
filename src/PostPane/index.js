@@ -34,7 +34,7 @@ function PostPane({
       {isText ? (
         <div className={styles.post}>
           <div className={styles.avatar}>
-            <Photo />
+            <Photo name={user.alias} />
             <div className={styles.header}>
               <span className={styles.name}>{user && user.name}</span>{" "}
               <span className={styles.shortBio}>{user && user.shortBio}</span>

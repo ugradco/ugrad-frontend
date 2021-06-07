@@ -85,6 +85,7 @@ function HomePage(props) {
     isPublicSet(!isPublic);
     removeItemFromLocalStorage("isPublic");
     saveItemToLocalStorage("isPublic", !isPublic);
+    // need to change avatar initials with every change.
   };
 
   const nextPage = () => {

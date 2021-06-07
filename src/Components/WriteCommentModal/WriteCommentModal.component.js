@@ -5,13 +5,20 @@ import Photo from "../Avatar/index";
 import ThemeButton from "../ThemeButton/index";
 import Input from "../InputBox/Input.component";
 
-function WriteCommentModal({ inputType, inputValue, placeholder, onInputChange = () => {}, onSubmit = () => {} }) {
+function WriteCommentModal({
+  user,
+  inputType,
+  inputValue,
+  placeholder,
+  onInputChange = () => {},
+  onSubmit = () => {},
+}) {
   if (inputType === "new") {
     return (
       <div className={styles.comments}>
         <div className={styles.modal}>
           <div className={styles.avatar}>
-            <Photo />
+            <Photo name={user && user.alias} />
           </div>
           <div />
           <div className={styles.commentBox}>
