@@ -42,7 +42,7 @@ function Post({ post, upvoteAPI, reportAPI, text, user, comments, sendComment, t
         <div className={styles.avatar}>
           <Photo name={user.alias} />
           <div className={styles.header}>
-            <span className={styles.name}>{user.alias}</span> <span className={styles.name}>{user.shortBio}</span>
+            <span className={styles.name}>{user.alias}</span> <span className={styles.shortBio}>{user.shortBio}</span>
           </div>
           <IconButton className={styles.reportButton} onClick={reportClicked}>
             Report

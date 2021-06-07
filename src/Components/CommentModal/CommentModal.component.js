@@ -27,7 +27,6 @@ function CommentModal({ inputValue, user, isReplied = false, postId, commentId, 
         if (!response.ok) {
           console.error("There has been a problem with your reply operation.");
         }
-        console.log("Successfully replied .");
         setshowReplyModal(!showReplyModal);
         feedAPI({});
       })
@@ -44,9 +43,9 @@ function CommentModal({ inputValue, user, isReplied = false, postId, commentId, 
   return (
     <div className={styles.modal}>
       <div className={styles.avatar}>
-        <Photo />
+        <Photo name={user.alias} />
         <div className={styles.header}>
-          <span className={styles.name}>{user.alias}</span>
+          <span className={styles.name}>{user.alias}</span> <span className={styles.shortBio}>{user.shortBio}</span>
         </div>
       </div>
       <div className={styles.body}>
