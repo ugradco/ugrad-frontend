@@ -1,6 +1,4 @@
 import React from "react";
-
-import ThemeButton from "Components/ThemeButton";
 import styles from "./TopicsBar.module.css";
 import Topic from "../Topic/Topic.component";
 

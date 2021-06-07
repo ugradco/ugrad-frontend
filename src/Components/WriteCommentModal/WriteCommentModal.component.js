@@ -5,15 +5,7 @@ import Photo from "../Avatar/index";
 import ThemeButton from "../ThemeButton/index";
 import Input from "../InputBox/Input.component";
 
-function WriteCommentModal({
-  inputType,
-  inputValue,
-  author,
-  placeholder,
-  onInputChange = () => {},
-  onSubmit = () => {},
-  onShow = () => {},
-}) {
+function WriteCommentModal({ inputType, inputValue, placeholder, onInputChange = () => {}, onSubmit = () => {} }) {
   if (inputType === "new") {
     return (
       <div className={styles.comments}>

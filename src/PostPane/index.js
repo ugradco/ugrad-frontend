@@ -5,7 +5,6 @@ import Photo from "../Components/Avatar";
 import Input from "../Components/InputBox/Input.component";
 import IconButton from "../Components/Button/icon";
 import { Close } from "../Components/icons";
-import Topic from "../Components/Topic/Topic.component";
 
 function PostPane({
   user,

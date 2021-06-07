@@ -34,7 +34,6 @@ function HomeComponent({
         if (!response.ok) {
           console.error("There has been a problem with your vote operation.");
         }
-        console.log("Successfully upvoted.");
         feedAPI({});
       })
       .catch((error) => {
@@ -51,7 +50,6 @@ function HomeComponent({
         if (!response.ok) {
           console.error("There has been a problem with your vote operation.");
         }
-        console.log("Successfully reported.");
         feedAPI({});
       })
       .catch((error) => {
@@ -69,7 +67,6 @@ function HomeComponent({
         if (!response.ok) {
           console.error("There has been a problem with your comment operation.");
         }
-        console.log("Successfully upvoted.");
         feedAPI({});
       })
       .catch((error) => {

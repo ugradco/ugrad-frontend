@@ -15,7 +15,6 @@ function HomePage(props) {
 
   const [currentPage, setCurrentPage] = React.useState(0);
   const [isPublic, isPublicSet] = React.useState(false);
-  const [tagSelected, tagSelectedSet] = React.useState("");
   let feed = [...post.feedCTX.data];
 
   useEffect(() => {
@@ -33,13 +32,11 @@ function HomePage(props) {
 
   useEffect(() => {
     if (location.search !== "") {
-      console.log(location.search.substring(8));
       getFeedAPI({ params: { tags: location.search.substring(8) } });
     }
   }, [location.search]);
 
   const sendPost = () => {
-    console.log(form);
     apiGenerator("post")(API_ENDPOINTS.SEND_POST, {
       isPublic: form.isPublic,
       text: form.text,
@@ -49,10 +46,7 @@ function HomePage(props) {
         if (!response.ok) {
           console.error("There has been a problem with your fetch operation.");
         }
-        console.log("Successfully posted.");
-        console.log("text", form.text);
         window.location.reload();
-        // TODO: PostAPI ile baglanacak.
       })
       .catch((error) => {
         console.error("There has been a problem with your fetch operation:", error);
@@ -94,7 +88,6 @@ function HomePage(props) {
   };
 
   const nextPage = () => {
-    console.log("page", currentPage);
     getFeedAPI({ params: { page: currentPage + 1 }, isLoadMore: true });
     setCurrentPage(currentPage + 1);
     return feed;

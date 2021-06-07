@@ -3,12 +3,11 @@ import { connect } from "react-redux";
 import { loginAPI } from "Actions/Login.actions";
 
 import Login from "Components/Login/Login.component";
-import VerificationLogin from "Components/Login/VerificationLogin.component";
 import LoginLayout from "Components/Layout/LoginLayout.component";
 
 import { API_ENDPOINTS } from "Constants/api.constants";
 import { apiGenerator } from "Utils";
-import { LOCAL_STORAGE, REQUEST_STATUS } from "../Constants/global.constants";
+import { REQUEST_STATUS } from "../Constants/global.constants";
 
 function LoginPage(props) {
   const { loginAPI, login, history } = props;
@@ -28,7 +27,7 @@ function LoginPage(props) {
   }, [login.loginCTX.status]);
 
   // TODO: server error 404
-  const sendEmail = async () => {
+  const sendEmail = () => {
     apiGenerator("post")(API_ENDPOINTS.REGISTER, {
       email: form.email,
     })

@@ -1,9 +1,7 @@
 import React from "react";
 
 import styles from "./PostModal.module.css";
-import Input from "../InputBox/Input.component";
 import PostPane from "../../PostPane";
-import Post from "../Post";
 
 function PostModal({
   user,

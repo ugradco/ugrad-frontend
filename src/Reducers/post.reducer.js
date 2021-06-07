@@ -28,7 +28,6 @@ export default function feed(state = initialState, action) {
 
 function feedAPISuccess(state, action) {
   const { posts, isLoadMore, hasMore } = action.payload;
-  console.log("feedAPISuccess", posts, isLoadMore);
   return {
     ...state,
     feedCTX: {
