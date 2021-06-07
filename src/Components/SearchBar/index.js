@@ -20,17 +20,22 @@ function SearchBar({ tags, feedAPI }) {
     }
   };
 
+  const onSearchClick = () => {
+    feedAPI({ params: { tags: tag, search: searchText } });
+    setShowTags(false);
+  };
+
   const handleChange = (e) => {
     setSearchText(e.target.value);
   };
 
   const onClick = () => {
-    setShowTags(true);
+    setShowTags(!showTags);
   };
 
   return (
     <div className={style.searchBox}>
-      <IconButton className={style.searchButton}>
+      <IconButton className={style.searchButton} onClick={onSearchClick}>
         <Icon.Search />
       </IconButton>
       <input
@@ -40,17 +45,17 @@ function SearchBar({ tags, feedAPI }) {
         onKeyPress={onKeyPress}
         type="text"
         id="header-search"
-        placeholder="Search in Post and Tags"
+        placeholder="Search UGrad"
         name="s"
       />
       <div className={style.tags}>
-        {/* <h1 className={style.topicHeader}>Suggested Topics</h1> */}
+        {showTags && <h1 className={style.topicHeader}>Suggested Topics</h1>}
         {showTags &&
           tags &&
           tags.tags.map((tag) => {
             return (
               <Topic key={tag.name} className={style.topic} onClick={selectTag}>
-                {tag.name}
+                {tag.name.toUpperCase()}
               </Topic>
             );
           })}
