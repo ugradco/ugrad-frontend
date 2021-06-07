@@ -12,10 +12,11 @@ import { API_ENDPOINTS } from "../Constants/api.constants";
 function HomePage(props) {
   const { post, user, tags, getFeedAPI, getUserAPI, getTagsAPI, history, location } = props;
   const [form, setForm] = useState({ isPublic: false, text: "", tags: [] });
+
+  const [currentPage, setCurrentPage] = React.useState(0);
   const [isPublic, isPublicSet] = React.useState(false);
   const [tagSelected, tagSelectedSet] = React.useState("");
   let feed = [...post.feedCTX.data];
-  let currentPage = 0;
 
   useEffect(() => {
     if (post.feedCTX.status === REQUEST_STATUS.NOT_DEFINED) {
@@ -93,16 +94,10 @@ function HomePage(props) {
   };
 
   const nextPage = () => {
-    currentPage += 1;
     console.log("page", currentPage);
-    getFeedAPI({ params: { page: currentPage } });
-    feed = [...feed, ...post.feedCTX.data];
-    console.log(feed);
+    getFeedAPI({ params: { page: currentPage + 1 }, isLoadMore: true });
+    setCurrentPage(currentPage + 1);
     return feed;
-  };
-
-  const availablePage = () => {
-    return post.feedCTX.data.length === 20;
   };
 
   return (
@@ -119,7 +114,6 @@ function HomePage(props) {
         feedAPI={getFeedAPI}
         handleTagChange={handleTagChange}
         nextPage={nextPage}
-        availablePage={availablePage}
         history={history}
       />
     </div>

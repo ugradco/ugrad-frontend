@@ -24,7 +24,6 @@ function HomeComponent({
   handleEditProfileName,
   handleEditProfileBio,
   nextPage,
-  availablePage,
   history,
 }) {
   const upvoteAPI = (postId, upSelected) => {
@@ -108,38 +107,38 @@ function HomeComponent({
       </div>
       <div className={style.section}>Feed</div>
 
-      {/* <InfiniteScroll */}
-      {/*  dataLength={feed.length} */}
-      {/*  next={nextPage} */}
-      {/*  hasMore={availablePage} */}
-      {/*  loader="Loading..." */}
-      {/*  endMessage={ */}
-      {/*    <p style={{ textAlign: "center" }}> */}
-      {/*      <b>No more posts available to see.</b> */}
-      {/*    </p> */}
-      {/*  } */}
-      {/* > */}
-      <div className={style.feed}>
-        {feed &&
-          feed.map((post) => {
-            return (
-              <Post
-                post={post}
-                key={post._id}
-                reportAPI={reportAPI}
-                upvoteAPI={upvoteAPI}
-                text={post.text}
-                user={post.user}
-                comments={post.comments}
-                sendComment={sendComment}
-                tags={post.tags}
-                feedAPI={feedAPI}
-                {...post}
-              />
-            );
-          })}
-      </div>
-      {/* </InfiniteScroll> */}
+      <InfiniteScroll
+        dataLength={feed.length}
+        next={nextPage}
+        hasMore={feedCTX.hasMore}
+        loader="Loading..."
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>No more posts available to see.</b>
+          </p>
+        }
+      >
+        <div className={style.feed}>
+          {feed &&
+            feed.map((post) => {
+              return (
+                <Post
+                  post={post}
+                  key={post._id}
+                  reportAPI={reportAPI}
+                  upvoteAPI={upvoteAPI}
+                  text={post.text}
+                  user={post.user}
+                  comments={post.comments}
+                  sendComment={sendComment}
+                  tags={post.tags}
+                  feedAPI={feedAPI}
+                  {...post}
+                />
+              );
+            })}
+        </div>
+      </InfiniteScroll>
     </MainLayout>
   );
 }

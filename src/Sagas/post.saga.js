@@ -8,18 +8,18 @@ import * as PostConstants from "Constants/post.constants";
 import { getStatusCodeFamily, apiErrorHandler } from "Utils/Helpers/saga.helpers";
 
 function* feedAPISaga(action) {
-  const { requestPayload } = action.payload;
-  const api = apiGenerator("get")(API_ENDPOINTS.FEED, requestPayload);
+  const { params, isLoadMore } = action.payload;
+  const api = apiGenerator("get")(API_ENDPOINTS.FEED, { params });
 
   try {
     const response = yield api;
 
     if (getStatusCodeFamily(response.status) === STATUS_TYPE.SUCCESS) {
-      const { posts } = response.data;
+      const { posts, hasMore } = response.data;
 
       yield put({
         type: PostConstants.FEED_API_SUCCESS,
-        payload: { posts },
+        payload: { posts, isLoadMore, hasMore },
       });
     } else {
       const error = apiErrorHandler({ response });

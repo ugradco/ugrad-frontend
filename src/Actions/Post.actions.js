@@ -1,16 +1,11 @@
 import * as PostConstants from "Constants/post.constants";
 
 export const getFeedAPI = (postContent) => {
-  const { page, params } = postContent;
-
-  const requestPayload = {
-    page,
-    params,
-  };
+  const { params, isLoadMore } = postContent;
 
   return {
     type: PostConstants.FEED_API_PENDING,
-    payload: { requestPayload },
+    payload: { params, isLoadMore },
   };
 };
 
