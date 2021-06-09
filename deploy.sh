@@ -13,7 +13,7 @@ echo "Build completed"
 
 AWS_S3_BUCKET_NAME="app.ugrad.co"
 AWS_PROFILE_NAME="ugrad"
-AWS_CLOUDFRONT_DISTRIBUTION_ID="E2PINOV8IRFEEB"
+AWS_CLOUDFRONT_DISTRIBUTION_ID="E2NK08GKZ7440C"
 
 echo "Deploying vagon frontend to $1"
 aws s3 cp --recursive --profile $AWS_PROFILE_NAME --acl public-read build/ s3://$AWS_S3_BUCKET_NAME/

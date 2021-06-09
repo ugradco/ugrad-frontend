@@ -9,10 +9,11 @@ import Logo from "Assets/images/logo.png";
 import styles from "./sidebar.module.css";
 import TopicsBar from "../TopicsBar/TopicsBar.component";
 import Profile from "../Profile/ProfileHud.component";
+import routes from "Constants/route.constants";
 
 function Sidebar({ user, getUserAPI, logoutAPI, tags, onPrivacyChange, history }) {
   const editUserName = (value) => {
-    apiGenerator("patch")(API_ENDPOINTS.UPDATE(user.userCTX.user._id), {
+    apiGenerator("patch")(API_ENDPOINTS.UPDATE(user._id), {
       name: value,
     })
       .then((response) => {
@@ -27,7 +28,7 @@ function Sidebar({ user, getUserAPI, logoutAPI, tags, onPrivacyChange, history }
   };
 
   const editshortBio = (value) => {
-    apiGenerator("patch")(API_ENDPOINTS.UPDATE(user.userCTX.user._id), {
+    apiGenerator("patch")(API_ENDPOINTS.UPDATE(user._id), {
       shortBio: value,
     })
       .then((response) => {
@@ -52,7 +53,13 @@ function Sidebar({ user, getUserAPI, logoutAPI, tags, onPrivacyChange, history }
   return (
     <div className={styles.sidebar}>
       <div className={styles.title}>
-        <img className={styles.logo} src={Logo} />
+        <img
+          className={styles.logo}
+          src={Logo}
+          onClick={() => {
+            history.push(routes.home);
+          }}
+        />
       </div>
       <TopicsBar style={styles.topicsBar} tags={tags} history={history} />
 

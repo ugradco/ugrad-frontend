@@ -35,30 +35,34 @@ function SearchBar({ tags, feedAPI }) {
 
   return (
     <div className={style.searchBox}>
-      <IconButton className={style.searchButton} onClick={onSearchClick}>
-        <Icon.Search />
-      </IconButton>
-      <input
-        className={style.search}
-        onClick={onClick}
-        onChange={handleChange}
-        onKeyPress={onKeyPress}
-        type="text"
-        id="header-search"
-        placeholder="Search UGrad"
-        name="s"
-      />
-      <div className={style.tags}>
+      <div className={style.searchInputBox}>
+        <IconButton className={style.searchButton} onClick={onSearchClick}>
+          <Icon.Search />
+        </IconButton>
+        <input
+          className={style.search}
+          onClick={onClick}
+          onChange={handleChange}
+          onKeyPress={onKeyPress}
+          type="text"
+          id="header-search"
+          placeholder="Search anything in UGrad"
+          autoComplete="off"
+        />
+      </div>
+      <div className={style.tagsContainer}>
         {showTags && <h1 className={style.topicHeader}>Suggested Topics</h1>}
-        {showTags &&
-          tags &&
-          tags.tags.map((tag) => {
-            return (
-              <Topic key={tag.name} className={style.topic} onClick={selectTag}>
-                {tag.name.toUpperCase()}
-              </Topic>
-            );
-          })}
+        <div className={style.tags}>
+          {showTags &&
+            tags &&
+            tags.tags.map((tag) => {
+              return (
+                <Topic key={tag.name} className={style.topic} onClick={selectTag}>
+                  {tag.name.toUpperCase()}
+                </Topic>
+              );
+            })}
+        </div>
       </div>
     </div>
   );

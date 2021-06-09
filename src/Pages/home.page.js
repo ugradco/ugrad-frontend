@@ -33,6 +33,8 @@ function HomePage(props) {
   useEffect(() => {
     if (location.search !== "") {
       getFeedAPI({ params: { tags: location.search.substring(8) } });
+    } else {
+      getFeedAPI({});
     }
   }, [location.search]);
 
