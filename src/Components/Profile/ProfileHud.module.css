@@ -61,7 +61,7 @@
 .publicity {
   color: var(--color-primary);
   font-family: var(--font);
-  font-weight: bold;
+  font-weight: 600;
   margin: 0;
   display: inline;
 }

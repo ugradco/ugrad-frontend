@@ -1,6 +1,7 @@
 .feed {
   border-radius: 25px;
   background: var(--color-post-area-bg);
+  padding-bottom: 10px;
 }
 
 .post {
@@ -82,11 +83,9 @@
 }
 
 .commentButton {
-  margin: 10px 5px auto auto;
+  margin: 0px auto 5px 5px;
   border: none;
-  display: grid;
   height: 20px;
-  grid-template-columns: 80px 1fr;
 }
 
 .secondaryComment {

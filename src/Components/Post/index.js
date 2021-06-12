@@ -83,11 +83,6 @@ function Post({
         </div>
       </div>
       <div className={styles.divider} />
-      {comments.length !== 0 && (
-        <ThemeButton className={styles.commentButton} onClick={onShow}>
-          {comments.length !== 1 ? `${comments.length} Comments` : `${comments.length} Comment`}
-        </ThemeButton>
-      )}
       <div>
         <WriteCommentModal
           user={registeredUser}
@@ -99,8 +94,7 @@ function Post({
           onInputChange={onCommentChange}
         />
         {comments &&
-          showComments &&
-          comments.map((content) => {
+          comments.slice(0, 2).map((content) => {
             return (
               content.message && (
                 <div>
@@ -134,6 +128,52 @@ function Post({
               )
             );
           })}
+        {comments &&
+          showComments &&
+          comments.slice(2).map((content) => {
+            return (
+              content.message && (
+                <div>
+                  <CommentModal
+                    user={content.user}
+                    key={content._id}
+                    inputValue={content.message}
+                    comments={content.comments}
+                    postId={post._id}
+                    commentId={content._id}
+                    feedAPI={feedAPI}
+                  />
+                  {content.comments &&
+                    content.comments.map((comContent) => {
+                      return (
+                        content.message && (
+                          <div className={styles.secondaryComment}>
+                            <CommentModal
+                              user={comContent.user}
+                              key={comContent._id}
+                              inputValue={comContent.message}
+                              comments={comContent.comments}
+                              feedAPI={feedAPI}
+                              isReplied
+                            />
+                          </div>
+                        )
+                      );
+                    })}
+                </div>
+              )
+            );
+          })}
+        {comments.length > 2 &&
+          (showComments ? (
+            <ThemeButton className={styles.commentButton} onClick={onShow}>
+              Show less comments
+            </ThemeButton>
+          ) : (
+            <ThemeButton className={styles.commentButton} onClick={onShow}>
+              {comments.length !== 3 ? `${comments.length - 2} more comments` : "1 more comment"}
+            </ThemeButton>
+          ))}
       </div>
     </div>
   );

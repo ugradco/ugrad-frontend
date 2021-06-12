@@ -95,3 +95,19 @@
   margin-right: 0;
   margin-left: auto;
 }
+
+.divider {
+  width: 100px;
+  margin: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.signOutButton {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-red);
+  font-size: 18px;
+  border: none;
+  margin-right: auto;
+  margin-left: auto;
+}

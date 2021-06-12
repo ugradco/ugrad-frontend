@@ -54,7 +54,7 @@ function Avatar({
         className={classNames(styles.avatarContainer, className)}
         style={{ width: size, height: size, backgroundColor: getAvatarColor(name) }}
       >
-        <p style={{ fontSize: size / 2 }}> {name[0]}</p>
+        <p style={{ fontSize: size / 2, color: "white" }}> {name[0]}</p>
       </div>
     );
   }

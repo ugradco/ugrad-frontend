@@ -9,7 +9,7 @@ import { API_ENDPOINTS } from "Constants/api.constants";
 
 import styles from "./style.module.css";
 
-function UserProfileModal({ user, tags, setShowUserProfileModal, getUserAPI }) {
+function UserProfileModal({ user, tags, setShowUserProfileModal, setIsUserPublic, getUserAPI, onSignOut }) {
   const [userName, setUserName] = React.useState(user.name);
   const [shortBio, setShortBio] = React.useState(user.shortBio);
 
@@ -25,7 +25,7 @@ function UserProfileModal({ user, tags, setShowUserProfileModal, getUserAPI }) {
 
   const updateUserData = () => {
     apiGenerator("patch")(API_ENDPOINTS.UPDATE(user._id), {
-      userName,
+      name: userName,
       shortBio,
     })
       .then((response) => {
@@ -34,6 +34,7 @@ function UserProfileModal({ user, tags, setShowUserProfileModal, getUserAPI }) {
         }
         getUserAPI();
         setShowUserProfileModal(false);
+        setIsUserPublic(true);
       })
       .catch(() => {
         setIsSubmitting(false);
@@ -94,6 +95,10 @@ function UserProfileModal({ user, tags, setShowUserProfileModal, getUserAPI }) {
             Update
           </Button>
         </div>
+        <div className={styles.divider} />
+        <Button className={styles.signOutButton} onClick={onSignOut}>
+          Sign out
+        </Button>
       </div>
       )
     </div>

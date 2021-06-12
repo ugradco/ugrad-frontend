@@ -96,7 +96,7 @@ function HomeComponent({
         hasMore={feedCTX.hasMore}
         loader="Loading..."
         endMessage={
-          <p style={{ textAlign: "center" }}>
+          <p style={{ textAlign: "center", margin: "20px 0" }}>
             <b>No more posts available to see.</b>
           </p>
         }

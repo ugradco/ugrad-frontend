@@ -50,7 +50,7 @@ function SearchBar({ tags, feedAPI }) {
           autoComplete="off"
         />
       </div>
-      <div className={style.tagsContainer}>
+      {/* <div className={style.tagsContainer}>
         {showTags && <h1 className={style.topicHeader}>Suggested Topics</h1>}
         <div className={style.tags}>
           {showTags &&
@@ -63,7 +63,7 @@ function SearchBar({ tags, feedAPI }) {
               );
             })}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

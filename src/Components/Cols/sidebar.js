@@ -101,17 +101,31 @@ function Sidebar({ user, getUserAPI, logoutAPI, tags, setIsUserPublic, history }
             history.push(routes.home);
           }}
         /> */}
-        <div className={styles.mobileProfile}>
+        <div
+          className={styles.mobileProfile}
+          onClick={() => {
+            setShowUserProfileModal(true);
+          }}
+        >
           <Avatar name={activeUserName} />
-          <p className={styles.userName}>{activeUserName}</p>
+          <div className={styles.mobileUserContainer}>
+            <p className={styles.userName}>{activeUserName}</p>
+            {isPublic && <p className={styles.shortBio}>{user.shortBio}</p>}
+          </div>
         </div>
         <div className={styles.mobilePublicityContainer}>
-          <p className={styles.publicity}>{isPublic ? "Public" : "Anonymous"}</p>
           <IOSSwitch onPrivacyChange={onPrivacyChange} checked={!isPublic} />
+          <p className={styles.publicity}>Anonymous</p>
         </div>
       </div>
       {showUserProfileModal && (
-        <UserProfileModal user={user} setShowUserProfileModal={setShowUserProfileModal} getUserAPI={getUserAPI} />
+        <UserProfileModal
+          user={user}
+          onSignOut={logoutAPI}
+          setShowUserProfileModal={setShowUserProfileModal}
+          setIsUserPublic={setIsUserPublic}
+          getUserAPI={getUserAPI}
+        />
       )}
     </>
   );

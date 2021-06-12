@@ -14,11 +14,10 @@
   margin-left: 60px;
   margin-right: 60px;
   font-size: 1rem;
-  background-color: var(--color-post-bg);
+  background-color: var(--color-comment-bg);
   border-radius: 8px;
   grid-template-columns: 1fr 60px;
   align-items: center;
-
 }
 
 .replyBox {

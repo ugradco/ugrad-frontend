@@ -26,7 +26,7 @@ function ProfileHud({ user, onSignOut, onPrivacyChange, isPublic, setShowUserPro
       <div className={styles.footer}>
         <div>
           <IOSSwitch onPrivacyChange={onPrivacyChange} checked={!isPublic} />
-          <p className={styles.publicity}>{isPublic ? "Public" : "Anonymous"}</p>
+          <p className={styles.publicity}>Anonymous</p>
         </div>
         <ThemeButton className={styles.signOutButton} onClick={onSignOut}>
           Sign Out

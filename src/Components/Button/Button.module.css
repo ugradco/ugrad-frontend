@@ -1,18 +1,19 @@
 .button {
   cursor: pointer;
   background: transparent;
-  color: var(--c-text-color);
+
   border-radius: 99px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--fade);
   text-decoration: none;
+  color: var(--color-selected);
 }
 
 .button:not([disabled]):hover {
   fill: #0092fd;
-  color: var(--color-selected);
+  color: var(--c-text-color);
 }
 
 .button[disabled],
