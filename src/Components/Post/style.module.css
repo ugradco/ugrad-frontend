@@ -6,6 +6,11 @@
 .post {
   display: grid;
   padding: 12px 15px;
+}
+
+.divider {
+  width: 90%;
+  margin-left: 5%;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -77,14 +82,13 @@
 }
 
 .commentButton {
-  margin: auto 5px auto auto;
+  margin: 10px 5px auto auto;
   border: none;
   display: grid;
+  height: 20px;
   grid-template-columns: 80px 1fr;
 }
 
 .secondaryComment {
-  margin-left:20px;
+  margin-left: 20px;
 }
-
-

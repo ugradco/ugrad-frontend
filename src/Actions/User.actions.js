@@ -9,4 +9,11 @@ export const getUserAPI = () => {
   };
 };
 
+export const setIsUserPublic = (isPublic) => {
+  return {
+    type: UserConstants.USER_ANONYMITY_CHANGE,
+    payload: { isPublic },
+  };
+};
+
 export const setUserAPI = () => {};

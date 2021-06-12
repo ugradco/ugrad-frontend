@@ -8,7 +8,19 @@ import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component"
 import CommentModal from "../CommentModal/CommentModal.component";
 import ThemeButton from "../ThemeButton/index";
 
-function Post({ post, upvoteAPI, reportAPI, text, user, registeredUser, comments, sendComment, tags, feedAPI }) {
+function Post({
+  post,
+  upvoteAPI,
+  reportAPI,
+  text,
+  isUserPublic,
+  user,
+  registeredUser,
+  comments,
+  sendComment,
+  tags,
+  feedAPI,
+}) {
   const [showComments, setShowComments] = React.useState(false);
   const [upSelected, upSelectedSet] = React.useState(post.upvoted);
   const [message, setMessage] = React.useState("");
@@ -70,16 +82,16 @@ function Post({ post, upvoteAPI, reportAPI, text, user, registeredUser, comments
           </div>
         </div>
       </div>
-      <ThemeButton className={styles.commentButton} onClick={onShow}>
-        {comments.length !== 0
-          ? comments.length !== 1
-            ? `${comments.length} Comments`
-            : `${comments.length} Comment`
-          : ""}
-      </ThemeButton>
+      <div className={styles.divider} />
+      {comments.length !== 0 && (
+        <ThemeButton className={styles.commentButton} onClick={onShow}>
+          {comments.length !== 1 ? `${comments.length} Comments` : `${comments.length} Comment`}
+        </ThemeButton>
+      )}
       <div>
         <WriteCommentModal
           user={registeredUser}
+          isUserPublic={isUserPublic}
           inputType="new"
           inputValue={message}
           placeholder="Write a comment..."
@@ -101,7 +113,6 @@ function Post({ post, upvoteAPI, reportAPI, text, user, registeredUser, comments
                     commentId={content._id}
                     feedAPI={feedAPI}
                   />
-
                   {content.comments &&
                     content.comments.map((comContent) => {
                       return (

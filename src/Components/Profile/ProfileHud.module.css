@@ -1,13 +1,15 @@
 .profile {
-  display: grid;
   background: var(--color-post-area-bg);
   border-radius: 15px;
 }
+
 .avatar {
   display: grid;
   grid-template-columns: 60px 1fr 10px;
   margin-top: 6px;
   padding: 10px;
+  align-items: center;
+  cursor: pointer;
 }
 
 .header {
@@ -23,12 +25,14 @@
   color: var(--color-primary);
   font-weight: bold;
   font-size: 1rem;
+  margin: 0;
 }
 
 .shortBio {
   font-family: var(--font);
   color: var(--color-primary);
   font-size: 0.8rem;
+  margin: 0;
 }
 
 .footer {
@@ -36,6 +40,7 @@
   grid-template-columns: 1fr 120px;
   font-family: var(--font);
 }
+
 .publicityButton {
   font-size: 1rem;
   border: none;

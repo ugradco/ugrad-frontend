@@ -1,26 +1,33 @@
 import React from "react";
 import CreatableSelect from "react-select/creatable";
-import styles from "./style.module.css";
-import Photo from "../Components/Avatar";
-import Input from "../Components/InputBox/Input.component";
-import IconButton from "../Components/Button/icon";
-import { Close } from "../Components/icons";
+import Input from "Components/InputBox/Input.component";
+import Button from "Components/Button/Button.component";
+import IconButton from "Components/Button/icon";
+import { Close } from "Components/icons";
+import Avatar from "Components/Avatar";
 
-function PostPane({
+import styles from "./style.module.css";
+
+function PostModal({
   user,
+  isPublic,
   tags,
   onModalClose,
   inputType,
-  inputPlaceHolder,
   inputValue,
   onInputChange,
   onKeyPress,
   handleTagChange,
 }) {
+  const activeUserName = user && (isPublic ? user.name : user.alias);
+
   const [isText, setIsText] = React.useState(true);
   let tagOptions = [];
 
   const onNext = () => {
+    if (inputValue === "") {
+      return;
+    }
     setIsText(false);
   };
 
@@ -34,35 +41,33 @@ function PostPane({
       {isText ? (
         <div className={styles.post}>
           <div className={styles.avatar}>
-            <Photo name={user.alias} />
+            <Avatar name={activeUserName} />
             <div className={styles.header}>
-              <span className={styles.name}>{user && user.name}</span>{" "}
-              <span className={styles.shortBio}>{user && user.shortBio}</span>
+              <span className={styles.name}>{activeUserName}</span>{" "}
+              {isPublic && <span className={styles.shortBio}>{user && user.shortBio}</span>}
             </div>
             <IconButton className={styles.closeButton} onClick={onModalClose}>
               <Close color="#FFFFFF" />
             </IconButton>
           </div>
-          <div className={styles.input}>
-            <div />
-            <Input
-              style={styles.inputLarge}
-              name={inputType}
-              type={inputType}
-              placeholder={inputPlaceHolder}
-              value={inputValue}
-              onChange={onInputChange}
-            />
-            <div />
+          <Input
+            style={styles.inputLarge}
+            name={inputType}
+            type={inputType}
+            placeholder="What's on your mind?"
+            value={inputValue}
+            onChange={onInputChange}
+          />
+          <div>
+            <Button className={styles.postButton} onClick={onNext}>
+              <span color="#FFFFFFF">Post</span>
+            </Button>
           </div>
-          <IconButton className={styles.closeButton} onClick={onNext}>
-            <span color="#FFFFFFF">Post</span>
-          </IconButton>
         </div>
       ) : (
         <div className={styles.post}>
           <div className={styles.avatar}>
-            <Photo name={user.alias} />
+            <Avatar name={user.alias} />
             <div className={styles.header}>
               <span className={styles.name}>{user && user.name}</span>{" "}
               <span className={styles.shortBio}>{user && user.shortBio}</span>
@@ -78,13 +83,13 @@ function PostPane({
             </div>
             <div />
           </div>
-          <IconButton className={styles.closeButton} onClick={onKeyPress}>
+          <Button className={styles.postButton} onClick={onKeyPress}>
             <span color="#FFFFFFF">Post</span>
-          </IconButton>
+          </Button>
         </div>
       )}
     </div>
   );
 }
 
-export default PostPane;
+export default PostModal;

@@ -7,20 +7,22 @@ import Input from "../InputBox/Input.component";
 
 function WriteCommentModal({
   user,
+  isUserPublic,
   inputType,
   inputValue,
   placeholder,
   onInputChange = () => {},
   onSubmit = () => {},
 }) {
+  const activeUserName = user && (isUserPublic ? user.name : user.alias);
+
   if (inputType === "new") {
     return (
       <div className={styles.comments}>
         <div className={styles.modal}>
           <div className={styles.avatar}>
-            <Photo name={user && user.alias} />
+            <Photo name={activeUserName} />
           </div>
-          <div />
           <div className={styles.commentBox}>
             <Input
               style={styles.textarea}

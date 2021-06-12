@@ -10,9 +10,15 @@
   text-decoration: none;
 }
 
-.button:hover {
+.button:not([disabled]):hover {
   fill: #0092fd;
   color: var(--color-selected);
+}
+
+.button[disabled],
+.button[disabled]:hover {
+  cursor: default;
+  fill: unset;
 }
 
 .button:focus {

@@ -1,12 +1,12 @@
 import { LOCAL_STORAGE } from "Constants/global.constants";
 
-export const getItemFromLocalStorage = (itemName) => {
+export const getItemFromLocalStorage = (itemName, defaultVal) => {
   try {
     const storedState = localStorage.getItem(itemName);
 
     if (storedState === null || storedState === undefined) {
       localStorage.removeItem(itemName);
-      return undefined;
+      return defaultVal || undefined;
     }
 
     return JSON.parse(storedState);

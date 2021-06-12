@@ -4,7 +4,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import style from "./Home.module.css";
 import MainLayout from "../Layout/MainLayout.component";
 import Post from "../Post";
-import PostModal from "../PostModal/PostModal.component";
+import PostInput from "../PostInput/PostInput.component";
 import SearchBar from "../SearchBar";
 import Loading from "../loading";
 import { apiGenerator } from "../../Utils";
@@ -17,12 +17,9 @@ function HomeComponent({
   feedCTX,
   onInputChange = () => {},
   onKeyPress = () => {},
-  onPrivacyChange,
   feedAPI,
   feed,
   handleTagChange,
-  handleEditProfileName,
-  handleEditProfileBio,
   nextPage,
   history,
 }) {
@@ -78,24 +75,14 @@ function HomeComponent({
     <Loading />;
   }
   return (
-    <MainLayout
-      user={user}
-      tags={tags}
-      className={style.layout}
-      onPrivacyChange={onPrivacyChange}
-      handleEditProfileName={handleEditProfileName}
-      handleEditProfileBio={handleEditProfileBio}
-      history={history}
-    >
-      <div>
-        <SearchBar tags={tags} feedAPI={feedAPI} />
-      </div>
-
+    <MainLayout user={user} tags={tags} isPublic={isPublic} className={style.layout} history={history}>
+      <SearchBar tags={tags} feedAPI={feedAPI} />
       <div className={style.post}>
         <div className={style.text}>New Post</div>
-        <PostModal
+        <PostInput
           tags={tags}
           user={user}
+          isPublic={isPublic}
           onInputChange={onInputChange}
           onKeyPress={onKeyPress}
           inputPlaceHolder={user ? `What's on your mind, ${user.name}?` : "What's on your mind?"}
@@ -103,7 +90,6 @@ function HomeComponent({
         />
       </div>
       <div className={style.section}>Feed</div>
-
       <InfiniteScroll
         dataLength={feed.length}
         next={nextPage}
@@ -126,6 +112,7 @@ function HomeComponent({
                   upvoteAPI={upvoteAPI}
                   text={post.text}
                   user={post.user}
+                  isUserPublic={isPublic}
                   registeredUser={user}
                   comments={post.comments}
                   sendComment={sendComment}

@@ -1,9 +1,10 @@
 import React from "react";
 
-import styles from "./PostModal.module.css";
-import PostPane from "../../PostPane";
+import styles from "./PostInput.module.css";
+import PostPane from "../../PostModal";
 
 function PostModal({
+  isPublic,
   user,
   tags,
   inputValue,
@@ -12,7 +13,6 @@ function PostModal({
   onInputChange,
   onKeyPress,
   handleTagChange,
-  feedAPI,
 }) {
   const [isShowModal, isShowModalSet] = React.useState(false);
 
@@ -35,6 +35,7 @@ function PostModal({
       {isShowModal && (
         <PostPane
           user={user}
+          isPublic={isPublic}
           tags={tags}
           onModalClose={onModalClose}
           inputType={inputType}

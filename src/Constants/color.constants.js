@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     --color-post-area-bg: #F7F7F6;
     --color-hover: #F7F7F6;
     --color-pane: #F0F2F5;
+    --c-border-color: #343264;
     --fade: .3s;
     --font: Roboto;
     --font-logo: system-ui;

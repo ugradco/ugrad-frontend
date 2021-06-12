@@ -1,6 +1,8 @@
 .comments {
   display: grid;
+  margin-top: 10px;
 }
+
 .modal {
   margin: 5px 5px 5px 15px;
   display: flex;
@@ -20,7 +22,7 @@
   border-color: var(--c-border-color);
   align-items: center;
   margin-bottom: 15px;
-  height: 40px;
+  min-height: 40px;
 }
 
 .textarea {

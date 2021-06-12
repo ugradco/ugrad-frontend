@@ -20,24 +20,48 @@
 }
 
 .post {
-  padding: 30px 15px;
+  padding: 30px 15px 20px;
   width: 100%;
   max-width: 600px;
   background-color: var(--color-pane);
   border-radius: 15px;
-  margin-bottom: 50vh;
+  margin-bottom: 35vh;
   margin-left: 16%;
+  position: relative;
+}
+
+@media only screen and (max-width: 800px) {
+  .post {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 .avatar {
-  display: grid;
+  display: flex;
   margin-bottom: 5px;
-  grid-template-columns: 60px 1fr 60px;
 }
 
 .input {
-  display: grid;
-  grid-template-columns: 60px 1fr 60px;
+  width: 100%;
+}
+
+.inputLarge {
+  resize: none;
+  white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-size: 18px;
+  border: 1px solid #dddfe2;
+  border-radius: 5px;
+  height: 150px;
+  width: 100%;
+  font-family: var(--font);
+  /*text-align: center;*/
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  box-sizing: border-box;
 }
 
 .body {
@@ -51,6 +75,7 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  margin-left: 10px;
   color: var(--color-border);
 }
 
@@ -84,6 +109,9 @@
 }
 
 .closeButton svg {
+  position: absolute;
+  right: 15px;
+  top: 20px;
   font-size: 20px;
   color: var(--color-primary);
 }
@@ -92,25 +120,13 @@
   display: flex;
   flex-direction: column;
   color: var(--color-primary);
-  margin-right: 13px;
+  font-size: 18px;
+  border: none;
+  margin-top: 10px;
+  margin-right: 0;
+  margin-left: auto;
 }
 
 .postButton svg {
   font-size: 40px;
-}
-
-.inputLarge {
-  resize: none;
-  white-space: normal;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-size: 18px;
-  border: 1px solid #dddfe2;
-  border-radius: 5px;
-  height: 100px;
-  width: 100%;
-  font-family: var(--font);
-  /*text-align: center;*/
-  border: none;
-  padding: 10px;
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { saveItemToLocalStorage, removeItemFromLocalStorage } from "Utils/Helpers/storage.helpers";
 import HomeComponent from "../Components/Home/Home.component";
 import { REQUEST_STATUS } from "../Constants/global.constants";
 import { getFeedAPI } from "../Actions/Post.actions";
@@ -14,7 +13,6 @@ function HomePage(props) {
   const [form, setForm] = useState({ isPublic: false, text: "", tags: [] });
 
   const [currentPage, setCurrentPage] = React.useState(0);
-  const [isPublic, isPublicSet] = React.useState(false);
   let feed = [...post.feedCTX.data];
 
   useEffect(() => {
@@ -61,17 +59,13 @@ function HomePage(props) {
 
   const handleChange = (e) => {
     setForm({
-      isPublic,
+      isPublic: user.isPublic,
       text: e.target.value,
       tags: [],
     });
   };
 
-  const handleTagChange = (newValue, actionMeta) => {
-    // console.group("Value Changed");
-    // console.log(newValue);
-    // console.log(`action: ${actionMeta.action}`);
-    // console.groupEnd();
+  const handleTagChange = (newValue) => {
     let tagOptions = [];
     for (let i = 0; i < newValue.length; i += 1) {
       tagOptions = [...tagOptions, newValue[i].value];
@@ -81,13 +75,6 @@ function HomePage(props) {
       text: form.text,
       tags: tagOptions,
     });
-  };
-
-  const onPrivacyChange = () => {
-    isPublicSet(!isPublic);
-    removeItemFromLocalStorage("isPublic");
-    saveItemToLocalStorage("isPublic", !isPublic);
-    // need to change avatar initials with every change.
   };
 
   const nextPage = () => {
@@ -101,12 +88,11 @@ function HomePage(props) {
       <HomeComponent
         user={user.userCTX.user}
         tags={tags.tagsCTX.tags}
-        isPublic={isPublic}
+        isPublic={user.isPublic}
         feedCTX={post.feedCTX}
         feed={feed}
         onInputChange={handleChange}
         onKeyPress={onKeyPress}
-        onPrivacyChange={onPrivacyChange}
         feedAPI={getFeedAPI}
         handleTagChange={handleTagChange}
         nextPage={nextPage}
