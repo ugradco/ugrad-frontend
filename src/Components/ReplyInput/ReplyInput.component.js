@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 import { getItemFromLocalStorage } from "Utils/Helpers/storage.helpers";
-import styles from "./CommentModal.module.css";
+import styles from "./ReplyInput.module.css";
 import Photo from "../Avatar/index";
 import ThemeButton from "../ThemeButton/index";
 import Input from "../InputBox/Input.component";
@@ -17,6 +17,7 @@ function CommentModal({ inputValue, user, isReplied = false, postId, commentId, 
   };
 
   const replyAPI = () => {
+    resetInputHeight();
     apiGenerator("post")(API_ENDPOINTS.SEND_COMMENT, {
       postId,
       commentId,
@@ -40,6 +41,23 @@ function CommentModal({ inputValue, user, isReplied = false, postId, commentId, 
     setMessage("");
   };
 
+  const inputRef = useRef(null);
+  const [inputHeight, setInputHeight] = useState(20);
+  const [inputRadius, setInputRadius] = useState(30);
+
+  const resetInputHeight = () => {
+    inputRef.current.style.height = "20px";
+    setInputHeight(inputRef.current.scrollHeight);
+    inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
+
+    setInputRadius(inputRef.current.scrollHeight > 30 ? 10 : 30);
+  };
+
+  const handleChange = (event) => {
+    resetInputHeight();
+    onChange(event);
+  };
+
   return (
     <div className={styles.modal}>
       <div className={styles.avatar}>
@@ -57,14 +75,16 @@ function CommentModal({ inputValue, user, isReplied = false, postId, commentId, 
         )}
       </div>
       {showReplyModal && (
-        <div className={styles.replyBox}>
+        <div className={styles.replyBox} style={{ height: inputHeight + 15, borderRadius: inputRadius }}>
           <Input
+            inputRef={inputRef}
+            containerClassName={styles.textareaContainer}
             style={styles.textarea}
             name="reply"
             type="reply"
             placeholder="Write a comment reply..."
             value={message}
-            onChange={onChange}
+            onChange={handleChange}
           />
           <ThemeButton className={styles.postButton} onClick={replyAPI}>
             Post

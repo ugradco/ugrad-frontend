@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { API_ENDPOINTS } from "Constants/api.constants";
 import { apiGenerator } from "Utils";
-import { getUserAPI, setIsUserPublic } from "Actions/User.actions";
+import { getUserAPI, setIsUserPublic, updateUserAPI } from "Actions/User.actions";
 import { logoutAPI } from "Actions/Login.actions";
 import { connect } from "react-redux";
 import routes from "Constants/route.constants";
@@ -14,7 +14,7 @@ import styles from "./sidebar.module.css";
 import TopicsBar from "../TopicsBar/TopicsBar.component";
 import ProfileHud from "../Profile/ProfileHud.component";
 
-function Sidebar({ user, getUserAPI, logoutAPI, tags, setIsUserPublic, history }) {
+function Sidebar({ user, getUserAPI, updateUserAPI, logoutAPI, tags, setIsUserPublic, history }) {
   const { isPublic } = user;
 
   const [showUserProfileModal, setShowUserProfileModal] = useState(false);
@@ -125,6 +125,7 @@ function Sidebar({ user, getUserAPI, logoutAPI, tags, setIsUserPublic, history }
           setShowUserProfileModal={setShowUserProfileModal}
           setIsUserPublic={setIsUserPublic}
           getUserAPI={getUserAPI}
+          updateUserAPI={updateUserAPI}
         />
       )}
     </>
@@ -137,6 +138,7 @@ const mapStateToProps = (state) => ({
 
 const actionCreators = {
   getUserAPI,
+  updateUserAPI,
   setIsUserPublic,
   logoutAPI,
 };

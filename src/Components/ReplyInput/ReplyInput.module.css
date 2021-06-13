@@ -21,9 +21,6 @@
 }
 
 .replyBox {
-  display: grid;
-  grid-template-columns: 1fr 60px;
-  border-radius: 30px;
   border-style: solid;
   border-width: 1px;
   border-color: var(--c-border-color);
@@ -33,11 +30,21 @@
   margin-bottom: 5px;
   height: 35px;
   max-width: 75%;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  border: solid 1px #cbcccc;
+  align-items: center;
+}
+
+.textareaContainer {
+  min-width: calc(100% - 70px);
+  margin: 8px 5px 5px 15px;
 }
 
 .textarea {
-  margin: 5px 5px 1px 25px;
-  height: 25px;
+  min-width: 100%;
+  height: 20px;
   align-items: center;
   border: none;
   resize: none;
@@ -45,7 +52,8 @@
   background-color: transparent;
   font-size: 1rem;
   font-family: var(--font);
-  min-width: 90%;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .header {

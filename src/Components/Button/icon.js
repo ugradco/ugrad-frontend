@@ -11,8 +11,8 @@ function IconButton({ text, onClick, count, selected, children, className, ...pr
       {...props}
     >
       {text && <div className={styles.text}>{text}</div>}
-      {count > 0 && <div className={styles.notify}>{count}</div>}
       {children}
+      {count > 0 && <div className={styles.notify}>{count}</div>}
     </Button>
   );
 }

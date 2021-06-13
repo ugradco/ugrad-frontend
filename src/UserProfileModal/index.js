@@ -4,12 +4,10 @@ import IconButton from "Components/Button/icon";
 import { Close } from "Components/icons";
 import Avatar from "Components/Avatar";
 import InputBox from "Components/InputBox/InputBox.component";
-import { apiGenerator } from "Utils";
-import { API_ENDPOINTS } from "Constants/api.constants";
 
 import styles from "./style.module.css";
 
-function UserProfileModal({ user, tags, setShowUserProfileModal, setIsUserPublic, getUserAPI, onSignOut }) {
+function UserProfileModal({ user, tags, setShowUserProfileModal, setIsUserPublic, updateUserAPI, onSignOut }) {
   const [userName, setUserName] = React.useState(user.name);
   const [shortBio, setShortBio] = React.useState(user.shortBio);
 
@@ -24,21 +22,11 @@ function UserProfileModal({ user, tags, setShowUserProfileModal, setIsUserPublic
   }
 
   const updateUserData = () => {
-    apiGenerator("patch")(API_ENDPOINTS.UPDATE(user._id), {
-      name: userName,
-      shortBio,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          console.error("There has been a problem with your patch operation.");
-        }
-        getUserAPI();
-        setShowUserProfileModal(false);
-        setIsUserPublic(true);
-      })
-      .catch(() => {
-        setIsSubmitting(false);
-      });
+    updateUserAPI({ userId: user._id, name: userName, shortBio });
+
+    setIsUserPublic(true);
+    setIsSubmitting(false);
+    setShowUserProfileModal(false);
   };
 
   const onSubmit = () => {
@@ -48,9 +36,18 @@ function UserProfileModal({ user, tags, setShowUserProfileModal, setIsUserPublic
     }
   };
 
+  const limitAlphaCharsPlus = (event) => {
+    const value = String.fromCharCode(event.which);
+    const pattern = new RegExp(/[a-zåä\-çşğı.?_& ]/i);
+
+    if (!pattern.test(value)) {
+      event.preventDefault();
+    }
+  };
+
   const limitAlphaChars = (event) => {
     const value = String.fromCharCode(event.which);
-    const pattern = new RegExp(/[a-zåäö ]/i);
+    const pattern = new RegExp(/[a-zåäçşğı. ]/i);
 
     if (!pattern.test(value)) {
       event.preventDefault();
@@ -73,6 +70,7 @@ function UserProfileModal({ user, tags, setShowUserProfileModal, setIsUserPublic
         <InputBox
           style={styles.inputSmall}
           type="email"
+          maxLength={25}
           placeholder="Your name"
           value={userName}
           onKeyPress={limitAlphaChars}
@@ -83,9 +81,10 @@ function UserProfileModal({ user, tags, setShowUserProfileModal, setIsUserPublic
         <InputBox
           style={styles.inputSmall}
           type="email"
+          maxLength={20}
           placeholder="Your short bio"
           value={shortBio}
-          onKeyPress={limitAlphaChars}
+          onKeyPress={limitAlphaCharsPlus}
           onChange={(event) => {
             setShortBio(event.target.value);
           }}

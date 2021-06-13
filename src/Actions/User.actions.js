@@ -9,6 +9,13 @@ export const getUserAPI = () => {
   };
 };
 
+export const updateUserAPI = ({ userId, name, shortBio }) => {
+  return {
+    type: UserConstants.UPDATE_USER_API_PENDING,
+    payload: { userId, name, shortBio },
+  };
+};
+
 export const setIsUserPublic = (isPublic) => {
   return {
     type: UserConstants.USER_ANONYMITY_CHANGE,

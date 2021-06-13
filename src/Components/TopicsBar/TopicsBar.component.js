@@ -7,7 +7,7 @@ function TopicsBarComponent({ children, style, tags, history }) {
   return (
     <div className={style}>
       <div className={styles.nav}>
-        <h1 className={styles.title}>Followed Topics</h1>
+        <h1 className={styles.title}>Popular Topics</h1>
         {tags &&
           tags.tags.map((tag) => {
             const onClick = () => {

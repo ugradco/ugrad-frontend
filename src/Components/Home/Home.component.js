@@ -71,59 +71,66 @@ function HomeComponent({
       });
   };
 
-  if (feedCTX.status === REQUEST_STATUS.PENDING) {
-    <Loading />;
-  }
+  const isLoading = feedCTX.status === REQUEST_STATUS.PENDING || !user;
+
   return (
     <MainLayout user={user} tags={tags} isPublic={isPublic} className={style.layout} history={history}>
       <SearchBar tags={tags} feedAPI={feedAPI} />
-      <div className={style.post}>
-        <div className={style.text}>New Post</div>
-        <PostInput
-          tags={tags}
-          user={user}
-          isPublic={isPublic}
-          onInputChange={onInputChange}
-          onKeyPress={onKeyPress}
-          inputPlaceHolder={user ? `What's on your mind, ${user.name}?` : "What's on your mind?"}
-          handleTagChange={handleTagChange}
-        />
-      </div>
-      <div className={style.section}>Feed</div>
-      <InfiniteScroll
-        dataLength={feed.length}
-        next={nextPage}
-        hasMore={feedCTX.hasMore}
-        loader="Loading..."
-        endMessage={
-          <p style={{ textAlign: "center", margin: "20px 0" }}>
-            <b>No more posts available to see.</b>
-          </p>
-        }
-      >
-        <div className={style.feed}>
-          {feed &&
-            feed.map((post) => {
-              return (
-                <Post
-                  post={post}
-                  key={post._id}
-                  reportAPI={reportAPI}
-                  upvoteAPI={upvoteAPI}
-                  text={post.text}
-                  user={post.user}
-                  isUserPublic={isPublic}
-                  registeredUser={user}
-                  comments={post.comments}
-                  sendComment={sendComment}
-                  tags={post.tags}
-                  feedAPI={feedAPI}
-                  {...post}
-                />
-              );
-            })}
+      {isLoading ? (
+        <div className={style.loader}>
+          <Loading />
         </div>
-      </InfiniteScroll>
+      ) : (
+        <>
+          <div className={style.post}>
+            <div className={style.text}>New Post</div>
+            <PostInput
+              tags={tags}
+              user={user}
+              isPublic={isPublic}
+              onInputChange={onInputChange}
+              onKeyPress={onKeyPress}
+              inputPlaceHolder={user.name ? `What's on your mind, ${user.name}?` : "What's on your mind?"}
+              handleTagChange={handleTagChange}
+            />
+          </div>
+          <div className={style.section}>Feed</div>
+          <InfiniteScroll
+            dataLength={feed.length}
+            next={nextPage}
+            hasMore={feedCTX.hasMore}
+            loader="Loading..."
+            endMessage={
+              <p style={{ textAlign: "center", margin: "20px 0" }}>
+                <b>No more posts available to see.</b>
+              </p>
+            }
+          >
+            <div className={style.feed}>
+              {feed &&
+                feed.map((post) => {
+                  return (
+                    <Post
+                      post={post}
+                      key={post._id}
+                      reportAPI={reportAPI}
+                      upvoteAPI={upvoteAPI}
+                      text={post.text}
+                      user={post.user}
+                      isUserPublic={isPublic}
+                      registeredUser={user}
+                      comments={post.comments}
+                      sendComment={sendComment}
+                      tags={post.tags}
+                      feedAPI={feedAPI}
+                      {...post}
+                    />
+                  );
+                })}
+            </div>
+          </InfiniteScroll>
+        </>
+      )}
     </MainLayout>
   );
 }

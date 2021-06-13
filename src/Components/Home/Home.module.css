@@ -15,9 +15,14 @@
 .feed {
   margin-top: 15px;
   display: grid;
-  grid-gap: 50px;
+  grid-gap: 30px;
   max-width: 500px;
   overflow: hidden;
+}
+
+.loader {
+  margin-top: 45vh;
+  text-align: center;
 }
 
 .post {

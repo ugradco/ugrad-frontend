@@ -71,10 +71,11 @@
 }
 
 .notify {
-  position: absolute;
+  /* position: absolute; */
   color: var(--color-primary);
   border-radius: 17px;
-  margin: 55px auto auto auto;
+  margin-top: 5px;
+  /* margin: 55px auto auto auto; */
 }
 
 .text {

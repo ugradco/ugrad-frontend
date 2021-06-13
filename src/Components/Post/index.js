@@ -4,8 +4,8 @@ import styles from "./style.module.css";
 import Photo from "../Avatar";
 import IconButton from "../Button/icon";
 import * as Icon from "../icons";
-import WriteCommentModal from "../WriteCommentModal/WriteCommentModal.component";
-import CommentModal from "../CommentModal/CommentModal.component";
+import WriteCommentModal from "../WriteCommentInput/WriteCommentInput.component";
+import CommentModal from "../ReplyInput/ReplyInput.component";
 import ThemeButton from "../ThemeButton/index";
 
 function Post({
@@ -47,6 +47,7 @@ function Post({
     setShowComments(!showComments);
   };
 
+  const partialComments = Boolean(comments) && (showComments ? comments : comments.slice(0, 2));
   return (
     <div className={styles.feed}>
       <div className={styles.post}>
@@ -64,15 +65,8 @@ function Post({
         {/* body */}
         <div className={styles.body}>
           {/* up vote */}
-          <IconButton
-            className={styles.upButton}
-            text="Up"
-            count={post.upvoteCount}
-            selected={upSelected}
-            onClick={upClicked}
-          >
-            {upSelected && <Icon.Upvote fill="#343264" />}
-            {!upSelected && <Icon.Upvote />}
+          <IconButton className={styles.upButton} count={post.upvoteCount} selected={upSelected} onClick={upClicked}>
+            <Icon.Upvote fill={upSelected ? "#5297FF" : "#DFDFDF"} stroke={upSelected ? "#5297FF" : "#DFDFDF"} />
           </IconButton>
 
           <div className={styles.content}>
@@ -94,10 +88,10 @@ function Post({
           onInputChange={onCommentChange}
         />
         {comments &&
-          comments.slice(0, 2).map((content) => {
+          partialComments.map((content) => {
             return (
               content.message && (
-                <div>
+                <div key={content._id}>
                   <CommentModal
                     user={content.user}
                     key={content._id}
@@ -111,46 +105,9 @@ function Post({
                     content.comments.map((comContent) => {
                       return (
                         content.message && (
-                          <div className={styles.secondaryComment}>
+                          <div className={styles.secondaryComment} key={comContent._id}>
                             <CommentModal
                               user={comContent.user}
-                              key={comContent._id}
-                              inputValue={comContent.message}
-                              comments={comContent.comments}
-                              feedAPI={feedAPI}
-                              isReplied
-                            />
-                          </div>
-                        )
-                      );
-                    })}
-                </div>
-              )
-            );
-          })}
-        {comments &&
-          showComments &&
-          comments.slice(2).map((content) => {
-            return (
-              content.message && (
-                <div>
-                  <CommentModal
-                    user={content.user}
-                    key={content._id}
-                    inputValue={content.message}
-                    comments={content.comments}
-                    postId={post._id}
-                    commentId={content._id}
-                    feedAPI={feedAPI}
-                  />
-                  {content.comments &&
-                    content.comments.map((comContent) => {
-                      return (
-                        content.message && (
-                          <div className={styles.secondaryComment}>
-                            <CommentModal
-                              user={comContent.user}
-                              key={comContent._id}
                               inputValue={comContent.message}
                               comments={comContent.comments}
                               feedAPI={feedAPI}

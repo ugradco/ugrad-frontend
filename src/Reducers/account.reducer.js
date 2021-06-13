@@ -1,5 +1,5 @@
 import * as AuthConstants from "Constants/auth.constants";
-import { getAccessTokenFromLocalStorage } from "Utils/Helpers/storage.helpers";
+import { getAccessTokenFromLocalStorage, removeItemFromLocalStorage } from "Utils/Helpers/storage.helpers";
 
 const initialState = {
   accessToken: getAccessTokenFromLocalStorage(),
@@ -27,6 +27,7 @@ function loginAPISuccess(state, action) {
 }
 
 function logoutAPIPending() {
+  removeItemFromLocalStorage("isPublic");
   return {
     ...initialState,
     accessToken: "",
