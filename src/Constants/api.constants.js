@@ -5,6 +5,14 @@ export const API_ENDPOINTS = {
   LOGOUT: "/auth/revoke",
   ACCOUNT: "/users/me",
   ACCOUNT_PROFILE: "/users/me/profile",
+  SEND_POST: "/posts",
+  SEND_COMMENT: "/posts/comment",
+  FEED: "/posts/feed",
+  REPORT: "/posts/report",
+  UPVOTE: (postId) => `/posts/upvote/${postId}`,
+  UPDATE: (userId) => `/users/${userId}`,
+  TAGS: "/tags",
+  TAG_FILTER: (tagId) => `/posts/feed?tags[]=${tagId}`,
 };
 
 export const STATUS_TYPE = {

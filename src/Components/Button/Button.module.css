@@ -1,19 +1,86 @@
 .button {
   cursor: pointer;
   background: transparent;
-  color: var(--c-text-color);
+
   border-radius: 99px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--fade);
   text-decoration: none;
+  color: var(--color-selected);
 }
+
+.button:not([disabled]):hover {
+  fill: #0092fd;
+  color: var(--c-text-color);
+}
+
+.button[disabled],
+.button[disabled]:hover {
+  cursor: default;
+  fill: unset;
+}
+
+.button:focus {
+  outline: none;
+}
+
+/*.button {*/
+/*  position: relative;*/
+/*  display: inline-block;*/
+/*  padding: .8em 4em;*/
+/*  border: 2px solid var(--color-primary);*/
+/*  color: var(--color-primary);*/
+/*  font-size: 18px;*/
+/*  font-weight: 400;*/
+/*  text-align: center;*/
+/*  text-decoration: none;*/
+/*  transition: .3s;*/
+/*  background-color: none;*/
+/*}*/
+/*.button::before {*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  z-index: -1;*/
+/*  content: '';*/
+/*  transition: transform .3s;*/
+/*}*/
+/*.button:hover {*/
+/*  color: var(--color-selected);*/
+/*}*/
 
 .fullWidth {
   width: 100% !important;
 }
 
 .iconButton {
+  position: inherit;
+  border: none;
   padding: 8px;
+}
+
+.iconButton svg {
+  font-size: 24px;
+}
+.ButtonSelected {
+  color: var(--c-theme);
+}
+
+.notify {
+  /* position: absolute; */
+  color: var(--color-primary);
+  border-radius: 17px;
+  margin-top: 5px;
+  /* margin: 55px auto auto auto; */
+}
+
+.text {
+  color: var(--color-primary);
+  position: absolute;
+  margin: 10px auto auto 2px;
+  border-radius: 17px;
 }

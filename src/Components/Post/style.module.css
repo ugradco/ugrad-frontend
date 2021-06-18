@@ -1,0 +1,93 @@
+.feed {
+  border-radius: 25px;
+  background: var(--color-post-area-bg);
+  padding-bottom: 10px;
+}
+
+.post {
+  display: grid;
+  padding: 12px 15px;
+}
+
+.divider {
+  width: 90%;
+  margin-left: 5%;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.avatar {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+}
+
+.body {
+  font-family: var(--font);
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  font-size: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  color: var(--color-border);
+}
+
+.name {
+  font-family: var(--font);
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.shortBio {
+  font-family: var(--font);
+  color: var(--color-primary);
+  font-weight: bold;
+  font-size: 80%;
+}
+
+.content {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  white-space: pre-wrap;
+}
+
+.reportButton {
+  margin: 5px 15px auto auto;
+  color: inherit;
+}
+
+.reportButton {
+  color: inherit;
+}
+
+.reportButton svg {
+  font-size: 20px;
+}
+
+.tags {
+  color: var(--color-primary);
+  font-size: 12px;
+}
+
+.upButton {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  margin-right: 13px;
+}
+
+.upButton svg {
+  font-size: 20px;
+}
+
+.commentButton {
+  margin: 0px auto 5px 5px;
+  border: none;
+  height: 20px;
+}
+
+.secondaryComment {
+  margin-left: 20px;
+}

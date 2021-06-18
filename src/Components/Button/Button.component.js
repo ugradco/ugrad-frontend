@@ -12,20 +12,20 @@ function LinkButton({ href, children, ...props }) {
   );
 }
 
-function BaseButton({ children, ...props }) {
+function BaseButton({ children, onClick, ...props }) {
   return (
-    <button type="button" {...props}>
+    <button type="button" {...props} onClick={onClick}>
       {children}
     </button>
   );
 }
 
-function Button({ full = false, children, className, ...props }) {
+function Button({ full = false, children, onClick, className, ...props }) {
   const { href } = props;
   const Comp = href ? LinkButton : BaseButton;
 
   return (
-    <Comp className={cn(styles.button, full && styles.fullWidth, className)} {...props}>
+    <Comp className={cn(styles.button, full && styles.fullWidth, className)} onClick={onClick} {...props}>
       {children}
     </Comp>
   );

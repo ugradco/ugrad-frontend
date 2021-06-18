@@ -1,11 +1,10 @@
 import React from "react";
-
 import styles from "./Topic.module.css";
 
-// TODO: selected durumunda ikonlar dolgulu olacak
-function Topic({ children, ...props }) {
+// TODO: selected ikon dolgusu
+function Topic({ value, onClick = () => {}, children, ...props }) {
   return (
-    <button type="button" className={styles.topic} {...props}>
+    <button type="button" value={value} className={styles.topic} onClick={onClick} {...props}>
       {children}
     </button>
   );

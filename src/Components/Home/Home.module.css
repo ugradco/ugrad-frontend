@@ -1,0 +1,39 @@
+.layout {
+  display: grid;
+}
+
+.section {
+  margin-top: 10px;
+  font-family: var(--font);
+  color: var(--color-text);
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: bold;
+  grid-gap: 5px;
+}
+
+.feed {
+  margin-top: 15px;
+  display: grid;
+  grid-gap: 30px;
+  max-width: 500px;
+  overflow: hidden;
+}
+
+.loader {
+  margin-top: 45vh;
+  text-align: center;
+}
+
+.post {
+  background: var(--color-post-area-bg);
+  border-radius: 25px;
+}
+
+.text {
+  font-family: var(--font);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 15px 10px 0px 15px;
+  padding-top: 12px;
+}

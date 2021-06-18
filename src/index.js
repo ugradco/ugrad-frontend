@@ -7,9 +7,12 @@ import reportWebVitals from "./reportWebVitals";
 
 import store from "./Configs/store";
 
+import GlobalStyles from "./Constants/color.constants";
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <GlobalStyles />
       <AppRoutes />
     </Provider>
   </React.StrictMode>,

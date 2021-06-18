@@ -1,9 +1,47 @@
 .nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--color-post-area-bg);
+  border-radius: 15px;
+}
+.topicBar {
+  display: grid;
+  row-gap: 20px;
+  background-color: var(--color-feed-bg);
+}
+.topic {
+  background-color: var(--color-text-bg);
+  color: var(--color-primary);
+  border-radius: 10px;
+  border: none;
+  transition-duration: var(--fade);
+  /* width: 12rem; */
+  margin: 0px 10px 10px 10px;
+  font-family: var(--font);
+  font-size: 18px;
+  padding: 5px 10px;
 }
 
-.navButton  + navButton {
-    margin-top: 8px;
+.topic:hover {
+  background-color: var(--color-primary); /* Green */
+  color: var(--color-text-bg);
+}
+
+.title {
+  font-family: var(--font);
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.newTopicsButton {
+  border: none;
+  align-self: center;
+  font-family: var(--font);
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-top: 20px;
 }

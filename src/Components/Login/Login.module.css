@@ -1,12 +1,12 @@
 .pane {
-  background-color: #F0F2F5;
+  background-color: #f0f2f5;
   border-radius: 44px;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 459px;
   width: 414px;
-
+  margin: 0 auto;
 }
 
 .button {
@@ -18,15 +18,19 @@
   width: 51px;
   height: 51px;
   border-radius: 60px;
-  border: 1px solid #dddfe2;
+  border: none;
 }
 
 .logo {
   display: block;
   height: 95px;
-  margin-bottom: auto;
-  margin-top: 127px;
-  width: 84.89px;
+  margin-bottom: 40px;
+  margin-top: 100px;
+  width: 85px;
+}
+
+.loader {
+  margin-top: 50px;
 }
 
 .arrowIcon {
@@ -42,6 +46,11 @@
   height: 50px;
   text-align: center;
   width: 300px;
+  resize: none;
+  color: var(--c-text-color);
+  font-family: var(--font);
+  align-items: center;
+  margin-top: 40px;
 }
 
 .inputSmall {
@@ -52,10 +61,10 @@
   width: 40px;
 }
 
-.smaller {
+.tokenContainer {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -63,12 +72,12 @@
   padding-left: 22px;
   letter-spacing: 45px;
   border: 10px;
-  background-image: linear-gradient(to left,#F0F2F5 10%, rgba(255, 255, 255, 0) 0%);
+  background-image: linear-gradient(to left, #f0f2f5 10%, rgba(255, 255, 255, 0) 0%);
   background-size: 55px;
   width: 300px;
   height: 50px;
 }
 
 .smaller input {
-  font-family: Roboto !important;
+  font-family: var(--font) !important;
 }
