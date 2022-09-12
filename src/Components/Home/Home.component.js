@@ -71,7 +71,7 @@ function HomeComponent({
       });
   };
 
-  const isLoading = feedCTX.status === REQUEST_STATUS.PENDING || !user;
+  const isLoading = (feedCTX.status === REQUEST_STATUS.PENDING && !feed) || !user;
 
   return (
     <MainLayout user={user} tags={tags} isPublic={isPublic} className={style.layout} history={history}>

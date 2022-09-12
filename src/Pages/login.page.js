@@ -40,8 +40,10 @@ function LoginPage(props) {
         setIsLogging(true);
       })
       .catch((error) => {
+        console.log("error", error);
         console.error("There has been a problem during login", error);
         setError("There was an error, please try again later");
+        setIsSubmitting(false);
       });
   };
 

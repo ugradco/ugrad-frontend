@@ -67,10 +67,10 @@ function PostModal({
       ) : (
         <div className={styles.post}>
           <div className={styles.avatar}>
-            <Avatar name={user.alias} />
+            <Avatar name={activeUserName} />
             <div className={styles.header}>
-              <span className={styles.name}>{user && user.name}</span>{" "}
-              <span className={styles.shortBio}>{user && user.shortBio}</span>
+              <span className={styles.name}>{activeUserName}</span>{" "}
+              {isPublic && <span className={styles.shortBio}>{user && user.shortBio}</span>}
             </div>
             <IconButton className={styles.closeButton} onClick={onModalClose}>
               <Close color="#FFFFFF" />

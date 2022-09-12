@@ -81,7 +81,7 @@ function UserProfileModal({ user, tags, setShowUserProfileModal, setIsUserPublic
         <InputBox
           style={styles.inputSmall}
           type="email"
-          maxLength={20}
+          maxLength={40}
           placeholder="Your short bio"
           value={shortBio}
           onKeyPress={limitAlphaCharsPlus}
